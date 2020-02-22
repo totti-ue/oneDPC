@@ -58,6 +58,7 @@ $main-color: #fff;
         justify-content: flex-start;
         flex-flow: row wrap;
         padding-left: 60px;
+        padding-bottom: 100px;
         &__image{
           flex: 0 0 19%;
           border: 1px solid #ccc;
@@ -67,7 +68,6 @@ $main-color: #fff;
           margin: 0 20px 20px;
           position: relative;
           color: transparent;
-
           .title {  
             padding-left: 10px;
             font-size: 16px;
@@ -75,9 +75,9 @@ $main-color: #fff;
             position: absolute;
             top: 10px;
           }
-          .comment {
+          .name {
             padding-right: 10px;
-            font-size: 16px;
+            font-size: 18px;
             display: block;
             position: absolute;
             bottom: 10px;
@@ -87,10 +87,21 @@ $main-color: #fff;
         &__image:hover {
           color: white;
           box-shadow: 1px 2px 20px gray;
+          .title{
+            animation-name: fade_in1;
+            animation-duration: 0.5s; //アニメーション時間
+            animation-timing-function: ease-out; //アニメーションさせるイージング
+            animation-iteration-count: 1; //繰り返し回数
+            text-shadow: 3px 2px 5px gray;
+          }
+          .name {
+            animation-name: fade_in1;
+            animation-duration: 0.5s; //アニメーション時間
+            animation-timing-function: ease-out; //アニメーションさせるイージング
+            animation-iteration-count: 1; //繰り返し回数
+            text-shadow: 3px 2px 5px gray;
+          }
         }
-        // &__image img {
-        //   width: 100%;
-        // }
       } 
     }
   }
