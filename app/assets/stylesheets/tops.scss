@@ -1,7 +1,6 @@
-$backgroundColor: black;
 $fontColor: #fff;
 $initalGapSize: 250;
-$animationTime: 8s;
+$animationTime: 10s;
 
 .stroke {
   stroke: lighten($fontColor, 20%);
@@ -58,9 +57,18 @@ svg {
 }
 
 .top-main {
-  background: $backgroundColor;
+  // background: $backgroundColor;
+  background-image: url("https://www.playearth10.com/wp-content/uploads/2019/01/hyogako.jpg");
+  background-size: cover;
   font: 16em Arial;
   height: 100vh;
+  animation-name: fade_in1;
+  animation-duration: 4s; //アニメーション時間
+  animation-timing-function: ease-out; //アニメーションさせるイージング
+  animation-iteration-count: 1; //繰り返し回数
+  animation-direction: normal; //往復処理をするかどうか
+  animation-fill-mode: forwards; 
+
   .links {
     width: 100%;
     height: 100px;
@@ -80,15 +88,15 @@ svg {
         color: white;
 
         animation-name: fade_in1;
-        animation-duration: 7s; //アニメーション時間
+        animation-duration: 4s; //アニメーション時間
         animation-timing-function: ease-out; //アニメーションさせるイージング
-        animation-delay: 1s; //アニメーション開始させる時間
+        animation-delay: 5s; //アニメーション開始させる時間
         animation-iteration-count: 1; //繰り返し回数
         animation-direction: normal; //往復処理をするかどうか
         animation-fill-mode: forwards; 
       }
       &--top-page:hover {
-        color: skyblue;
+        color: yellow;
         font-size: 23px;
       }
     }
@@ -104,15 +112,15 @@ svg {
         color: white;
 
         animation-name: fade_in1;
-        animation-duration: 7s; //アニメーション時間
+        animation-duration: 4s; //アニメーション時間
         animation-timing-function: ease-out; //アニメーションさせるイージング
-        animation-delay: 1s; //アニメーション開始させる時間
+        animation-delay: 5s; //アニメーション開始させる時間
         animation-iteration-count: 1; //繰り返し回数
         animation-direction: normal; //往復処理をするかどうか
         animation-fill-mode: forwards; 
       }
       &--sign-in:hover {
-        color: skyblue;
+        color: yellow;
         font-size: 23px;
       }
     }
