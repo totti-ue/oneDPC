@@ -1,7 +1,5 @@
-
-
-$backgroundColor: #2E2633;
-$fontColor: #EFFFCD;
+$backgroundColor: black;
+$fontColor: #fff;
 $initalGapSize: 250;
 $animationTime: 8s;
 
@@ -47,6 +45,11 @@ $animationTime: 8s;
   font-size: .5em;
 }
 
+@keyframes fade_in1 {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 svg {
   position: absolute;
@@ -57,16 +60,61 @@ svg {
 .top-main {
   background: $backgroundColor;
   font: 16em Arial;
-  height: 100%;
+  height: 100vh;
   .links {
     width: 100%;
     height: 100px;
     display: flex;
-    &__top-page {
+    justify-content: center;
+    position: fixed;
+    bottom: 0px;
+    &__box1 {
+      width: 200px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      &--top-page {
+        text-decoration: none;
+        font-size: 20px;
+        opacity: 0%;
+        color: white;
 
+        animation-name: fade_in1;
+        animation-duration: 7s; //アニメーション時間
+        animation-timing-function: ease-out; //アニメーションさせるイージング
+        animation-delay: 1s; //アニメーション開始させる時間
+        animation-iteration-count: 1; //繰り返し回数
+        animation-direction: normal; //往復処理をするかどうか
+        animation-fill-mode: forwards; 
+      }
+      &--top-page:hover {
+        color: skyblue;
+        font-size: 23px;
+      }
     }
-    &__sign-in {
-      
+    &__box2 {
+      width: 200px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      &--sign-in {
+        text-decoration: none;
+        font-size: 20px;
+        opacity: 0%;
+        color: white;
+
+        animation-name: fade_in1;
+        animation-duration: 7s; //アニメーション時間
+        animation-timing-function: ease-out; //アニメーションさせるイージング
+        animation-delay: 1s; //アニメーション開始させる時間
+        animation-iteration-count: 1; //繰り返し回数
+        animation-direction: normal; //往復処理をするかどうか
+        animation-fill-mode: forwards; 
+      }
+      &--sign-in:hover {
+        color: skyblue;
+        font-size: 23px;
+      }
     }
   }
 }

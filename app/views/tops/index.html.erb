@@ -15,8 +15,10 @@
 
 </svg>
 <div class="links">
-
-  <%= link_to "TOP PAGE", "/posts", method: :get, class: "links__top-page" %>
-  <%= link_to "SIGN IN", "/users/sign_in", method: :get, class: "links__sign-in"%>
-
+  <div class="links__box1">
+    <%= link_to "TOP PAGE", "/posts", method: :get, class: "links__box1--top-page" %>
+  </div>
+  <div class="links__box2">
+    <%= link_to "SIGN IN", "/users/sign_in", method: :get, class: "links__box2--sign-in"%>
+  </div>
 </div>
