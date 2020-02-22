@@ -1,0 +1,98 @@
+$main-color: #fff;
+.main {
+  animation-name: fade_in1;
+  animation-duration: 4s; //アニメーション時間
+  animation-timing-function: ease-out; //アニメーションさせるイージング
+  animation-iteration-count: 1; //繰り返し回数
+  animation-direction: normal; //往復処理をするかどうか
+  animation-fill-mode: forwards; 
+// メイン（テーマ）
+  .main-top {
+    background-color: $main-color;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    border-bottom: 1px solid gray;
+    z-index: 2;
+    &__box {
+      height: 100%;
+      width: 1200px;
+      margin: 0 auto;
+      &--todays-theme {
+        float: left;
+        padding-top: 6px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        margin-right: 20px;
+      }
+      &--search {
+        float: left;
+        width: 200px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-right: 10%;
+        padding-left: 10px;
+      }
+    }
+  }
+
+
+
+
+  // メイン（コンテント）
+  .main-content{
+    background-color: $main-color;
+    height: 1200px;
+    width: 100%;
+    margin-top: 100px;
+    &__box {
+      height: 100%;
+      width: 1200px;
+      padding-top: 20px;
+      margin: 0 auto;
+      .box-list{
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+        padding-left: 60px;
+        &__image{
+          flex: 0 0 19%;
+          border: 1px solid #ccc;
+          background-size: 480px 360px;
+          min-height: 360px;
+          min-width: 480px;
+          margin: 0 20px 20px;
+          position: relative;
+          color: transparent;
+
+          .title {  
+            padding-left: 10px;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            top: 10px;
+          }
+          .comment {
+            padding-right: 10px;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            bottom: 10px;
+            right: 0;
+          }
+        } 
+        &__image:hover {
+          color: white;
+          box-shadow: 1px 2px 20px gray;
+        }
+        // &__image img {
+        //   width: 100%;
+        // }
+      } 
+    }
+  }
+
+}

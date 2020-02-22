@@ -1,3 +1,31 @@
-hello world
- 
-<%= link_to "新規投稿", "/posts/new", method: :get %> 
+<div class="main">
+  <%# メインページ（テーマ） %>
+  <div class="main-top">
+    <div class="main-top__box">
+      <p class="main-top__box--todays-theme">今日のテーマ：『雪』</p>
+      <input type="text", placeholder=" 検索する", class="main-top__box--search">
+    </div>
+  </div>
+
+
+
+
+  <%# メインページ（コンテント） %>
+  <div class="main-content">
+    <div class="main-content__box">
+      <%# <ul class="box-list"> %>
+      <ul class="box-list">
+        <% @posts.each do |post| %>
+          <li class="box-list__image" style="background-image: url(<%= post.image %>);">
+            <span class="title">タイトル：
+              <%= post.title %>
+            </span>
+            <span class="comment">
+              <%= post.message %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div> 
+</div>

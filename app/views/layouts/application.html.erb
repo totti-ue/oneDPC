@@ -10,11 +10,21 @@
   </head>
 
   <body>
-    <header class="header-fixed">
-      <div class="header-fixed__top"></div>
-      <div class="header-fixed__middle--title"></div>
-      <div class="header-fixed__nav-bar"></div>
+    <header class="header">
+      <div class="header__box">
+        <%= link_to "ONE DPC", "/posts", class: "header__box--logo" %>
+        <ul class="header__box__links">
+          <li><%= link_to "New Post", "#", class: "header__box__links__row" %></li>
+          <li><%= link_to "Sign In", "#", class: "header__box__links__row" %></li>
+          <li><%= link_to "Previous Posts", "#", class: "header__box__links__row" %></li>
+        </ul>
+      </div>
     </header>
     <%= yield %>
+    <footer class="footer">
+      <div class="footer__box">
+        <p class="footer__box--logo">ONE Day Photo Contest</p>
+      </div>
+    </footer>
   </body>
 </html>

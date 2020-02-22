@@ -26,6 +26,7 @@ $animationTime: 10s;
   fill-opacity: 0;
   animation: fill_offset $animationTime infinite; 
   animation-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+  text-shadow: 10px 2px 30px #808080;
 }
 
 
@@ -97,7 +98,8 @@ svg {
       }
       &--top-page:hover {
         color: yellow;
-        font-size: 23px;
+        font-size: 21px;
+        text-shadow: 1px 2px 3px white;
       }
     }
     &__box2 {
@@ -121,7 +123,8 @@ svg {
       }
       &--sign-in:hover {
         color: yellow;
-        font-size: 23px;
+        font-size: 21px;
+        text-shadow: 1px 2px 3px white;
       }
     }
   }
