@@ -1,0 +1,54 @@
+.devise-views {
+  padding: 100px;
+  height: 100%;
+  &__box {
+    margin: 0 auto;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    .sign-up {
+      height: 50px;
+      padding-left: 20px;
+      border-bottom: 1px solid gray;
+      line-height: 50px;
+      font-size: 18px;
+    }
+    #new_user {
+      padding: 20px;
+      .field {
+        height: auto;
+        padding-bottom: 10px;
+        &__form {
+          height: 40px;
+          width: 100%;
+          margin-top: 5px;
+          border-radius: 2px;
+        }
+      }
+    }
+    .actions {
+      height: 50px;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: center;
+      &--btn {
+        width: 100%;
+        background-color: rgb(255, 208, 0);
+        border-radius: 3px;
+      }
+      &--btn--login {
+        background-color: white;
+      }
+      &--btn:hover {
+        box-shadow: 3px 2px 5px gray;
+      }
+    }
+    .shared-links {
+      padding: 0 20px 40px;
+    }
+  }
+}
