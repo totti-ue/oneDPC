@@ -1,0 +1,94 @@
+.show {
+  width: 100%;
+  margin-top: 60px;
+  &__details {
+    height: auto;
+    width: 800px;
+    padding: 20px 0 120px;
+    margin: 0 auto;
+    &__image{
+      border: 1px solid #ccc;
+      background-size: 800px 600px;
+      min-height: 600px;
+      min-width: 800px;
+      margin: 0 auto;
+      &--text-contents {
+        height: 600px;
+        width: 100%;
+        color: #fff;
+        position: relative;
+        opacity: 0;
+        .show-title {  
+          padding-left: 10px;
+          font-size: 20px;
+          display: block;
+          position: absolute;
+          top: 10px;
+        }
+        .show-more {
+          position: absolute;
+          top: 10px;
+          right: 0px;
+          padding-top: 5px;
+          width: 50px;
+          display: flex;
+          flex-direction: column;
+          .show-image_tag {
+            display: flex;
+            justify-content: center;
+          }
+          .show-more_list {
+            overflow: hidden;
+            position: absolute;
+            top: 0px;
+            padding-top: 15px;
+            display: flex;
+            flex-direction: column;
+            height: 2px;
+            &__a-list {
+              text-decoration: none;
+              color: white;
+            }
+            &__a-list:hover {
+              color: yellow;
+              font-weight: bold;
+            }
+          }
+          .show-more_list:hover {
+            overflow: visible;
+            animation-name: fade_in1;
+            animation-duration: 0.5s; //アニメーション時間
+            animation-timing-function: ease-out; //アニメーションさせるイージング
+            animation-iteration-count: 1; //繰り返し回数
+            text-shadow: 3px 2px 5px gray;
+          }
+        }
+        .show-name {
+          padding-right: 10px;
+          font-size: 20px;
+          display: block;
+          position: absolute;
+          bottom: 10px;
+          right: 0;
+        }
+      } 
+      &--text-contents:hover {
+        opacity: 1;
+        animation-name: fade_in1;
+        animation-duration: 0.5s; //アニメーション時間
+        animation-timing-function: ease-out; //アニメーションさせるイージング
+        animation-iteration-count: 1; //繰り返し回数
+        text-shadow: 3px 2px 5px gray;
+      }
+    }
+    &__image:hover {
+      color: white;
+      box-shadow: 1px 2px 20px gray;
+    }
+    .back-to-toppage {
+      display: block;
+      float: right;
+      padding-top: 20px;
+    }
+  }
+}

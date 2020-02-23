@@ -10,21 +10,37 @@
   </head>
 
   <body>
+
     <header class="header">
       <div class="header__box">
         <%= link_to "ONE DPC", "/posts", class: "header__box--logo" %>
-        <ul class="header__box__links">
-          <li><%= link_to "New Post", "/posts/new", class: "header__box__links__row" %></li>
-          <li><%= link_to "Sign In", "#", class: "header__box__links__row" %></li>
-          <li><%= link_to "Previous Posts", "#", class: "header__box__links__row" %></li>
-        </ul>
+
+          <% if user_signed_in? %>
+            <ul class="header__box__links">
+              <li><%= link_to "New Post", "/posts/new", class: "header__box__links__row" %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "header__box__links__row" %></li>
+              <li><%= link_to "Previous Posts", "#", class: "header__box__links__row" %></li>
+            </ul>
+          <% else %>
+            <ul class="header__box__links">
+              <li><%= link_to "New Post", "/posts/new", class: "header__box__links__row" %></li>
+              <li><%= link_to "Sign In", new_user_session_path, class: "header__box__links__row" %></li>
+              <li><%= link_to "New Registar", new_user_registration_path, class: "header__box__links__row" %></li>
+              <li><%= link_to "Previous Posts", "#", class: "header__box__links__row" %></li>
+            </ul>
+          <% end %>
+
       </div>
     </header>
+
     <%= yield %>
+
     <footer class="footer">
       <div class="footer__box">
         <p class="footer__box--logo">ONE Day Photo Contest</p>
       </div>
     </footer>
+
   </body>
+
 </html>

@@ -1,0 +1,26 @@
+<div class="show">
+  <div class="show__details">
+    <div class="show__details__image" style="background-image: url(<%= @post.image %>);">
+      <div class="show__details__image--text-contents">
+        <span class="show-title">タイトル：
+          <%= @post.title %>
+        </span>
+        <div class="show-more">
+          <span class="show-image_tag"><%= image_tag 'arrow_top.png' %></span>
+          <ul class="show-more_list">
+            <li>
+              <%= link_to '編集', "/posts/#{@post.id}/edit", method: :get, class: "show-more_list__a-list" %>
+            </li>
+            <li>
+              <%= link_to '削除', "/posts/#{@post.id}", method: :delete, class: "show-more_list__a-list" %>
+            </li>
+          </ul>
+        </div>
+        <span class="show-name">
+          nickname
+        </span>
+      </div>
+    </div>
+    <%= link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage" %>
+  </div>
+</div>

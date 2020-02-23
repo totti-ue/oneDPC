@@ -1,7 +1,7 @@
 <div class="new-message">
   <%= form_with(model: @post, local: true, id: "message-form") do |form| %>
     <p class="text">
-      新規投稿する
+      編集する
     </p>
     <%# <%= form.text_field :name, placeholder: "Nickname" %>
     <%= form.text_field :title, placeholder: "タイトルを入力してください", id: "title" %>

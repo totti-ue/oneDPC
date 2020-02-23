@@ -66,41 +66,79 @@ $main-color: #fff;
           min-height: 360px;
           min-width: 480px;
           margin: 0 20px 20px;
-          position: relative;
-          color: transparent;
-          .title {  
-            padding-left: 10px;
-            font-size: 16px;
-            display: block;
-            position: absolute;
-            top: 10px;
+          &--text-contents {
+            height: 100%;
+            width: 100%;
+            color: #fff;
+            position: relative;
+            opacity: 0;
+            .title {  
+              padding-left: 10px;
+              font-size: 16px;
+              display: block;
+              position: absolute;
+              top: 10px;
+            }
+            .more {
+              position: absolute;
+              top: 10px;
+              right: 0px;
+              padding-top: 5px;
+              width: 50px;
+              display: flex;
+              flex-direction: column;
+              .image_tag {
+                display: flex;
+                justify-content: center;
+              }
+              .more_list {
+                overflow: hidden;
+                position: absolute;
+                top: 0px;
+                padding-top: 15px;
+                display: flex;
+                flex-direction: column;
+                height: 2px;
+                &__a-list {
+                  text-decoration: none;
+                  color: white;
+                }
+                &__a-list:hover {
+                  color: yellow;
+                  font-weight: bold;
+                }
+              }
+              .more_list:hover {
+                overflow: visible;
+                animation-name: fade_in1;
+                animation-duration: 0.5s; //アニメーション時間
+                animation-timing-function: ease-out; //アニメーションさせるイージング
+                animation-iteration-count: 1; //繰り返し回数
+                text-shadow: 3px 2px 5px gray;
+              }
+            }
+            .name {
+              padding-right: 10px;
+              font-size: 18px;
+              display: block;
+              position: absolute;
+              bottom: 10px;
+              right: 0;
+            }
+          } 
+          &--text-contents:hover {
+            opacity: 1;
+            animation-name: fade_in1;
+            animation-duration: 0.5s; //アニメーション時間
+            animation-timing-function: ease-out; //アニメーションさせるイージング
+            animation-iteration-count: 1; //繰り返し回数
+            text-shadow: 3px 2px 5px gray;
           }
-          .name {
-            padding-right: 10px;
-            font-size: 18px;
-            display: block;
-            position: absolute;
-            bottom: 10px;
-            right: 0;
-          }
-        } 
+        }
         &__image:hover {
           color: white;
           box-shadow: 1px 2px 20px gray;
-          .title{
-            animation-name: fade_in1;
-            animation-duration: 0.5s; //アニメーション時間
-            animation-timing-function: ease-out; //アニメーションさせるイージング
-            animation-iteration-count: 1; //繰り返し回数
-            text-shadow: 3px 2px 5px gray;
-          }
-          .name {
-            animation-name: fade_in1;
-            animation-duration: 0.5s; //アニメーション時間
-            animation-timing-function: ease-out; //アニメーションさせるイージング
-            animation-iteration-count: 1; //繰り返し回数
-            text-shadow: 3px 2px 5px gray;
-          }
+
         }
       } 
     }

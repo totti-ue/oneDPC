@@ -4,15 +4,15 @@
   height: calc(100vh - 120px);
   #message-form {
     border: 1px solid black;
-    height: 300px;
+    height: auto;
     width: 500px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 50px;
     display: flex;
     flex-direction: column;
     .text {
       height: 60px;
-      font-size: 20px;
+      font-size: 16px;
       text-align: center;
       font-weight: bold;
       line-height: 40px;
@@ -37,15 +37,15 @@
       height: 40px;
       width: 300px;
       margin: 0 auto;
-      opacity: 0.5;
       background-color: skyblue;
       color: #fff;
       line-height: 40px; 
+      text-align: center;
+      text-decoration: none;
       border-radius: 15px;
     }
     #submit-btn:hover {
       box-shadow: 1px 2px 5px gray;
-      opacity: 1;
     }
   }
 }
