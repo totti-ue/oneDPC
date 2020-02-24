@@ -90,5 +90,35 @@
       float: right;
       padding-top: 20px;
     }
+    .comment-box {
+      height: auto;
+      padding: 10px;
+      &__form {
+        height: auto;
+        padding: 20px;
+        border: 1px solid;
+        border-radius: 5px;
+        #comment_comment {
+          width: 100%;
+          height: auto;
+        }
+      }
+      .submit-box {
+        height: auto;
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+        &__send-btn {
+          height: 30px;
+          width: 80px;
+          border: 1px solid skyblue;
+          background-color: skyblue;
+          color: white;
+        }
+        &__send-btn:hover {
+          box-shadow: 3px 2px 5px gray;
+        }
+      }
+    }
   }
 }

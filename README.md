@@ -14,8 +14,8 @@
 ## postsテーブル
 |Column|Type|Options|
 |------|----|-------|
+|title|text|null: false|
 |image|text|null: false|
-|message|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user

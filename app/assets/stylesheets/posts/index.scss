@@ -155,6 +155,8 @@ $hf-color: #000;
         &__image:hover {
           color: white;
           box-shadow: 1px 2px 20px gray;
+          transform: scale(1.1);
+          transition-duration: 0.3s;
 
         }
       } 
