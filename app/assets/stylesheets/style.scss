@@ -1,0 +1,53 @@
+// ヘッダー部分の記述
+$hf-color: #000;
+
+.header {
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 20px;
+  background-color: $hf-color;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  border-bottom: 1px solid gray;
+  &__box {
+    width: 1200px;
+    margin: 0 auto;
+    &--logo {
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 60px;
+      margin-right: 20px;
+      float: left;
+    }
+    &--logo:hover {
+      color: yellow;
+      text-shadow: 1px 2px 3px white;
+    }
+    &__links {
+      display: flex;
+      text-align: center;
+      float: right;
+      padding-top: 8px;
+      &__row {
+        text-decoration: none;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 15px;
+        line-height: 50px;
+      }
+      &__row:hover {
+        color: yellow;
+        text-shadow: 1px 2px 3px white;
+      }
+    }
+  }
+}
+
+

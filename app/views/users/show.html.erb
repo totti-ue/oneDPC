@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="main-content">
+    <div class="main-content__box">
+
+      <p class="post-notion"><%= @nickname %> さんの投稿一覧</p>
+
+      <ul class="box-list">
+        <% @posts.each do |post| %>
+          <%= render partial: "/posts/post", locals: { post: post }%>
+        <% end %>
+        <%= paginate(@posts) %> 
+      </ul>
+
+    </div>
+  </div>
+</div>

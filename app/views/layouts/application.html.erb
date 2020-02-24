@@ -10,6 +10,32 @@
   </head>
 
   <body>
+
+    <header class="header">
+      <div class="header__box">
+        <%= link_to "ONE DPC", "/posts", class: "header__box--logo" %>
+
+          <% if user_signed_in? %>
+            <ul class="header__box__links">
+              <li><%= link_to "#{current_user.nickname}", "/users/#{current_user.id}", class: "header__box__links__row" %></li>
+              <li><%= link_to "New Post", "/posts/new", class: "header__box__links__row" %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "header__box__links__row" %></li>
+              <li><%= link_to "Previous Posts", "#", class: "header__box__links__row" %></li>
+            </ul>
+          <% else %>
+            <ul class="header__box__links">
+              <li><%= link_to "New Post", "/posts/new", class: "header__box__links__row" %></li>
+              <li><%= link_to "Sign In", new_user_session_path, class: "header__box__links__row" %></li>
+              <li><%= link_to "New Register", new_user_registration_path, class: "header__box__links__row" %></li>
+              <li><%= link_to "Previous Posts", "#", class: "header__box__links__row" %></li>
+            </ul>
+          <% end %>
+
+      </div>
+    </header>
+
     <%= yield %>
+
   </body>
+
 </html>

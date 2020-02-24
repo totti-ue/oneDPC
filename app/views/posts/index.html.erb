@@ -1,3 +1,35 @@
-hello world
+<div class="main">
+  <%# メインページ（テーマ） %>
+  <div class="main-top">
+    <div class="main-top__box">
+      <p class="main-top__box--todays-theme">今日のテーマ：『雪』</p>
+      <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+        <%= form.submit "検索", class: "search-btn" %>
+      <% end %>
 
-<%= link_to "新規投稿", "/posts/new", method: :get %>
+      <%# <input type="text", placeholder=" 検索する", class="main-top__box--search"> %>
+    </div>
+  </div>
+
+
+ 
+
+  <%# メインページ（コンテント） %>
+  <div class="main-content">
+    <div class="main-content__box">
+      <%# <ul class="box-list"> %>
+      <ul class="box-list">
+        <% @posts.each do |post| %>
+          <%= render partial: "post", locals: { post: post }%>
+        <% end %>
+        <%= paginate(@posts) %>
+      </ul>
+    </div>
+  </div> 
+</div>
+<footer class="footer">
+  <div class="footer__box">
+    <p class="footer__box--logo">ONE Day Photo Contest</p>
+  </div>
+</footer>

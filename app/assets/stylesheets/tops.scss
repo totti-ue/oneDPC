@@ -1,7 +1,6 @@
-$backgroundColor: black;
 $fontColor: #fff;
 $initalGapSize: 250;
-$animationTime: 8s;
+$animationTime: 10s;
 
 .stroke {
   stroke: lighten($fontColor, 20%);
@@ -27,6 +26,7 @@ $animationTime: 8s;
   fill-opacity: 0;
   animation: fill_offset $animationTime infinite; 
   animation-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+  text-shadow: 10px 2px 30px #808080;
 }
 
 
@@ -58,9 +58,18 @@ svg {
 }
 
 .top-main {
-  background: $backgroundColor;
+  // background: $backgroundColor;
+  background-image: url("https://www.playearth10.com/wp-content/uploads/2019/01/hyogako.jpg");
+  background-size: cover;
   font: 16em Arial;
   height: 100vh;
+  animation-name: fade_in1;
+  animation-duration: 4s; //アニメーション時間
+  animation-timing-function: ease-out; //アニメーションさせるイージング
+  animation-iteration-count: 1; //繰り返し回数
+  animation-direction: normal; //往復処理をするかどうか
+  animation-fill-mode: forwards; 
+
   .links {
     width: 100%;
     height: 100px;
@@ -80,16 +89,17 @@ svg {
         color: white;
 
         animation-name: fade_in1;
-        animation-duration: 7s; //アニメーション時間
+        animation-duration: 4s; //アニメーション時間
         animation-timing-function: ease-out; //アニメーションさせるイージング
-        animation-delay: 1s; //アニメーション開始させる時間
+        animation-delay: 5s; //アニメーション開始させる時間
         animation-iteration-count: 1; //繰り返し回数
         animation-direction: normal; //往復処理をするかどうか
         animation-fill-mode: forwards; 
       }
       &--top-page:hover {
-        color: skyblue;
-        font-size: 23px;
+        color: yellow;
+        font-size: 21px;
+        text-shadow: 1px 2px 3px white;
       }
     }
     &__box2 {
@@ -104,16 +114,17 @@ svg {
         color: white;
 
         animation-name: fade_in1;
-        animation-duration: 7s; //アニメーション時間
+        animation-duration: 4s; //アニメーション時間
         animation-timing-function: ease-out; //アニメーションさせるイージング
-        animation-delay: 1s; //アニメーション開始させる時間
+        animation-delay: 5s; //アニメーション開始させる時間
         animation-iteration-count: 1; //繰り返し回数
         animation-direction: normal; //往復処理をするかどうか
         animation-fill-mode: forwards; 
       }
       &--sign-in:hover {
-        color: skyblue;
-        font-size: 23px;
+        color: yellow;
+        font-size: 21px;
+        text-shadow: 1px 2px 3px white;
       }
     }
   }

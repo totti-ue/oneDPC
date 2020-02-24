@@ -1,7 +1,7 @@
 <div class="new-message">
   <%= form_with(model: @post, local: true, id: "message-form") do |form| %>
     <p class="text">
-      新規投稿する
+      編集する
     </p>
     <%= render partial: "form", locals: { form: form} %>
   <% end %>

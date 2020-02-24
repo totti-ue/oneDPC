@@ -1,0 +1,181 @@
+$main-color: #fff;
+$hf-color: #000;
+
+.main {
+  animation-name: fade_in1;
+  animation-duration: 4s; //アニメーション時間
+  animation-timing-function: ease-out; //アニメーションさせるイージング
+  animation-iteration-count: 1; //繰り返し回数
+  animation-direction: normal; //往復処理をするかどうか
+  animation-fill-mode: forwards; 
+// メイン（テーマ）
+  .main-top {
+    background-color: $main-color;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    border-bottom: 1px solid gray;
+    z-index: 2;
+    &__box {
+      height: 100%;
+      width: 1200px;
+      margin: 0 auto;
+      &--todays-theme {
+        float: left;
+        padding-top: 6px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        margin-right: 20px;
+      }
+      &--search {
+        float: left;
+        width: 200px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-right: 10%;
+        padding-left: 10px;
+      }
+    }
+  }
+
+
+
+
+  // メイン（コンテント）
+  .main-content{
+    background-color: $main-color;
+    height: auto;
+    width: 100%;
+    margin-top: 100px;
+    &__box {
+      height: 100%;
+      width: 1200px;
+      padding-top: 20px;
+      margin: 0 auto;
+      .post-notion {
+        padding-left: 60px;
+        height: 40px;
+        font-size: 16px;
+      }
+      .box-list{
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+        padding-left: 60px;
+        padding-bottom: 100px;
+        &__image{
+          flex: 0 0 19%;
+          border: 1px solid #ccc;
+          background-size: 480px 360px;
+          min-height: 360px;
+          min-width: 480px;
+          margin: 0 20px 20px;
+          &--text-contents {
+            height: 100%;
+            width: 100%;
+            color: #fff;
+            position: relative;
+            opacity: 0;
+            .title {  
+              padding-left: 10px;
+              font-size: 16px;
+              display: block;
+              position: absolute;
+              top: 10px;
+            }
+            .more {
+              position: absolute;
+              top: 10px;
+              right: 0px;
+              padding-top: 5px;
+              width: 50px;
+              display: flex;
+              flex-direction: column;
+              .image_tag {
+                display: flex;
+                justify-content: center;
+              }
+              .more_list {
+                overflow: hidden;
+                position: absolute;
+                top: 0px;
+                padding-top: 15px;
+                display: flex;
+                flex-direction: column;
+                height: 2px;
+                &__a-list {
+                  text-decoration: none;
+                  color: white;
+                }
+                &__a-list:hover {
+                  color: yellow;
+                  font-weight: bold;
+                }
+              }
+              .more_list:hover {
+                overflow: visible;
+                animation-name: fade_in1;
+                animation-duration: 0.5s; //アニメーション時間
+                animation-timing-function: ease-out; //アニメーションさせるイージング
+                animation-iteration-count: 1; //繰り返し回数
+                text-shadow: 3px 2px 5px gray;
+              }
+            }
+            .name {
+              padding-right: 10px;
+              font-size: 18px;
+              display: block;
+              position: absolute;
+              bottom: 10px;
+              right: 0;
+              color: #fff;
+              .name-link {
+                text-decoration: none;
+                color: #fff;
+              }
+            }
+            .name:hover .name-link{
+              text-shadow: 3px 2px 5px gray;
+              font-weight: bold;
+              color: skyblue;
+            }
+          } 
+          &--text-contents:hover {
+            opacity: 1;
+            animation-name: fade_in1;
+            animation-duration: 0.5s; //アニメーション時間
+            animation-timing-function: ease-out; //アニメーションさせるイージング
+            animation-iteration-count: 1; //繰り返し回数
+            text-shadow: 3px 2px 5px gray;
+          }
+        }
+        &__image:hover {
+          color: white;
+          box-shadow: 1px 2px 20px gray;
+          transform: scale(1.1);
+          transition-duration: 0.3s;
+
+        }
+      } 
+    }
+  }
+}
+// フッター
+.footer {
+  background-color: $hf-color;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-weight: bold;
+  height: 300px;
+  width: 100%;
+  z-index: 1;
+  &__box {
+    width: 1200px;
+    margin: 0 auto;
+    &--logo {
+      color: #fff;
+    }
+  }
+}
