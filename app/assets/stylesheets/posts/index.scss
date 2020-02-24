@@ -1,4 +1,6 @@
 $main-color: #fff;
+$hf-color: #000;
+
 .main {
   animation-name: fade_in1;
   animation-duration: 4s; //アニメーション時間
@@ -44,7 +46,7 @@ $main-color: #fff;
   // メイン（コンテント）
   .main-content{
     background-color: $main-color;
-    height: 1200px;
+    height: auto;
     width: 100%;
     margin-top: 100px;
     &__box {
@@ -52,6 +54,11 @@ $main-color: #fff;
       width: 1200px;
       padding-top: 20px;
       margin: 0 auto;
+      .post-notion {
+        padding-left: 60px;
+        height: 40px;
+        font-size: 16px;
+      }
       .box-list{
         display: flex;
         list-style: none;
@@ -124,6 +131,16 @@ $main-color: #fff;
               position: absolute;
               bottom: 10px;
               right: 0;
+              color: #fff;
+              .name-link {
+                text-decoration: none;
+                color: #fff;
+              }
+            }
+            .name:hover .name-link{
+              text-shadow: 3px 2px 5px gray;
+              font-weight: bold;
+              color: skyblue;
             }
           } 
           &--text-contents:hover {
@@ -143,5 +160,20 @@ $main-color: #fff;
       } 
     }
   }
-
+}
+// フッター
+.footer {
+  background-color: $hf-color;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-weight: bold;
+  height: 300px;
+  width: 100%;
+  z-index: 1;
+  &__box {
+    width: 1200px;
+    margin: 0 auto;
+    &--logo {
+      color: #fff;
+    }
+  }
 }

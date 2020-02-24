@@ -16,32 +16,15 @@
       <%# <ul class="box-list"> %>
       <ul class="box-list">
         <% @posts.each do |post| %>
-          <li class="box-list__image" style="background-image: url(<%= post.image %>);">
-            <div class="box-list__image--text-contents">
-              <span class="title">タイトル：
-                <%= post.title %>
-              </span>
-              <div class="more">
-                <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>
-                <ul class="more_list">
-                  <li>
-                    <%= link_to '詳細', "/posts/#{post.id}", class: "more_list__a-list" %>
-                  </li>
-                  <li>
-                    <%= link_to '編集', "/posts/#{post.id}/edit", class: "more_list__a-list" %>
-                  </li>
-                  <li>
-                    <%= link_to '削除', "/posts/#{post.id}", method: :delete, class: "more_list__a-list" %>
-                  </li>
-                </ul>
-              </div>
-              <span class="name">
-                nickname
-              </span>
-            </div>
-          </li>
+          <%= render partial: "post", locals: { post: post }%>
         <% end %>
+        <%= paginate(@posts) %>
       </ul>
     </div>
   </div> 
 </div>
+<footer class="footer">
+  <div class="footer__box">
+    <p class="footer__box--logo">ONE Day Photo Contest</p>
+  </div>
+</footer>

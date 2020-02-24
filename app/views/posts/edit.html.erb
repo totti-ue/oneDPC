@@ -3,9 +3,6 @@
     <p class="text">
       編集する
     </p>
-    <%# <%= form.text_field :name, placeholder: "Nickname" %>
-    <%= form.text_field :title, placeholder: "タイトルを入力してください", id: "title" %>
-    <%= form.text_field :image, placeholder: "画僧のUrlを挿入してください", id: "image" %>
-    <%= form.submit "SEND", id: "submit-btn" %>
+    <%= render partial: "form", locals: { form: form} %>
   <% end %>
 </div>

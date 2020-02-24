@@ -17,6 +17,7 @@
 
           <% if user_signed_in? %>
             <ul class="header__box__links">
+              <li><%= link_to "#{current_user.nickname}", "/users/#{current_user.id}", class: "header__box__links__row" %></li>
               <li><%= link_to "New Post", "/posts/new", class: "header__box__links__row" %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "header__box__links__row" %></li>
               <li><%= link_to "Previous Posts", "#", class: "header__box__links__row" %></li>
@@ -34,12 +35,6 @@
     </header>
 
     <%= yield %>
-
-    <footer class="footer">
-      <div class="footer__box">
-        <p class="footer__box--logo">ONE Day Photo Contest</p>
-      </div>
-    </footer>
 
   </body>
 
