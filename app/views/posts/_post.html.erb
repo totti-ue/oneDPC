@@ -3,7 +3,7 @@
     <span class="title">タイトル：
       <%= post.title %>
     </span>
-    <div class="more">
+    <div class="more"> 
       <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>
       <ul class="more_list">
         <li>
@@ -19,6 +19,10 @@
         <% end %>
       </ul>
     </div>
+    <span class="iine-box">
+      <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= post.liked_users.count %></span></span>  
+    </span>
+
     <span class="name">
       <a href="/users/<%= post.user.id %>", class="name-link">
         投稿者<br>

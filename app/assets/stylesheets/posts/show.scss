@@ -63,6 +63,34 @@
             text-shadow: 3px 2px 5px gray;
           }
         }
+        .iine-box {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          .iine-count {
+            font-size: 14px;
+          }
+          .like {
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.5;
+          }
+          .iine {
+            opacity: 1;
+            color: rgb(230, 101, 123);
+          }
+          .like:hover {
+            text-shadow: 3px 2px 5px gray;
+            opacity: 1;
+          }
+          .iine:hover {
+            color: blue;
+          }
+          .dislike:hover {
+            color: rgb(230, 101, 123);
+          }
+
+        }
         .show-name {
           padding-right: 10px;
           font-size: 20px;
