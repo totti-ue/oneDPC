@@ -3,7 +3,10 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search]
  
   def index
-    @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+    # @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at > ?", Date.today).order("created_at DESC").page(params[:page]).per(10)
+    @today_theme = Theme.first
+    @themes = Theme.includes(:post_id)
   end
 
   def new
@@ -12,9 +15,7 @@ class PostsController < ApplicationController
 
   def create
     Post.create(post_params)
-    # if @post.save
-      redirect_to action: :index 
-    # end
+    redirect_to action: :index 
   end
 
   def destroy
@@ -44,11 +45,12 @@ class PostsController < ApplicationController
 
   def rank
     @all_ranks = Post.create_all_ranks
+    @today_theme = Theme.first
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :image, :theme_ids).merge(user_id: current_user.id)
   end
 
   def set_params

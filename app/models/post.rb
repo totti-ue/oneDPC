@@ -1,9 +1,12 @@
 class Post < ApplicationRecord
+
   validates :title, :image, presence: true
   belongs_to :user
-  has_many  :comments
+  has_many :comments
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :post_themes
+  has_many :themes, through: :post_themes
 
   def self.search(search)
     return Post.all unless search
@@ -13,5 +16,6 @@ class Post < ApplicationRecord
   def self.create_all_ranks
     Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
+
 
 end
