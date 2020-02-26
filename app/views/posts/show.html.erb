@@ -18,12 +18,35 @@
             <% end %>
           </ul>
         </div>
-          <span class="show-name">
-            投稿者<br>
-            <%= @post.user.nickname %>
-          </span>
+        <span class="iine-box">
+          <% if user_signed_in? %>
+            <% if user_signed_in? && current_user.id == @post.user_id %>
+              <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
+            <% elsif current_user.already_liked?(@post) %>
+              <%# <% if current_user.likes.find_by(post_id: @post.id) %> 
+              <%= link_to "いいねを取り消す", post_like_path(@post), method: :delete, class: "like iine" %>
+              <br>
+              <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
+            <% else %>
+              <%= link_to "いいねを押す", post_likes_path(@post), method: :post, class: "like dislike" %>
+              <br>
+              <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
+            <% end %>
+          <% else %>
+            <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
+          <%end%>
+        </span> 
+        <span class="show-name">
+          投稿者<br>
+          <%= @post.user.nickname %>
+        </span>
+
       </div>
     </div>
+    <p>いいねしたユーザー</p>
+    <% @post.liked_users.each do |user| %>
+      <li class="user-list"><%= user.nickname %></li>
+      <% end %>
     <div class="comment-box">
       <% if current_user %>
         <%= form_with(model: [@post, @comment], class: "comment-box__form", local: true) do |form| %>

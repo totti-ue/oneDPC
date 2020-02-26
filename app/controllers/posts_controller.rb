@@ -12,7 +12,9 @@ class PostsController < ApplicationController
 
   def create
     Post.create(post_params)
-    redirect_to action: :index 
+    # if @post.save
+      redirect_to action: :index 
+    # end
   end
 
   def destroy
@@ -31,10 +33,17 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
+    @user = @post.user
+    @like = Like.new
+    @likes_count = Like.where(post_id: params[:id]).count
   end
 
   def search
     @posts = Post.search(params[:keyword])
+  end
+
+  def rank
+    @all_ranks = Post.create_all_ranks
   end
 
   private
