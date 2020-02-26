@@ -37,13 +37,15 @@
           <%end%>
         </span> 
         <span class="show-name">
-          投稿者<br>
-          <%= @post.user.nickname %>
+          <a href="/users/<%= @post.user.id %>", class="show-name-link">
+            投稿者<br>
+            <%= @post.user.nickname %>
+          </a>
         </span>
 
       </div>
     </div>
-    <p>いいねしたユーザー</p>
+    <p style="margin-top:20px;">いいねしたユーザー</p>
     <% @post.liked_users.each do |user| %>
       <li class="user-list"><%= user.nickname %></li>
       <% end %>
@@ -56,7 +58,7 @@
           </div>
         <% end %>
       <% else %>
-        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+        <strong><p style="text-align:center;">※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
       <% end %>
     </div>
     <div class="comments">
