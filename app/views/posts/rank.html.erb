@@ -1,38 +1,178 @@
-<div class="main">
+<div class="mains">
   <%# メインページ（テーマ） %>
-  <div class="main-top">
-    <div class="main-top__box">
-      <p class="main-top__box--todays-theme">今日のテーマ：『雪』</p>
+  <div class="mains-top">
+    <div class="mains-top__box">
+      <p class="mains-top__box--todays-theme"> 本日のお題：<span style="font-weight:bold;">『　<%= @today_theme.name %>　』</span></p>
+      <%# 現在時刻を表示する %>
+      <span class="limit">※投稿および投票締め切り本日24時
+
+      <span id="view_clock">
+        <script type="text/javascript">
+        timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
+
+        function clock() {
+          document.getElementById("view_clock").innerHTML = getNow();
+        }
+
+        function getNow() {
+          var now = new Date();
+          var year = now.getFullYear();
+          var mon = now.getMonth()+1; //１を足すこと
+          var day = now.getDate();
+          var you = now.getDay();
+          var hour = now.getHours();
+          var min = now.getMinutes();
+          var sec = now.getSeconds();
+
+
+          //曜日の選択肢
+          var youbi = new Array("日","月","火","水","木","金","土");
+
+          //出力用
+          var s = year + "年" + mon + "月" + day + "日("+ youbi[you] +")" + hour + "時" + min + "分" + sec + "秒"; 
+          return s;
+        }
+        </script>
+      </span>
+      </span>
+      <%# ここまでが時間の表示 %>
+
       <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
         <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
         <%= form.submit "検索", class: "search-btn" %>
       <% end %>
 
-      <%# <input type="text", placeholder=" 検索する", class="main-top__box--search"> %>
+      <%# <input type="text", placeholder=" 検索する", class="mains-top__box--search"> %>
     </div>
   </div>
+
 
 
  
 
   <%# メインページ（コンテント） %>
-  <div class="main-content">
-    <div class="main-content__box">
+  <div class="mains-content">
+    <div class="mains-content__box">
       <%# <ul class="box-list"> %>
       <ul class="box-list">
-        <% @all_ranks.each do |post| %>
-          <%= render partial: "post", locals: { post: post }%>
-            <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold; color:;"><%= @likes_count %></span></span>  
+        <%# ---------------------------------------第一位--------------------------------------- %>
+        <div class="first-box"><span style="font-size:30px; font-weight:bold; color:gold;text-shadow:1px 1px 1px gray; height">第一位</span>
+          <li class="first-box__image rank-first" style="background-image: url(<%= @rank_first.image %>);">
+            <div class="rank-first--contents">
+              <span class="title">
+                テーマ　：<%= @rank_first.themes.first.name %><br>
+                タイトル：<%= @rank_first.title %>
+              </span>
+              <div class="more"> 
+                <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>
+                <ul class="more_list">
+                  <li>
+                    <%= link_to '詳細', "/posts/#{@rank_first.id}", class: "more_list__a-list" %>
+                  </li>
+                  <% if user_signed_in? && current_user.id == @rank_first.user_id %>
+                    <li> 
+                      <%= link_to '編集', "/posts/#{@rank_first.id}/edit", class: "more_list__a-list" %>
+                    </li>
+                    <li>
+                      <%= link_to '削除', "/posts/#{@rank_first.id}", method: :delete, class: "more_list__a-list" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+              <span class="iine-box">
+                <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @rank_first.liked_users.count %></span></span>  
+              </span>
 
+              <span class="name">
+                <a href="/users/<%= @rank_first.user.id %>", class="name-link">
+                  投稿者<br>
+                  <%= @rank_first.user.nickname %>
+                </a>
+              </span>
+            </div>
+          </li>
+        </div>
+        <%# ---------------------------------------第一位--------------------------------------- %>
 
-        <% end %>
-        <%# <%= paginate(@all_ranks) %>
+        <%# ---------------------------------------第二位--------------------------------------- %>
+        <div class="second-box"><span style="font-size:20px; font-weight:bold; color:silver;text-shadow:1px 1px 1px gray; height">第二位</span>
+          <li class="second-box__image rank-other" style="background-image: url(<%= @rank_second.image %>);">
+            <div class="rank-other--contents">
+              <span class="title">
+                テーマ　：<%= @rank_second.themes.first.name %><br>
+                タイトル：<%= @rank_second.title %>
+              </span>
+              <div class="more"> 
+                <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>
+                <ul class="more_list">
+                  <li>
+                    <%= link_to '詳細', "/posts/#{@rank_second.id}", class: "more_list__a-list" %>
+                  </li>
+                  <% if user_signed_in? && current_user.id == @rank_second.user_id %>
+                    <li> 
+                      <%= link_to '編集', "/posts/#{@rank_second.id}/edit", class: "more_list__a-list" %>
+                    </li>
+                    <li>
+                      <%= link_to '削除', "/posts/#{@rank_second.id}", method: :delete, class: "more_list__a-list" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+              <span class="iine-box">
+                <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @rank_second.liked_users.count %></span></span>  
+              </span>
+
+              <span class="name">
+                <a href="/users/<%= @rank_second.user.id %>", class="name-link">
+                  投稿者<br>
+                  <%= @rank_second.user.nickname %>
+                </a>
+              </span>
+            </div>
+          </li>
+        </div>
+        <%# ---------------------------------------第二位--------------------------------------- %>
+
+        <%# ---------------------------------------第三位--------------------------------------- %>
+        <div class="second-box third"><span style="font-size:20px; font-weight:bold; color:#7A592F; text-shadow:1px 1px 1px gray; height">第三位</span>
+          <li class="second-box__image rank-other" style="background-image: url(<%= @rank_third.image %>);">
+            <div class="rank-other--contents">
+              <span class="title">
+                テーマ　：<%= @rank_third.themes.first.name %><br>
+                タイトル：<%= @rank_third.title %>
+              </span>
+              <div class="more"> 
+                <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>
+                <ul class="more_list">
+                  <li>
+                    <%= link_to '詳細', "/posts/#{@rank_third.id}", class: "more_list__a-list" %>
+                  </li>
+                  <% if user_signed_in? && current_user.id == @rank_third.user_id %>
+                    <li> 
+                      <%= link_to '編集', "/posts/#{@rank_third.id}/edit", class: "more_list__a-list" %>
+                    </li>
+                    <li>
+                      <%= link_to '削除', "/posts/#{@rank_third.id}", method: :delete, class: "more_list__a-list" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+              <span class="iine-box">
+                <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @rank_third.liked_users.count %></span></span>  
+              </span>
+
+              <span class="name">
+                <a href="/users/<%= @rank_third.user.id %>", class="name-link">
+                  投稿者<br>
+                  <%= @rank_third.user.nickname %>
+                </a>
+              </span>
+            </div>
+          </li>
+        </div>
+        <%# ---------------------------------------第三位--------------------------------------- %>
+
       </ul>
     </div>
   </div> 
 </div>
-<footer class="footer">
-  <div class="footer__box">
-    <p class="footer__box--logo">ONE Day Photo Contest</p>
-  </div>
-</footer>

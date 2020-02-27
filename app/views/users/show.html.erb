@@ -2,11 +2,11 @@
   <div class="main-content second">
     <div class="main-content__box">
 
-      <p class="post-notion">ユーザー詳細ページ ( <%= @nickname %> さんの投稿一覧 )</p>
+      <p class="post-notion"><%= @nickname %> さんの投稿一覧</p>
 
       <ul class="box-list">
         <% @posts.each do |post| %>
-          <%= render partial: "/posts/post", locals: { post: post }%>
+          <%= render partial: "/posts/post", locals: { post: post } %>
         <% end %>
         <%= paginate(@posts) %> 
       </ul>
@@ -39,6 +39,9 @@
                   <% end %>
                 </ul>
               </div>
+              <span class="iine-box">
+                <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= post.liked_users.count %></span></span>  
+              </span>
 
               <span class="name">
                 <a href="/users/<%= post.user.id %>", class="name-link">
@@ -49,7 +52,9 @@
             </div>
           </li>          
         <% end %>
+        <%= paginate(@liked) %> 
       </ul>
+      <span style="padding:0 120px 60px; float:right;"><%= link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage" %></span>
     </div>
   </div>
 </div>

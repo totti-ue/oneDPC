@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    @nickname = user.nickname
-    @posts = user.posts.order("created_at DESC").page(params[:page]).per(10)
     @user = User.find(params[:id])
+    @nickname = @user.nickname 
+    @posts = @user.posts.order("created_at DESC").page(params[:page]).per(4)
+    @liked = @user.liked_posts.order("created_at DESC").page(params[:page]).per(4)
   end
 
 end

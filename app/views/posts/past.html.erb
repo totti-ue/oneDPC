@@ -1,0 +1,99 @@
+<div class="main">
+  <%# メインページ（テーマ） %>
+  <div class="main-top">
+    <div class="main-top__box">
+      <p class="main-top__box--todays-theme"> 過去の投稿一覧</p>
+      
+
+      <%# 現在時刻を表示する %>
+      <span class="limit">※投稿および投票締め切り本日24時
+
+      <span id="view_clock">
+        <script type="text/javascript">
+        timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
+
+        function clock() {
+          document.getElementById("view_clock").innerHTML = getNow();
+        }
+
+        function getNow() {
+          var now = new Date();
+          var year = now.getFullYear();
+          var mon = now.getMonth()+1; //１を足すこと
+          var day = now.getDate();
+          var you = now.getDay();
+          var hour = now.getHours();
+          var min = now.getMinutes();
+          var sec = now.getSeconds();
+
+
+          //曜日の選択肢
+          var youbi = new Array("日","月","火","水","木","金","土");
+
+          //出力用
+          var s = year + "年" + mon + "月" + day + "日("+ youbi[you] +")" + hour + "時" + min + "分" + sec + "秒"; 
+          return s;
+        }
+        </script>
+      </span>
+      </span>
+      <%# ここまでが時間の表示 %>
+
+      <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+        <%= form.submit "検索", class: "search-btn" %>
+      <% end %>
+
+    </div>
+  </div>
+
+
+ 
+
+  <%# メインページ（コンテント） %>
+  <div class="main-content">
+    <div class="main-content__box">
+      <%# <ul class="box-list"> %>
+      <ul class="box-list">
+        <% @posts.each do |post| %>
+          <li class="past-image" style="background-image: url(<%= post.image %>);">
+            <div class="past-image--text-contents">
+              <span class="title">タイトル：
+                <%= post.title %>
+              </span>
+              <div class="more"> 
+                <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>
+                <ul class="more_list">
+                  <li>
+                    <%= link_to '詳細', "/posts/#{post.id}", class: "more_list__a-list" %>
+                  </li>
+                  <% if user_signed_in? && current_user.id == post.user_id %>
+                    <li> 
+                      <%= link_to '編集', "/posts/#{post.id}/edit", class: "more_list__a-list" %>
+                    </li>
+                    <li>
+                      <%= link_to '削除', "/posts/#{post.id}", method: :delete, class: "more_list__a-list" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+              <span class="iine-box">
+                <span class="iine-count">いいねの数：<span style="font-size:18px; font-weight:bold;"><%= post.liked_users.count %></span></span>  
+              </span>
+
+              <span class="name">
+                <a href="/users/<%= post.user.id %>", class="name-link">
+                  投稿者<br>
+                  <%= post.user.nickname %>
+                </a>
+              </span>
+            </div>
+          </li>
+        <% end %>
+        <%= paginate(@posts) %>
+      </ul>
+    </div>
+  </div>
+  <%= link_to "メインページへ戻る", "/posts", class:"top-page" %>
+
+</div>

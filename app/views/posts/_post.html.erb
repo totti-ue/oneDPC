@@ -1,7 +1,8 @@
-<li class="box-list__image" style="background-image: url(<%= post.image %>);">
+<li class="box-list__image past-image" style="background-image: url(<%= post.image %>);">
   <div class="box-list__image--text-contents">
-    <span class="title">タイトル：
-      <%= post.title %>
+    <span class="title">
+      テーマ　：<%= post.themes.first.name %><br>
+      タイトル：<%= post.title %>
     </span>
     <div class="more"> 
       <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>

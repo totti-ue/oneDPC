@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'rank'
+      get 'past'
     end
   end
   resources :users, only: [:index, :show]

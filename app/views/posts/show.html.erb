@@ -2,8 +2,9 @@
   <div class="show__details">
     <div class="show__details__image" style="background-image: url(<%= @post.image %>);">
       <div class="show__details__image--text-contents">
-        <span class="show-title">タイトル：
-          <%= @post.title %>
+        <span class="show-title">
+          テーマ　：<%= @post.themes.first.name %><br>
+          タイトル：<%= @post.title %>
         </span>
         <div class="show-more">
           <span class="show-image_tag"><%= image_tag 'arrow_top.png' %></span>
@@ -37,13 +38,15 @@
           <%end%>
         </span> 
         <span class="show-name">
-          投稿者<br>
-          <%= @post.user.nickname %>
+          <a href="/users/<%= @post.user.id %>", class="show-name-link">
+            投稿者<br>
+            <%= @post.user.nickname %>
+          </a>
         </span>
 
       </div>
     </div>
-    <p>いいねしたユーザー</p>
+    <p style="margin-top:20px;">いいねしたユーザー</p>
     <% @post.liked_users.each do |user| %>
       <li class="user-list"><%= user.nickname %></li>
       <% end %>
@@ -56,7 +59,7 @@
           </div>
         <% end %>
       <% else %>
-        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+        <strong><p style="text-align:center;">※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
       <% end %>
     </div>
     <div class="comments">
