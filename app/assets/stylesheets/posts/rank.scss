@@ -1,7 +1,7 @@
 $main-color: #fff;
 $hf-color: #000;
 
-.main {
+.mains {
   animation-name: fade_in1;
   animation-duration: 4s; //アニメーション時間
   animation-timing-function: ease-out; //アニメーションさせるイージング
@@ -9,7 +9,7 @@ $hf-color: #000;
   animation-direction: normal; //往復処理をするかどうか
   animation-fill-mode: forwards; 
 // メイン（テーマ）
-  .main-top {
+  .mains-top {
     background-color: $main-color;
     height: 40px;
     width: 100%;
@@ -58,10 +58,8 @@ $hf-color: #000;
   }
 
 
-
-
   // メイン（コンテント）
-  .main-content{
+  .mains-content{
     background-color: $main-color;
     height: auto;
     width: 100%;
@@ -78,135 +76,10 @@ $hf-color: #000;
         flex-flow: row wrap;
         padding-left: 60px;
         padding-bottom: 60px;
-        &__image{
-          flex: 0 0 19%;
-          border: 1px solid #ccc;
-          background-size: 480px 360px;
-          min-height: 360px;
-          min-width: 480px;
-          margin: 0 20px 20px;
-          &--text-contents {
-            height: 100%;
-            width: 100%;
-            color: #fff;
-            position: relative;
-            opacity: 0;
-            .title {  
-              padding-left: 10px;
-              padding-right: 50px;
-              font-size: 16px;
-              display: block;
-              position: absolute;
-              top: 10px;
-            }
-            .more {
-              position: absolute;
-              top: 10px;
-              right: 0px;
-              padding-top: 5px;
-              width: 50px;
-              display: flex;
-              flex-direction: column;
-              .image_tag {
-                display: flex;
-                justify-content: center;
-              }
-              .more_list {
-                overflow: hidden;
-                position: absolute;
-                top: 0px;
-                padding-top: 15px;
-                display: flex;
-                flex-direction: column;
-                height: 2px;
-                &__a-list {
-                  text-decoration: none;
-                  color: white;
-                }
-                &__a-list:hover {
-                  color: yellow;
-                  font-weight: bold;
-                }
-              }
-              .more_list:hover {
-                overflow: visible;
-                animation-name: fade_in1;
-                animation-duration: 0.5s; //アニメーション時間
-                animation-timing-function: ease-out; //アニメーションさせるイージング
-                animation-iteration-count: 1; //繰り返し回数
-                text-shadow: 3px 2px 5px gray;
-              }
-            }
-            .iine-box {
-              position: absolute;
-              bottom: 20px;
-              left: 20px;
-              .iine-count {
-                font-size: 14px;
-              }
-              .like {
-                text-decoration: none;
-                color: #fff;
-                opacity: 0.5;
-              }
-              .iine {
-                opacity: 1;
-                color: rgb(230, 101, 123);
-              }
-              .like:hover {
-                text-shadow: 3px 2px 5px gray;
-                opacity: 1;
-              }
-              .iine:hover {
-                color: blue;
-              }
-              .dislike:hover {
-                color: rgb(230, 101, 123);
-              }
-            }
-            .name {
-              padding-right: 10px;
-              font-size: 18px;
-              display: block;
-              position: absolute;
-              bottom: 10px;
-              right: 0;
-              color: #fff;
-              .name-link {
-                text-decoration: none;
-                color: #fff;
-              }
-            }
-            .name:hover .name-link{
-              text-shadow: 3px 2px 5px gray;
-              font-weight: bold;
-              color: skyblue;
-            }
-          } 
-          &--text-contents:hover {
-            opacity: 1;
-            animation-name: fade_in1;
-            animation-duration: 0.5s; //アニメーション時間
-            animation-timing-function: ease-out; //アニメーションさせるイージング
-            animation-iteration-count: 1; //繰り返し回数
-            text-shadow: 3px 2px 5px gray;
-          }
-        }
-        &__image:hover {
-          color: white;
-          box-shadow: 1px 2px 20px gray;
-          transform: scale(1.1);
-          transition-duration: 0.3s;
-        }
-
-
-
-
-
 
 
         .first-box {
-          background-image: url('https://d1f5hsy4d47upe.cloudfront.net/63/6333d84293f6fd6a764a44556b2b2e3d_t.jpeg');
+          background-image: url('https://d1f5hsy4d47upe.cloudfront.net/1c/1c02167c6e82cf271bb243ab7395d591_t.jpeg');
           background-size: cover;
           width: 720px;
           margin: 20px;
@@ -319,41 +192,127 @@ $hf-color: #000;
             }
           }
         }
+
+
+        .second-box {
+          background-image: url('https://d1f5hsy4d47upe.cloudfront.net/f2/f206d9df60e1c58934c765bb89d4e623_t.jpeg');
+          background-size: cover;
+          width: 400px;
+          margin: 20px;
+          padding: 20px 34px;
+          border: 6px solid silver;
+          .rank-other {
+            background-size: 400px 300px;
+            min-width: 400px;
+            min-height: 300px;
+            &--contents {
+              height: 300px;
+              width: 400px;
+              color: #fff;
+              position: relative;
+              opacity: 1;
+              .title {  
+                padding-left: 10px;
+                padding-right: 50px;
+                font-size: 16px;
+                display: block;
+                position: absolute;
+                top: 10px;
+              }
+              .more {
+                position: absolute;
+                top: 10px;
+                right: 0px;
+                padding-top: 5px;
+                width: 50px;
+                display: flex;
+                flex-direction: column;
+                .image_tag {
+                  display: flex;
+                  justify-content: center;
+                }
+                .more_list {
+                  overflow: hidden;
+                  position: absolute;
+                  top: 0px;
+                  padding-top: 15px;
+                  display: flex;
+                  flex-direction: column;
+                  height: 2px;
+                  &__a-list {
+                    text-decoration: none;
+                    color: white;
+                  }
+                  &__a-list:hover {
+                    color: yellow;
+                    font-weight: bold;
+                  }
+                }
+                .more_list:hover {
+                  overflow: visible;
+                  animation-name: fade_in1;
+                  animation-duration: 0.5s; //アニメーション時間
+                  animation-timing-function: ease-out; //アニメーションさせるイージング
+                  animation-iteration-count: 1; //繰り返し回数
+                  text-shadow: 3px 2px 5px gray;
+                }
+              }
+              .iine-box {
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+                .iine-count {
+                  font-size: 14px;
+                }
+                .like {
+                  text-decoration: none;
+                  color: #fff;
+                  opacity: 0.5;
+                }
+                .iine {
+                  opacity: 1;
+                  color: rgb(230, 101, 123);
+                }
+                .like:hover {
+                  text-shadow: 3px 2px 5px gray;
+                  opacity: 1;
+                }
+                .iine:hover {
+                  color: blue;
+                }
+                .dislike:hover {
+                  color: rgb(230, 101, 123);
+                }
+              }
+              .name {
+                padding-right: 10px;
+                font-size: 18px;
+                display: block;
+                position: absolute;
+                bottom: 10px;
+                right: 0;
+                color: #fff;
+                .name-link {
+                  text-decoration: none;
+                  color: #fff;
+                }
+              }
+              .name:hover .name-link{
+                text-shadow: 3px 2px 5px gray;
+                font-weight: bold;
+                color: skyblue;
+              }
+            } 
+            &--contents:hover {
+              opacity: 1;
+            }
+          }
+        }
+        .third {
+          background-image: url('https://www.pakutaso.com/shared/img/thumb/ELL86_nunotex220140405_TP_V.jpg');
+          border: 6px solid #7A592F;
+        }
       }
-    }
-  }
-  .top-page {
-    float: right;
-    margin-right: 160px;
-    margin-bottom: 100px;
-  }
-  .second {
-    margin-top: 60px;
-    .main-content__box {
-      .post-notion {
-        padding-left: 60px;
-        height: 60px;
-        font-size: 16px;
-      }
-    }
-  }
-}
-// フッター
-.footer {
-  background-color: $hf-color;
-  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  font-weight: bold;
-  margin-top: 40px;
-  height: 300px;
-  width: 100%;
-  min-width: 1200px;
-  z-index: 1;
-  &__box {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    &--logo {
-      color: #fff;
     }
   }
 }

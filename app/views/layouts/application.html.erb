@@ -17,11 +17,12 @@
 
           <% if user_signed_in? %>
             <ul class="header__box__links">
-              <li><%= link_to "#{current_user.nickname}", "/users/#{current_user.id}", class: "header__box__links__row" %></li>
+              <li><%= link_to "#{current_user.nickname}さんのページ", "/users/#{current_user.id}", class: "header__box__links__row" %></li>
               <li><%= link_to "Users Links", "/users", class: "header__box__links__row" %></li>
               <li><%= link_to "New Post", "/posts/new", class: "header__box__links__row" %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "header__box__links__row" %></li>
-              <li><%= link_to "Previous Posts", "/posts/rank", class: "header__box__links__row" %></li>
+              <li><%= link_to "Today's Top3", "/posts/rank", class: "header__box__links__row" %></li>
+              <li><%= link_to "Previous Posts", "/posts/past", class: "header__box__links__row" %></li>
             </ul>
           <% else %>
             <ul class="header__box__links">

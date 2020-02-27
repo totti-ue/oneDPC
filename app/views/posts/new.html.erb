@@ -1,13 +1,52 @@
-<div class="new-message">
+<div class="main">
+  <%# メインページ（テーマ） %>
+  <div class="main-top">
+    <div class="main-top__box">
+      <p class="main-top__box--todays-theme"> 本日のお題：<span style="font-weight:bold;">『　<%= @today_theme.name %>　』</span></p>
+      
+
+      <%# 現在時刻を表示する %>
+      <span class="limit">※投稿および投票締め切り本日24時
+
+      <span id="view_clock">
+        <script type="text/javascript">
+        timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
+
+        function clock() {
+          document.getElementById("view_clock").innerHTML = getNow();
+        }
+
+        function getNow() {
+          var now = new Date();
+          var year = now.getFullYear();
+          var mon = now.getMonth()+1; //１を足すこと
+          var day = now.getDate();
+          var you = now.getDay();
+          var hour = now.getHours();
+          var min = now.getMinutes();
+          var sec = now.getSeconds();
 
 
+          //曜日の選択肢
+          var youbi = new Array("日","月","火","水","木","金","土");
 
-  <%= form_with(model: @post, local: true, id: "message-form") do |form| %>
-    <p class="text">
-      新規投稿する
-    </p>
-    <span class="select-theme">投稿するテーマを選択してください</span>
-    <%= form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box") %>
-    <%= render partial: "form", locals: { form: form} %>
-  <% end %>
+          //出力用
+          var s = year + "年" + mon + "月" + day + "日("+ youbi[you] +")" + hour + "時" + min + "分" + sec + "秒"; 
+          return s;
+        }
+        </script>
+      </span>
+      </span>
+      <div class="new-message">
+        <%= form_with(model: @post, local: true, id: "message-form") do |form| %>
+          <p class="text">
+            新規投稿する
+          </p>
+          <span class="select-theme">投稿するテーマを選択してください</span>
+          <%= form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box") %>
+          <%= render partial: "form", locals: { form: form} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

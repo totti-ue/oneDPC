@@ -17,5 +17,8 @@ class Post < ApplicationRecord
     Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
 
+  def self.create_today_ranks
+    Post.find(Like.group(:post_id).order('count(post_id) desc').where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).limit(3).pluck(:post_id))
+  end
 
 end
