@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_params, only: [:edit, :show]
   before_action :todays_theme, except: [:create, :destroy, :edit, :update]
-  before_action :move_to_index, except: [:index, :show, :search]
+  before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
     # @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(10)
@@ -49,7 +49,6 @@ class PostsController < ApplicationController
     @rank_first = @all_ranks.first
     @rank_second = @all_ranks.second
     @rank_third = @all_ranks.third
-   
   end
 
   def past
@@ -81,5 +80,6 @@ class PostsController < ApplicationController
        return Time.now.day
     end
   end
+
 
 end
