@@ -8,9 +8,6 @@
 
     </div>
   </div>
-
-
-
  
 
   <%# メインページ（コンテント） %>
@@ -18,7 +15,7 @@
     <div class="mains-content__box">
       <%# <ul class="box-list"> %>
       <ul class="box-list">
-        <% if @all_ranks.empty? %>
+        <% if @all_ranks.nil? %>
           <p>まだ投稿がありません</p>
         <% elsif @all_ranks.length == 1 %>
           <%# ---------------------------------------第一位--------------------------------------- %>

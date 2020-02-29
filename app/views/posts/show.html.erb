@@ -26,14 +26,16 @@
           <% if user_signed_in? %>
             <% if user_signed_in? && current_user.id == @post.user_id %>
               <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
-            <% elsif current_user.already_liked?(@post) %>
+            <% elsif current_user.already_liked?(@post) && @post.created_at > Time.zone.today.beginning_of_day %>
               <%# <% if current_user.likes.find_by(post_id: @post.id) %> 
               <%= link_to "いいねを取り消す", post_like_path(@post), method: :delete, class: "like iine" %>
               <br>
               <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
-            <% else %>
+            <% elsif @post.created_at > Time.zone.today.beginning_of_day %>
               <%= link_to "いいねを押す", post_likes_path(@post), method: :post, class: "like dislike" %>
               <br>
+              <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
+            <% else %>
               <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
             <% end %>
           <% else %>

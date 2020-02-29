@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_params, only: [:edit, :show]
-  before_action :todays_theme, except: [:create, :destroy, :edit, :update]
+  before_action :todays_theme, except: [:create, :destroy, :update]
   before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
-    # @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(10)
-    @posts = Post.includes(:user).where("created_at > ?", Time.zone.now-(60*60*9)).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -49,6 +48,7 @@ class PostsController < ApplicationController
     @rank_first = @all_ranks.first
     @rank_second = @all_ranks.second
     @rank_third = @all_ranks.third
+
   end
 
   def past
@@ -56,6 +56,9 @@ class PostsController < ApplicationController
     @themes = Theme.includes(:post_id)
     @theme = Theme.first
   end
+
+
+
 
   private
   def post_params
@@ -75,7 +78,7 @@ class PostsController < ApplicationController
   end
 
   def today_num
-    if Time.now.wday == 0 or Time.now.wday == 6
+    if Time.now.wday == 0
        return 1
     else
        return Time.now.day

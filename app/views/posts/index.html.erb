@@ -20,7 +20,14 @@
       <div class="background-box"></div>
       <ul class="box-list">
         <% @posts.each do |post| %>
-          <%= render partial: "post", locals: { post: post }%>
+          <div class="additional"> 
+            <% if post.themes.first.id != @today_theme.id %>
+              <span class="theme wrong">⚠️本日のお題（テーマ）を確認してください⚠️</span>
+            <% else %>
+              <span class="theme right"><%=@today_theme.name%> </span>
+            <% end %>
+            <%= render partial: "post", locals: { post: post }%>
+          </div>
         <% end %>
         <%= paginate(@posts) %>
       </ul>
