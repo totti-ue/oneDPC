@@ -5,7 +5,7 @@ class PostsController < ApplicationController
  
   def index
     # @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(10)
-    @posts = Post.includes(:user).where("created_at > ?", Date.today).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at > ?", Time.zone.now-(60*60*9)).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -52,13 +52,14 @@ class PostsController < ApplicationController
   end
 
   def past
-    @posts = Post.includes(:user).where("created_at < ?", Date.today).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at < ?", Time.zone.now-(60*60*9)).order("created_at DESC").page(params[:page]).per(10)
     @themes = Theme.includes(:post_id)
+    @theme = Theme.first
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :image, :theme_ids).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :image, :start_time, :theme_ids).merge(user_id: current_user.id)
   end
 
   def set_params

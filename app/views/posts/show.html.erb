@@ -1,5 +1,8 @@
 <div class="show">
   <div class="show__details">
+
+
+  <%# ーーーーーーー　写真一枚（start）　ーーーーーーー %>
     <div class="show__details__image" style="background-image: url(<%= @post.image %>);">
       <div class="show__details__image--text-contents">
         <span class="show-title">
@@ -46,6 +49,12 @@
 
       </div>
     </div>
+  <%# ーーーーーーー　写真一枚（end）　ーーーーーーー %>
+
+
+    投稿日時：<%= @post.start_time.strftime("%Y-%m-%d %H:%M") %>
+    <%= link_to "戻る", :back %>
+
     <p style="margin-top:20px;">いいねしたユーザー</p>
     <% @post.liked_users.each do |user| %>
       <li class="user-list"><%= user.nickname %></li>

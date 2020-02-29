@@ -1,0 +1,125 @@
+<main>
+
+<%# ーーーーー　写真　１　枚目 ーーーーー　%>
+
+  <div class="bg-fixed bg-1">
+    <div class="msg"> 
+      <p class="msg msg-contents">One<br>Day Photo Contest</p>
+    </div>
+    <p style="position: relative; margin-top: 500px;"> ⬇︎下へスクロール</p>
+    
+  </div> 
+
+
+  <div class="bg-scrolling bg-color-1">
+    <div class="bg-container">
+      <p class="pg-theme">
+        <i>One Day Photo Cotest とは?</i>
+      </p>
+      <br>
+      <p>
+        <i>『写真初心者』</i>、<i>『アマチュア写真愛好家』</i>向けのフォトコンテストです。<br><br>
+        一日（one day）ごとに出されるお題（テーマ）に沿って、<br><br>
+        一人一枚（one photo）写真を投稿します。<br><br>
+        一日における、『いいね』の総獲得数が多い写真が、<br><br>
+        その日のコンテスト（one contest）の優勝者となります。
+      </p>
+    </div> 
+  </div>
+
+
+<%# ーーーーー　写真　１　枚目 ーーーーー　%>
+
+<%# ーーーーー　写真　２　枚目 ーーーーー　%>
+
+  <div class="bg-fixed bg-2">
+    <div class="msg"> 
+      <p class="msg msg-contents">スマホやパソコンにしまったままの<br>写真を投稿しよう</p>
+    </div>
+  </div> 
+
+
+  <div class="bg-scrolling bg-color-2">
+    <div class="bg-container">
+      <p class="pg-theme">
+        <i>過去に撮った自信作はありせんか？</i>
+      </p>
+      <br>
+      <p>
+        カメラ初心者が集まるコンテストだからこそ、<br><br>
+        現存のフォトコンテストのように敷居は高くありません。<br><br>
+        テーマに沿っていれば、古い写真でも大丈夫！<br><br>
+        学生時代に撮った写真や、今のコレクションなど、<br><br>
+        参加したい時に自由に参加可能です。
+      </p>
+    </div> 
+  </div> 
+
+
+<%# ーーーーー　写真　２　枚目 ーーーーー　%>
+
+<%# ーーーーー　写真　３　枚目 ーーーーー　%>
+
+  <div class="bg-fixed bg-3">
+    <div class="msg"> 
+      <p class="msg msg-contents">テーマは日付で固定<br>１日と日曜は『自由（フリーテーマ）』</p>
+    </div>
+  </div> 
+
+
+  <div class="bg-scrolling bg-color-3">
+    <div class="bg-container">
+      <p class="pg-theme">
+        <i>テーマに合わせて好きな写真を投稿しよう</i>
+      </p>
+      <br>
+      <p>テーマ一覧</p>
+      <div class="theme-table">
+      <% i = 1 %>
+        <% @theme.each do |theme| %>
+          <div class="theme-one">
+          <%= i %>日：<%= theme.name %>
+          <% i += 1%>
+          </div>
+        <% end %>
+      </div>
+      <p style="padding-top:10px;">
+        ※毎週日曜日は日付に関係なく、『自由（フリーテーマ）』となります。<br>
+      </p>
+
+    </div> 
+  </div>
+
+
+<%# ーーーーー　写真　３　枚目 ーーーーー　%>
+
+<%# ーーーーー　写真　４　枚目 ーーーーー　%>
+
+  <div class="bg-fixed bg-4">
+    <div class="msg"> 
+      <p class="msg msg-contents">今日からコンテストに参加しよう</p>
+    </div>
+    <div class="btn-links">
+      <a href="/posts", class="top-btn">
+        TOP PAGE
+      </a>
+      <a href="/users/sign_in", class="top-btn">
+        SIGN IN
+      </a>
+    </div>
+    
+  </div> 
+
+
+  <div class="bg-scrolling bg-color-4">
+    <div class="bg-container">
+
+
+    </div> 
+  </div> 
+
+
+
+
+
+</main>

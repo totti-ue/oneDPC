@@ -1,0 +1,138 @@
+.main-content{
+  height: auto;
+  width: 100%;
+  margin-top: 100px;
+  &__box {
+    height: 100%;
+    width: 1200px;
+    padding-top: 20px;
+    margin: 0 auto;
+    .box-list{
+      white-space: nowrap;
+      overflow-x: scroll;
+      height: 400px;
+      padding: 40px 100px;
+      &__image{
+        min-height: 360px;
+        min-width: 480px;
+        margin: 0 20px 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: inline-block;
+
+        &--text-contents {
+          height: 100%;
+          width: 100%;
+          color: #fff;
+          position: relative;
+          opacity: 0;
+          .title {  
+            padding-left: 10px;
+            padding-right: 50px;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            top: 10px;
+          }
+          .more {
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            padding-top: 5px;
+            width: 50px;
+            display: flex;
+            flex-direction: column;
+            .image_tag {
+              display: flex;
+              justify-content: center;
+            }
+            .more_list {
+              overflow: hidden;
+              position: absolute;
+              top: 0px;
+              padding-top: 15px;
+              display: flex;
+              flex-direction: column;
+              height: 2px;
+              &__a-list {
+                text-decoration: none;
+                color: white;
+              }
+              &__a-list:hover {
+                color: yellow;
+                font-weight: bold;
+              }
+            }
+            .more_list:hover {
+              overflow: visible;
+              animation-name: fade_in1;
+              animation-duration: 0.5s; //アニメーション時間
+              animation-timing-function: ease-out; //アニメーションさせるイージング
+              animation-iteration-count: 1; //繰り返し回数
+              text-shadow: 3px 2px 5px gray;
+            }
+          }
+          .iine-box {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            .iine-count {
+              font-size: 14px;
+            }
+            .like {
+              text-decoration: none;
+              color: #fff;
+              opacity: 0.5;
+            }
+            .iine {
+              opacity: 1;
+              color: rgb(230, 101, 123);
+            }
+            .like:hover {
+              text-shadow: 3px 2px 5px gray;
+              opacity: 1;
+            }
+            .iine:hover {
+              color: blue;
+            }
+            .dislike:hover {
+              color: rgb(230, 101, 123);
+            }
+          }
+          .name {
+            padding-right: 10px;
+            font-size: 18px;
+            display: block;
+            position: absolute;
+            bottom: 10px;
+            right: 0;
+            color: #fff;
+            .name-link {
+              text-decoration: none;
+              color: #fff;
+            }
+          }
+          .name:hover .name-link{
+            text-shadow: 3px 2px 5px gray;
+            font-weight: bold;
+            color: skyblue;
+          }
+        } 
+        &--text-contents:hover {
+          opacity: 1;
+          animation-name: fade_in1;
+          animation-duration: 0.5s; //アニメーション時間
+          animation-timing-function: ease-out; //アニメーションさせるイージング
+          animation-iteration-count: 1; //繰り返し回数
+          text-shadow: 3px 2px 5px gray;
+        }
+      }
+      &__image:hover {
+        color: white;
+        box-shadow: 1px 2px 20px gray;
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+      }
+    }
+  }
+}

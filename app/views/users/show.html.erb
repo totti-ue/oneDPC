@@ -2,6 +2,10 @@
   <div class="main-content second">
     <div class="main-content__box">
 
+      <%= link_to 'アカウント編集', "/users/edit/#{current_user}"%>
+            <%= link_to "戻る", :back %>
+
+
       <p class="post-notion"><%= @nickname %> さんの投稿一覧</p>
 
       <ul class="box-list">

@@ -1,0 +1,158 @@
+body, html, main {
+  /* important */
+  height: 100%;
+}
+// ーーーーー　背景の共通部分 ーーーーー
+
+.bg-fixed {
+  min-height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+
+}
+.bg-1::before, .bg-2:before, .bg-3:before, .bg-4:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0.2;
+  position: absolute;
+}
+
+// ーーーーー　背景（メッセージ）共通部分 ーーーーー
+
+.msg {
+  width: 800px;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  position: absolute;
+  .msg-contents {
+    color: #fff;
+    font-size: 40px;
+    text-shadow: 1px 1px 5px grey;
+    font-style: oblique;
+  }
+}
+
+// ーーーーー　コンテンツ共通部分 ーーーーー
+.bg-scrolling {
+  min-height: 100%;
+  background-color: cornsilk;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+
+}
+
+.bg-container {
+  width: 800px;
+  // text-align: center;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  position: absolute;
+  .pg-theme {
+    font-size: 40px;
+    border-bottom: 5px solid gray;
+    margin-bottom: 10px;
+  }
+}
+
+// ーーーーー　ここまでが共通部分 ーーーーー
+
+
+
+
+// ーーーーー　写真　１　枚目 ーーーーー
+
+.bg-fixed.bg-1 {
+  background-image: url("https://www.aflo.com/pages/creative/zekkei/img/gal/02_aflo_ZQCA010793.jpg");
+}
+
+.bg-scrolling.bg-color-1 {
+  background-color: cornsilk;
+}
+// ーーーーー　写真　１　枚目 ーーーーー
+// ーーーーー　写真　２　枚目 ーーーーー
+
+.bg-fixed.bg-2 {
+  background-image: url("https://webdesign-trends.net/wp/wp-content/uploads/2017/01/picture-945x630.jpg");
+}
+
+.bg-scrolling.bg-color-2 {
+  background-color: cadetblue;
+}
+// ーーーーー　写真　２　枚目 ーーーーー
+// ーーーーー　写真　３　枚目 ーーーーー
+
+.bg-fixed.bg-3 {
+  background-image: url("https://webseisaku.webtame.jp/dcms_media/image/free_material_site_collection_cover_thum.jpg");
+}
+
+.bg-scrolling.bg-color-3 {
+  background-color: darksalmon;
+}
+
+.theme-table {
+  display: flex;
+  flex-flow: row wrap;
+  .theme-one {
+    width: 260px;
+  }
+}
+
+// ーーーーー　写真　３　枚目 ーーーーー
+// ーーーーー　写真　４　枚目 ーーーーー
+
+.bg-fixed.bg-4 {
+  background-image: url("https://2.bp.blogspot.com/-yEDrzhWXPk4/UmAcaPhNvJI/AAAAAAAADlQ/EXXWFBxj2lo/s2560/tokyo-wallpaper-night2.jpg");
+  flex-direction: column;
+  .btn-links {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 300px;
+    width: 800px;
+    position: relative;
+    .top-btn {
+      height: 40px;
+      width: 200px;
+      background-color: #fff;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 40px;
+      text-decoration: none;
+      color: black;
+    }
+    .top-btn:hover {
+      box-shadow: 3px 3px 3px 3px #fff;
+      background-color: yellow;
+      color: blue;
+    }
+  }  
+}
+
+.bg-scrolling.bg-color-4 {
+  background-color: midnightblue;
+}
+
+
+

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root to: "tops#index"
+  root to: "tops#show"
   devise_for :users
   resources :posts do
     resources :likes, only: [:create, :destroy]
@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:index, :show]
+  resources :themes, only: [:index, :show]
+
 
 end

@@ -17,6 +17,7 @@
       line-height: 50px;
       font-size: 18px;
     }
+    // ーーーーーーーーー新規登録画面用ーーーーーーーーーーーーーー
     #new_user {
       padding: 20px;
       .field {
@@ -54,5 +55,52 @@
     .shared-links {
       padding: 0 20px 40px;
     }
+    // ーーーーーーーーー新規登録画面用ーーーーーーーーーーーーーー
+    #edit_user {
+      padding: 20px;
+      .field {
+        height: auto;
+        padding-bottom: 10px;
+        &__form {
+          height: 40px;
+          width: 100%;
+          margin-top: 5px;
+          border-radius: 2px;
+        }
+        &__form:hover {
+          background-color: blanchedalmond;
+
+        }
+      }
+    }
+    .actions {
+      height: 50px;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: center;
+      &--btn {
+        width: 100%;
+        background-color: rgb(255, 208, 0);
+        border-radius: 3px;
+      }
+      &--btn--login {
+        background-color: white;
+      }
+      &--btn:hover {
+        box-shadow: 3px 2px 5px gray;
+      }
+    }
+    
+  }
+  .delete-btn {
+    height: 30px;
+    background-color: snow;
+    color: darkgray;
+    padding: 0 20px;
+  }
+  .delete-btn:hover {
+    background-color: gray;
+    color: white;
+    box-shadow: 1px 1px 1px 1px gray;
   }
 }
