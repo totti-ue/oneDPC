@@ -8,13 +8,17 @@
 
 
       <div class="new-message">
-        <%= form_with(model: @post, local: true, id: "message-form") do |form| %>
-          <p class="text">
-            新規投稿する
-          </p>
-          <span class="select-theme">投稿するテーマを選択してください</span>
-          <%= form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box") %>
-          <%= render partial: "form", locals: { form: form} %>
+        <% if current_user.posts.count >= 1 && current_user.posts.last.created_at > Time.zone.today.beginning_of_day %>
+          <p> 一日に投稿できるのは一枚のみです。</p>
+        <% else %>
+          <%= form_with(model: @post, local: true, id: "message-form") do |form| %>
+            <p class="text">
+              新規投稿する
+            </p>
+            <span class="select-theme">投稿するテーマを選択してください</span>
+            <%= form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box") %>
+            <%= render partial: "form", locals: { form: form} %>
+          <% end %>
         <% end %>
       </div>
 

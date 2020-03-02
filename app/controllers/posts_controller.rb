@@ -48,15 +48,13 @@ class PostsController < ApplicationController
     @rank_first = @all_ranks.first
     @rank_second = @all_ranks.second
     @rank_third = @all_ranks.third
-
   end
 
   def past
-    @posts = Post.includes(:user).where("created_at < ?", Time.zone.now-(60*60*9)).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at < ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @themes = Theme.includes(:post_id)
-    @theme = Theme.first
+    @theme = Theme.all
   end
-
 
 
 

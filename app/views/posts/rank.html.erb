@@ -11,11 +11,11 @@
  
 
   <%# メインページ（コンテント） %>
-  <div class="mains-content">
-    <div class="mains-content__box">
-      <%# <ul class="box-list"> %>
+  <div class="ranks-content">
+    <div class="ranks-content__box">
+      <%# <ul class="box-list"> %>  
       <ul class="box-list">
-        <% if @all_ranks.nil? %>
+        <% if @all_ranks.empty? %>
           <p>まだ投稿がありません</p>
         <% elsif @all_ranks.length == 1 %>
           <%# ---------------------------------------第一位--------------------------------------- %>

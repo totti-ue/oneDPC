@@ -10,24 +10,16 @@
   justify-content: flex-start;
   flex-flow: row wrap;
   .one-user {
-    height: 80px;
-    width: 150px;
+    font-size: 20px;
+    color: gray;
     .username {
-      text-decoration: none;
-      font-size: 30px;
-      text-decoration: none;
       font-size: 30px;
       color: #000;
+      margin-right: 30px;
+    }
+    .username:hover {
+      color: blue;
+      text-shadow: 1px 1px 1px gray;
     }
   }
-}
-.root-btn {
-  margin-right: 150px;
-  float: right;
-  border: 1px solid;
-  text-decoration: none;
-  padding: 5px 20px;
-  border-radius: 5px;
-  background-color: black;
-  color: #fff;
 }

@@ -1,6 +1,27 @@
 // ヘッダー部分の記述
 $hf-color: #000;
 
+a {
+  text-decoration: none;
+  color: blue;
+}
+a:hover {
+  color: yellow;
+  text-shadow: 1px 1px 1px black;
+}
+
+.root-btn {
+  margin-right: 150px;
+  float: right;
+  border: 1px solid;
+  text-decoration: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: black;
+  color: #fff;
+}
+
+
 .header {
   font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   font-size: 20px;

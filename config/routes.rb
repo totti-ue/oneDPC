@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts do
     resources :likes, only: [:create, :destroy]
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
     collection do
       get 'search'
       get 'rank'

@@ -9,7 +9,13 @@
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <%if day.wday == 0 %>
+            <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <%elsif day.wday == 6 %>
+            <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <%else%>
+            <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <%end%>
         <% end %>
       </tr>
     </thead>

@@ -11,32 +11,50 @@
   </div>
 
 <%# ------------------------ カレンダー（はじめ）------------------------- %>
-<p id="notice" style="margin-top:120px;"><%= notice %></p>
-<div class="", style="width:800px; margin:0 auto;">
-<%= @theme.name %>
+<div class="", style="width:800px; padding-top:120px; margin:0 auto;">
 
-  <h1>過去の投稿</h1>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.created_at.strftime("%Y-%m-%d %H:%M") %> タイトル:<%= post.title %></td>
-          <td><%= link_to 'Show', post %></td>
-        </tr><br>
-      <% end %>
-    </tbody>
-  </table>
+  <h1>過去の投稿 <span><%= link_to "テーマ一覧はこちら", "/themes" %></span></h1>
+  
+
+    <%# <tbody> %>
+      <%# <% @posts.each do |post| %>
+        <%# <tr> %>
+          <%# <td><%= post.created_at.strftime("%Y-%m-%d %H:%M") タイトル:<%= post.title %</td> %>
+          <%# <td><%= link_to 'Show', post %</td> %>
+        <%# </tr><br> %>
+      <%# <% end % %>
+    <%# </tbody> %>
+  <%# </table> %>
 
   <br>
 
   <%= month_calendar events: @posts do |date, posts| %>
-    <a href="/themes", id="theme-link">
-    <%= date.day %>
+    <% if date.wday == 0 %>
+    <a href="/posts/search", id="theme-link", class="sun">
+      <%= date.day %>
     </a>
-    <% posts.each do |post| %>
-      <div>
-        <%= link_to post.title, post %>
+    <br>
+    <span><%= @theme.first.name %></span>
+    <% elsif date.wday == 6 %>
+    <a href="/themes", id="theme-link", class="sat">
+      <%= date.day %>
+    </a>
+    <br>
+    <span><%= @theme.find(date.day).name %></span>
+    <% else %>
+    <a href="/themes", id="theme-link", class="not_holiday">
+      <%= date.day %>
+    </a>
+    <br>
+    <span><%= @theme.find(date.day).name %></span>
+    <% end %>
+
+    <% posts.first(3).each do |post| %>
+      <div class="post-title-box">
+        <%= link_to post.title, post, class: "post-title-a-day"%>
       </div>
     <% end %>
+
   <% end %>
 </div>
 <%# ------------------------ カレンダー（おわり）------------------------- %>
@@ -46,39 +64,9 @@
     <div class="main-content__box">
       <ul class="box-list">
         <% @posts.each do |post| %>
-          <li class="past-image" style="background-image: url(<%= post.image %>);">
-            <div class="past-image--text-contents">
-              <span class="title">タイトル：
-                <%= post.title %>
-              </span>
-              <div class="more"> 
-                <span class="image_tag"><%= image_tag 'arrow_top.png' %></span>
-                <ul class="more_list">
-                  <li>
-                    <%= link_to '詳細', "/posts/#{post.id}", class: "more_list__a-list" %>
-                  </li>
-                  <% if user_signed_in? && current_user.id == post.user_id %>
-                    <li> 
-                      <%= link_to '編集', "/posts/#{post.id}/edit", class: "more_list__a-list" %>
-                    </li>
-                    <li>
-                      <%= link_to '削除', "/posts/#{post.id}", method: :delete, class: "more_list__a-list" %>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-              <span class="iine-box">
-                <span class="iine-count">いいねの数：<span style="font-size:18px; font-weight:bold;"><%= post.liked_users.count %></span></span>  
-              </span>
+        
+            <%= render partial: "post", locals: { post: post }%>
 
-              <span class="name">
-                <a href="/users/<%= post.user.id %>", class="name-link">
-                  投稿者<br>
-                  <%= post.user.nickname %>
-                </a>
-              </span>
-            </div>
-          </li>
         <% end %>
         <%= paginate(@posts) %>
       </ul>

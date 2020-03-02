@@ -20,6 +20,7 @@
             <% if @post.image.url.present? %>
               <%= image_tag(@post.image.url) %>
             <%end%>
+            
 
 
           <span style="display:none;"><%= form.datetime_select :start_time %></span>
