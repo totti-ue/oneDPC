@@ -69,3 +69,5 @@ gem 'devise'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "simple_calendar", "~> 2.0"
+gem 'rails-i18n', '~> 5.1'

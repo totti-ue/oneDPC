@@ -1,5 +1,8 @@
 <div class="show">
   <div class="show__details">
+
+
+  <%# ーーーーーーー　写真一枚（start）　ーーーーーーー %>
     <div class="show__details__image" style="background-image: url(<%= @post.image %>);">
       <div class="show__details__image--text-contents">
         <span class="show-title">
@@ -23,14 +26,16 @@
           <% if user_signed_in? %>
             <% if user_signed_in? && current_user.id == @post.user_id %>
               <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
-            <% elsif current_user.already_liked?(@post) %>
+            <% elsif current_user.already_liked?(@post) && @post.created_at > Time.zone.today.beginning_of_day %>
               <%# <% if current_user.likes.find_by(post_id: @post.id) %> 
               <%= link_to "いいねを取り消す", post_like_path(@post), method: :delete, class: "like iine" %>
               <br>
               <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
-            <% else %>
+            <% elsif @post.created_at > Time.zone.today.beginning_of_day %>
               <%= link_to "いいねを押す", post_likes_path(@post), method: :post, class: "like dislike" %>
               <br>
+              <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
+            <% else %>
               <span class="iine-count">いいねの数：<span style="font-size:22px; font-weight:bold;"><%= @likes_count %></span></span>  
             <% end %>
           <% else %>
@@ -46,10 +51,17 @@
 
       </div>
     </div>
-    <p style="margin-top:20px;">いいねしたユーザー</p>
-    <% @post.liked_users.each do |user| %>
-      <li class="user-list"><%= user.nickname %></li>
+  <%# ーーーーーーー　写真一枚（end）　ーーーーーーー %>
+
+
+    投稿日時：<%= @post.start_time.strftime("%Y-%m-%d %H:%M") %>
+    <%= link_to "戻る", :back %>
+    <% if current_user.id == @post.user_id %>
+      <p style="margin-top:20px;">いいねしたユーザー</p>
+      <% @post.liked_users.each do |user| %>
+        <li class="user-list"><%= user.nickname %></li>
       <% end %>
+    <% end %>
     <div class="comment-box">
       <% if current_user %>
         <%= form_with(model: [@post, @comment], class: "comment-box__form", local: true) do |form| %>
@@ -69,7 +81,11 @@
           <p>
             <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
             <%= comment.comment %>
+            <% if current_user.id == comment.user.id %>
+            <span><%=link_to "削除", "/posts/#{comment.post_id}/comments/#{comment.id}", method: :delete %></span>
+            <% end %>
           </p>
+
         <% end %>
       <% end %>
     </div>

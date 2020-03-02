@@ -1,0 +1,13 @@
+<div class="theme-index">
+  <div class="theme-index__lists-box">
+    <p class="theme-word">テーマ一覧</p>
+    <ul class="theme-index__lists-box__lists">
+      <% @themes.each do |theme| %>
+        <a href="/themes/<%=theme.id%>", class="theme-link">
+          <li class="a-theme-list"><%= theme.name %></li>
+        </a>
+      <% end %>
+    </ul>
+    <%= link_to "戻る", :back %>
+  </div>
+</div>

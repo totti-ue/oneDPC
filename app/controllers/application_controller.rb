@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   # サインアウト後のリダイレクト先をトップページへ
   def after_sign_out_path_for(resource)
-      posts_path
+    posts_path
   end
 
   protected

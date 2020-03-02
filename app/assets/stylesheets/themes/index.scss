@@ -1,0 +1,42 @@
+.theme-index {
+  margin-top: 60px;
+  height: auto;
+  width: 100%;
+  &__lists-box {
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 30px;
+    .theme-word {
+      margin: 20px 0px;
+    }
+    &__lists {
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: row wrap;
+      .theme-link {
+        text-decoration: none;
+        margin: 0 20px 20px;
+        border-radius: 2px;
+        .a-theme-list {
+          height: 50px;
+          width: auto;
+          border: 1px solid;
+          background-color: white;
+          color: black;
+          line-height: 50px;
+          padding: 0px 20px;
+        }
+      }
+      .theme-link:hover {
+        box-shadow: 1px 1px 1px 1px gray;
+        border: 2px;
+        font-weight: bold;
+        .a-theme-list:hover {
+          background-color: black;
+          color: white;
+   
+        }
+      }
+    }
+  }
+}

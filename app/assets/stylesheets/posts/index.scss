@@ -1,9 +1,16 @@
 $main-color: #fff;
 $hf-color: #000;
 
+.additional {
+  width: auto;
+  display: inline-block;
+  position: relative;
+  height: auto;
+}
+
 .main {
   animation-name: fade_in1;
-  animation-duration: 4s; //アニメーション時間
+  animation-duration: 3s; //アニメーション時間
   animation-timing-function: ease-out; //アニメーションさせるイージング
   animation-iteration-count: 1; //繰り返し回数
   animation-direction: normal; //往復処理をするかどうか
@@ -27,7 +34,7 @@ $hf-color: #000;
         padding-top: 6px;
         font-size: 20px;
         font-weight: bold;
-        font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
         margin-right: 20px;
       }
       .limit {
@@ -65,32 +72,29 @@ $hf-color: #000;
     background-color: $main-color;
     height: auto;
     width: 100%;
-    margin-top: 100px;
     &__box {
       height: 100%;
       width: 1200px;
       padding-top: 20px;
       margin: 0 auto;
       .box-list{
-        display: flex;
-        list-style: none;
-        justify-content: flex-start;
-        flex-flow: row wrap;
-        padding-left: 60px;
-        padding-bottom: 60px;
+        white-space: nowrap;
+        overflow-x: scroll;
+        height: 360px;
+        padding: 40px 100px 60px;
         &__image{
-          flex: 0 0 19%;
-          border: 1px solid #ccc;
-          background-size: 480px 360px;
           min-height: 360px;
           min-width: 480px;
           margin: 0 20px 20px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          display: inline-block;
+          position: relative;
+
           &--text-contents {
-            height: 100%;
-            width: 100%;
-            color: #fff;
+            height: 360px;
+            width: 480px;
             position: relative;
-            opacity: 0;
             .title {  
               padding-left: 10px;
               padding-right: 50px;
@@ -197,6 +201,7 @@ $hf-color: #000;
           box-shadow: 1px 2px 20px gray;
           transform: scale(1.1);
           transition-duration: 0.3s;
+
         }
 
 
@@ -320,6 +325,22 @@ $hf-color: #000;
           }
         }
       }
+      .theme {
+        position: absolute;
+        top: -30px;
+        left: 0px;
+        color: #fff;
+        background-color: black;
+        margin: 0 20px;
+        width: calc(100% - 40px);
+        text-align: center;
+      }
+      .theme.wrong {
+        background-color: red;
+      }
+      .theme.right {
+        visibility: hidden;
+      }
     }
   }
   .top-page {
@@ -341,7 +362,7 @@ $hf-color: #000;
 // フッター
 .footer {
   background-color: $hf-color;
-  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
   font-weight: bold;
   margin-top: 40px;
   height: 300px;
@@ -357,3 +378,4 @@ $hf-color: #000;
     }
   }
 }
+

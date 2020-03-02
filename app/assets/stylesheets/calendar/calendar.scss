@@ -1,0 +1,64 @@
+.post-title-box {
+  margin-bottom: 6px;
+  height: 10px;
+  .post-title-a-day {
+    text-decoration: none;
+    font-size: 10px;
+  }
+}
+
+.youbi-name {
+  color:black;
+}
+.sun {
+  color: red;
+}
+.sat {
+  color: blue;
+}
+.not_holiday {
+  color: black;
+}
+
+.simple-calendar {
+  .day {
+    color: green;
+  }
+
+  .wday-0 {
+    background-color: mistyrose;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    background-color: lightblue;
+  }
+
+  .today {
+    background-color: lightgoldenrodyellow;
+  }
+  .past {
+    background-color: lightgray;
+  }
+  .future {}
+
+  .start-date {
+    
+  }
+
+  .prev-month {
+    background-color: lightgray;
+    opacity: 0.3;
+  }
+  .next-month { 
+    background-color: lightgray;
+    opacity: 0.3;
+
+  }
+  .current-month {}
+
+  .has-events {}
+}

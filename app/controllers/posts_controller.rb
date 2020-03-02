@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_params, only: [:edit, :show]
-  before_action :todays_theme, except: [:create, :destroy, :edit, :update]
+  before_action :todays_theme, except: [:create, :destroy, :update]
   before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
-    # @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(10)
-    @posts = Post.includes(:user).where("created_at > ?", Date.today).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -52,13 +51,16 @@ class PostsController < ApplicationController
   end
 
   def past
-    @posts = Post.includes(:user).where("created_at < ?", Date.today).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at < ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @themes = Theme.includes(:post_id)
+    @theme = Theme.all
   end
+
+
 
   private
   def post_params
-    params.require(:post).permit(:title, :image, :theme_ids).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :image, :start_time, :theme_ids).merge(user_id: current_user.id)
   end
 
   def set_params
@@ -74,7 +76,7 @@ class PostsController < ApplicationController
   end
 
   def today_num
-    if Time.now.wday == 0 or Time.now.wday == 6
+    if Time.now.wday == 0
        return 1
     else
        return Time.now.day
