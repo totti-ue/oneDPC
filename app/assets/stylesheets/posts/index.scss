@@ -1,5 +1,6 @@
 $main-color: #fff;
-$hf-color: #000;
+$hf-color: aliceblue;
+$font-color: cornflowerblue;
 
 .additional {
   width: auto;
@@ -17,7 +18,7 @@ $hf-color: #000;
   animation-fill-mode: forwards; 
 // メイン（テーマ）
   .main-top {
-    background-color: $main-color;
+    background-color: $font-color;
     height: 40px;
     width: 100%;
     position: fixed;
@@ -369,12 +370,13 @@ $hf-color: #000;
   width: 100%;
   min-width: 1200px;
   z-index: 1;
+  box-shadow: 0 0 5px 3px gray;
   &__box {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     &--logo {
-      color: #fff;
+      color: black;
     }
   }
 }

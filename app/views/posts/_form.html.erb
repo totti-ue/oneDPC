@@ -1,4 +1,4 @@
 <%= form.text_field :title, placeholder: "タイトルを入力してください", class:"form-style" %>
-<%= form.file_field :image, placeholder: "画僧のUrlを挿入してください", class:"form-style" %>
+<%= form.file_field :image, class:"form-style" %>
 <span style="display:none;"><%= form.datetime_select :start_time %></span>
 <%= form.submit "SEND", id: "submit-btn" %>

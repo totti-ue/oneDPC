@@ -21,7 +21,7 @@
     <div class="main-content__box">
       <p class="post-notion"> <%= @nickname %> さんがいいねしている投稿</p>
       <ul class="box-list">      
-        <% @user.liked_posts.each do |post| %>
+        <% @liked.each do |post| %>
           <li class="box-list__image" style="background-image: url(<%= post.image %>);">
             <div class="box-list__image--text-contents">
               <span class="title">タイトル：

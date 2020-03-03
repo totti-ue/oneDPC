@@ -22,9 +22,10 @@
           width: auto;
           border: 1px solid;
           background-color: white;
-          color: black;
+          color: cornflowerblue;
           line-height: 50px;
           padding: 0px 20px;
+          border: 2px solid;
         }
       }
       .theme-link:hover {
@@ -32,7 +33,7 @@
         border: 2px;
         font-weight: bold;
         .a-theme-list:hover {
-          background-color: black;
+          background-color: cornflowerblue;
           color: white;
    
         }
