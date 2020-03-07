@@ -18,14 +18,14 @@
 }
 
 .limit {
-  position: absolute;
-  top: 0px;
-  right: 0;
-  display: block;
-  width: 200px;
   font-size: 12px;
+  position: absolute;
+  right: 0;
+  line-height: 13px;
+  text-align: end;
+  padding-top: 2px;
   #view_clock {
-    line-height: 20px;
+    // line-height: 20px;
     // font-size: 14px;
   }
 }

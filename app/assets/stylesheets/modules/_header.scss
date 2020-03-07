@@ -8,7 +8,6 @@
   top: 0;
   z-index: 1;
   display: flex;
-
   &__box {
     width: 1200px;
     margin: 0 auto;
@@ -17,10 +16,6 @@
       color: $font-color;
       font-weight: bold;
       line-height: 60px;
-      &:hover {
-        color: $hover-color;
-        font-weight: bold;
-      }
     }
     .menu {
       position: relative;
@@ -32,7 +27,7 @@
       max-width: 1000px;
       &__single {
         position: relative;
-        width: 25%;
+        width: 20%;
         height: 60px;
         font-size: 12px;
         line-height: 60px;
@@ -41,6 +36,7 @@
           display: block;
           text-decoration: none;
           color: $font-color;
+          cursor: pointer;
           // &:after {
           //   content: '';
           //   display: inline-block;
@@ -76,6 +72,62 @@
           top: 60px;
           visibility: visible;
           opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px){
+  .header {
+    background-color: white;
+    height: 60px;
+    width: calc(100% - 10px);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    border-bottom: 1px solid black;
+    padding-left: 10px;
+    &__box {
+      width: 100%;
+      margin: 0 auto;
+      .onedpc-logo {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        line-height: 60px;
+        &:hover {
+          opacity: 0.9;
+          color: skyblue;
+        }
+      }
+      .menu {
+        position: relative;
+        float: right;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        width: 60%;
+        // max-width: 1000px;
+        .single1 {
+          display: none;
+        }
+        .single2 {
+          display: none;
+        }
+        .single0 {
+          position: relative;
+          width: 50%;
+          height: 60px;
+          font-size: 12px;
+          line-height: 60px;
+          float: right;
+          .pulldown {
+            display: block;
+            text-decoration: none;
+            color: black;
+          }
         }
       }
     }
