@@ -1,20 +1,15 @@
 @import "reset";
-@import "values";
-@import "comments";
-@import "likes";
-@import "posts";
-@import "style";
-@import "themes";
-@import "users";
+@import "settings/colors";
+@import "settings/font";
+@import "modules/header";
 @import "devise/devise";
-@import "tops/index";
-@import "tops/show";
-@import "posts/index";
-@import "posts/new";
-@import "posts/past";
-@import "posts/rank";
-@import "posts/show";
-@import "users/index";
-@import "calendar/calendar";
-
+@import "page/tops/index";
+@import "page/tops/show";
+@import "page/posts/index";
+@import "page/posts/new";
+@import "page/posts/show";
+@import "page/posts/past";
+@import "page/posts/rank";
+@import "page/users/index";
+@import "vender/calendar";
 
