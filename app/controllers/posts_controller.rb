@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
-    @posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).page(params[:page]).per(10)
+    # where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC")
   end
 
   def new

@@ -1,33 +1,26 @@
-.theme-1>
-, style="margin-top:100px;"&gt;
-\&#x30C6;&#x30FC;&#x30DE;&#xFF1A;#{@theme.name}
+.theme-1{style: "padding-top: 100px;"}
+  = @theme.name
 - @themes.each do |post|
-  %li.box-list__image.past-image{:style => "background-image: url("}
-  = post.image
-  );"&gt;
+  %li.box-list__image.past-image{style: "background-image: url(#{post.image});"}
   .box-list__image--text-contents
     %span.title
-      \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{post.themes.first.name}
+      = post.themes.first.name
       %br
-        \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{post.title}
+      = post.title
       .more
         %span.image_tag= image_tag 'arrow_top.png'
         %ul.more_list
           %li
-            = link_to '詳細', /posts/#{post.id}, class: more_list__a-list
-          - if user_signed_in?  current_user.id == post.user_id
+            = link_to '詳細', "/posts/#{post.id}", class: "more_list__a-list"
+          - if user_signed_in? && current_user.id == post.user_id
             %li
-              = link_to '編集', /posts/#{post.id}/edit, class: more_list__a-list
+              = link_to '編集', "/posts/#{post.id}/edit", class: "more_list__a-list"
             %li
-              = link_to '削除', /posts/#{post.id}, method: :delete, class: more_list__a-list
+              = link_to '削除', "/posts/#{post.id}", method: :delete, class: "more_list__a-list"
       %span.iine-box
         %span.iine-count
-          \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
-          %span{:style => "font-size:22px; font-weight:bold;"}= post.liked_users.count
+          %span{style: "font-size:22px; font-weight:bold;"}
+            = post.liked_users.count
       %span.name
-        %a{:href => "/users/"}
-        = post.user.id
-        ", class="name-link"&gt;
-        \&#x6295;&#x7A3F;&#x8005;
-        %br
-          = post.user.nickname
+        = link_to "#{post.user.nickname}", "/users/#{post.user.id}", class: "name-link"
+

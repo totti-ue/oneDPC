@@ -1,10 +1,9 @@
 .theme-index
   .theme-index__lists-box
-    %p.theme-word &#x30C6;&#x30FC;&#x30DE;&#x4E00;&#x89A7;
+    %p.theme-word
     %ul.theme-index__lists-box__lists
       - @themes.each do |theme|
-        %a{:href => "/themes/"}
-        = theme.id
-        ", class="theme-link"&gt;
-        %li.a-theme-list= theme.name
-  = link_to 戻る, :back
+        = link_to "/themes/#{theme.id}", class: "theme-link" do
+          %li.a-theme-list
+            = theme.name
+  = link_to "戻る", :back

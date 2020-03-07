@@ -1,13 +1,10 @@
 .main
   .main-content.second
-    %p.sentence &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x3000;&#x4E00;&#x89A7;&#x30DA;&#x30FC;&#x30B8; ( &#x30CB;&#x30C3;&#x30AF;&#x30CD;&#x30FC;&#x30E0;&#x3092;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3059;&#x308B;&#x3068;&#x3001;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x30DA;&#x30FC;&#x30B8;&#x3078;&#x79FB;&#x52D5;&#x3057;&#x307E;&#x3059; )
+    %p.sentence
     .main-content__box
       %ul.users-list
         - @users.each.with_index(1) do |user, index|
           %li.one-user
-            = index
-            \.
-            %a{:href => "/users/"}
-            = user.id
-            ", class="username"&gt; #{user.nickname}
-    = link_to 投稿一覧へ戻る, posts_path, class: root-btn
+            = link_to "#{user.nickname}", "/users/#{user.id}"
+
+    = link_to" 投稿一覧へ戻る", posts_path, class: ""

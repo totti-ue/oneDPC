@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.where.not(id: current_user.id) #current_userの情報以外取得
+    @users = User.where.not(id: current_user.id)
   end
 
   def show
