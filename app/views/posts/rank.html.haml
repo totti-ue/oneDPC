@@ -1,0 +1,204 @@
+.mains
+  .mains-top
+    .mains-top__box
+      %p.mains-top__box--todays-theme
+        \&#x672C;&#x65E5;&#x306E;&#x304A;&#x984C;&#xFF1A;
+        %span{:style => "font-weight:bold;"}
+          \&#x300E;&#x3000;#{@today_theme.name}&#x3000;&#x300F;
+      = render partial: "/shared/clock"
+  .ranks-content
+    .ranks-content__box
+      %ul.box-list
+        - if @all_ranks.empty?
+          %p &#x307E;&#x3060;&#x6295;&#x7A3F;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;
+        - elsif @all_ranks.length == 1
+          .first-box
+            %span{:style => "font-size:30px; font-weight:bold; color:gold;text-shadow:1px 1px 1px gray; height"} &#x7B2C;&#x4E00;&#x4F4D;
+            %li.first-box__image.rank-first{:style => "background-image: url("}
+            = @rank_first.image
+            );"&gt;
+            .rank-first--contents
+              %span.title
+                \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@rank_first.themes.first.name}
+                %br
+                  \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@rank_first.title}
+                .more
+                  %span.image_tag= image_tag 'arrow_top.png'
+                  %ul.more_list
+                    %li
+                      = link_to '詳細', /posts/#{@rank_first.id}, class: more_list__a-list
+                    - if user_signed_in?  current_user.id == @rank_first.user_id
+                      %li
+                        = link_to '編集', /posts/#{@rank_first.id}/edit, class: more_list__a-list
+                      %li
+                        = link_to '削除', /posts/#{@rank_first.id}, method: :delete, class: more_list__a-list
+                %span.iine-box
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @rank_first.liked_users.count
+                %span.name
+                  %a{:href => "/users/"}
+                  = @rank_first.user.id
+                  ", class="name-link"&gt;
+                  \&#x6295;&#x7A3F;&#x8005;
+                  %br
+                    = @rank_first.user.nickname
+          %p{:style => "margin-left: 20px;"} 2&#x3064;&#x76EE;&#x3068;&#xFF13;&#x3064;&#x76EE;&#x306E;&#x6295;&#x7A3F;&#x306F;&#x307E;&#x3060;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;
+        - elsif @all_ranks.length == 2
+          .first-box
+            %span{:style => "font-size:30px; font-weight:bold; color:gold;text-shadow:1px 1px 1px gray; height"} &#x7B2C;&#x4E00;&#x4F4D;
+            %li.first-box__image.rank-first{:style => "background-image: url("}
+            = @rank_first.image
+            );"&gt;
+            .rank-first--contents
+              %span.title
+                \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@rank_first.themes.first.name}
+                %br
+                  \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@rank_first.title}
+                .more
+                  %span.image_tag= image_tag 'arrow_top.png'
+                  %ul.more_list
+                    %li
+                      = link_to '詳細', /posts/#{@rank_first.id}, class: more_list__a-list
+                    - if user_signed_in?  current_user.id == @rank_first.user_id
+                      %li
+                        = link_to '編集', /posts/#{@rank_first.id}/edit, class: more_list__a-list
+                      %li
+                        = link_to '削除', /posts/#{@rank_first.id}, method: :delete, class: more_list__a-list
+                %span.iine-box
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @rank_first.liked_users.count
+                %span.name
+                  %a{:href => "/users/"}
+                  = @rank_first.user.id
+                  ", class="name-link"&gt;
+                  \&#x6295;&#x7A3F;&#x8005;
+                  %br
+                    = @rank_first.user.nickname
+          .second-box
+            %span{:style => "font-size:20px; font-weight:bold; color:silver;text-shadow:1px 1px 1px gray; height"} &#x7B2C;&#x4E8C;&#x4F4D;
+            %li.second-box__image.rank-other{:style => "background-image: url("}
+            = @rank_second.image
+            );"&gt;
+            .rank-other--contents
+              %span.title
+                \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@rank_second.themes.first.name}
+                %br
+                  \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@rank_second.title}
+                .more
+                  %span.image_tag= image_tag 'arrow_top.png'
+                  %ul.more_list
+                    %li
+                      = link_to '詳細', /posts/#{@rank_second.id}, class: more_list__a-list
+                    - if user_signed_in?  current_user.id == @rank_second.user_id
+                      %li
+                        = link_to '編集', /posts/#{@rank_second.id}/edit, class: more_list__a-list
+                      %li
+                        = link_to '削除', /posts/#{@rank_second.id}, method: :delete, class: more_list__a-list
+                %span.iine-box
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @rank_second.liked_users.count
+                %span.name
+                  %a{:href => "/users/"}
+                  = @rank_second.user.id
+                  ", class="name-link"&gt;
+                  \&#x6295;&#x7A3F;&#x8005;
+                  %br
+                    = @rank_second.user.nickname
+          %p{:style => "margin-top: 20px;"} 3&#x3064;&#x76EE;&#x306E;&#x6295;&#x7A3F;&#x306F;&#x307E;&#x3060;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;
+        - else @all_ranks.length == 3
+          .first-box
+            %span{:style => "font-size:30px; font-weight:bold; color:gold;text-shadow:1px 1px 1px gray; height"} &#x7B2C;&#x4E00;&#x4F4D;
+            %li.first-box__image.rank-first{:style => "background-image: url("}
+            = @rank_first.image
+            );"&gt;
+            .rank-first--contents
+              %span.title
+                \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@rank_first.themes.first.name}
+                %br
+                  \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@rank_first.title}
+                .more
+                  %span.image_tag= image_tag 'arrow_top.png'
+                  %ul.more_list
+                    %li
+                      = link_to '詳細', /posts/#{@rank_first.id}, class: more_list__a-list
+                    - if user_signed_in?  current_user.id == @rank_first.user_id
+                      %li
+                        = link_to '編集', /posts/#{@rank_first.id}/edit, class: more_list__a-list
+                      %li
+                        = link_to '削除', /posts/#{@rank_first.id}, method: :delete, class: more_list__a-list
+                %span.iine-box
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @rank_first.liked_users.count
+                %span.name
+                  %a{:href => "/users/"}
+                  = @rank_first.user.id
+                  ", class="name-link"&gt;
+                  \&#x6295;&#x7A3F;&#x8005;
+                  %br
+                    = @rank_first.user.nickname
+          .second-box
+            %span{:style => "font-size:20px; font-weight:bold; color:silver;text-shadow:1px 1px 1px gray; height"} &#x7B2C;&#x4E8C;&#x4F4D;
+            %li.second-box__image.rank-other{:style => "background-image: url("}
+            = @rank_second.image
+            );"&gt;
+            .rank-other--contents
+              %span.title
+                \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@rank_second.themes.first.name}
+                %br
+                  \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@rank_second.title}
+                .more
+                  %span.image_tag= image_tag 'arrow_top.png'
+                  %ul.more_list
+                    %li
+                      = link_to '詳細', /posts/#{@rank_second.id}, class: more_list__a-list
+                    - if user_signed_in?  current_user.id == @rank_second.user_id
+                      %li
+                        = link_to '編集', /posts/#{@rank_second.id}/edit, class: more_list__a-list
+                      %li
+                        = link_to '削除', /posts/#{@rank_second.id}, method: :delete, class: more_list__a-list
+                %span.iine-box
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @rank_second.liked_users.count
+                %span.name
+                  %a{:href => "/users/"}
+                  = @rank_second.user.id
+                  ", class="name-link"&gt;
+                  \&#x6295;&#x7A3F;&#x8005;
+                  %br
+                    = @rank_second.user.nickname
+          .second-box.third
+            %span{:style => "font-size:20px; font-weight:bold; color:#7A592F; text-shadow:1px 1px 1px gray; height"} &#x7B2C;&#x4E09;&#x4F4D;
+            %li.second-box__image.rank-other{:style => "background-image: url("}
+            = @rank_third.image
+            );"&gt;
+            .rank-other--contents
+              %span.title
+                \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@rank_third.themes.first.name}
+                %br
+                  \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@rank_third.title}
+                .more
+                  %span.image_tag= image_tag 'arrow_top.png'
+                  %ul.more_list
+                    %li
+                      = link_to '詳細', /posts/#{@rank_third.id}, class: more_list__a-list
+                    - if user_signed_in?  current_user.id == @rank_third.user_id
+                      %li
+                        = link_to '編集', /posts/#{@rank_third.id}/edit, class: more_list__a-list
+                      %li
+                        = link_to '削除', /posts/#{@rank_third.id}, method: :delete, class: more_list__a-list
+                %span.iine-box
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @rank_third.liked_users.count
+                %span.name
+                  %a{:href => "/users/"}
+                  = @rank_third.user.id
+                  ", class="name-link"&gt;
+                  \&#x6295;&#x7A3F;&#x8005;
+                  %br
+                    = @rank_third.user.nickname

@@ -1,0 +1,78 @@
+.show
+  .show__details
+    .show__details__image{:style => "background-image: url("}
+    = @post.image
+    );"&gt;
+    .show__details__image--text-contents
+      %span.show-title
+        \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@post.themes.first.name}
+        %br
+          \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@post.title}
+        .show-more
+          %span.show-image_tag= image_tag 'arrow_top.png'
+          %ul.show-more_list
+            - if user_signed_in?  current_user.id == @post.user_id
+              %li
+                = link_to '編集', /posts/#{@post.id}/edit, method: :get, class: show-more_list__a-list
+              %li
+                = link_to '削除', /posts/#{@post.id}, method: :delete, class: show-more_list__a-list
+        %span.iine-box
+          - if user_signed_in?
+            - if user_signed_in?  current_user.id == @post.user_id
+              %span.iine-count
+                \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
+            - elsif current_user.already_liked?(@post)  @post.created_at  Time.zone.today.beginning_of_day
+              = link_to いいねを取り消す, post_like_path(@post), method: :delete, class: like iine
+              %br
+                %span.iine-count
+                  \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                  %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
+              - elsif @post.created_at  Time.zone.today.beginning_of_day
+                = link_to いいねを押す, post_likes_path(@post), method: :post, class: like dislike
+                %br
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
+                - else
+                  %span.iine-count
+                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                    %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
+              - else
+                %span.iine-count
+                  \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                  %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
+            %span.show-name
+              %a{:href => "/users/"}
+              = @post.user.id
+              ", class="show-name-link"&gt;
+              \&#x6295;&#x7A3F;&#x8005;
+              %br
+                = @post.user.nickname
+        \&#x6295;&#x7A3F;&#x65E5;&#x6642;&#xFF1A;#{@post.start_time.strftime(%Y-%m-%d %H:%M)}
+        \#{link_to 戻る, :back}
+        - if current_user.id == @post.user_id
+          %p{:style => "margin-top:20px;"} &#x3044;&#x3044;&#x306D;&#x3057;&#x305F;&#x30E6;&#x30FC;&#x30B6;&#x30FC;
+          - @post.liked_users.each do |user|
+            %li.user-list= user.nickname
+        .comment-box
+          - if current_user
+            = form_with(model: [@post, @comment], class: comment-box__form, local: true) do |form|
+              = form.text_area :comment, placeholder: コメントする, rows: 2
+              .submit-box
+                = form.submit SEND, class: submit-box__send-btn
+          - else
+            %strong
+              %p{:style => "text-align:center;"} &#x203B;&#x203B;&#x203B; &#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6295;&#x7A3F;&#x306B;&#x306F;&#x65B0;&#x898F;&#x767B;&#x9332;/&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3059; &#x203B;&#x203B;&#x203B;
+        .comments
+          %h4 &#xFF1C;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x4E00;&#x89A7;&#xFF1E;
+          - if @comments
+            - @comments.each do |comment|
+              %p
+                %strong
+                  = link_to comment.user.nickname, /users/#{comment.user_id}
+                  \&#xFF1A;
+                = comment.comment
+                - if current_user.id == comment.user.id
+                  %span= link_to 削除, /posts/#{comment.post_id}/comments/#{comment.id}, method: :delete
+        = link_to 投稿一覧へ戻る, /posts, class:back-to-toppage

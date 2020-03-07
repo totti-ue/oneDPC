@@ -1,0 +1,18 @@
+.main
+  .main-top
+    .main-top__box
+      %p.main-top__box--todays-theme
+        本日のお題：
+        %span{:style => "font-weight:bold;"}
+          『　#{@today_theme.name}　』
+      = render partial: "/shared/clock"
+      .new-message
+        - if current_user.posts.count >= 1 && current_user.posts.last.created_at > Time.zone.today.beginning_of_day
+          %p 一日に投稿できるのは一枚のみです。
+        - else
+          = form_with(model: @post, local: true, id: "message-form") do |form|
+            %p.text
+              新規投稿する
+            %span.select-theme 投稿するテーマを選択してください
+            = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
+            = render partial: "form", locals: { form: form}

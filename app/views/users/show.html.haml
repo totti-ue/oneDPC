@@ -1,0 +1,48 @@
+.main
+  .main-content.second
+    .main-content__box
+      = link_to 'アカウント編集', "/users/edit/#{current_user}"
+      = link_to "戻る", :back
+      %p.post-notion
+        = @nickname
+        \&#x3055;&#x3093;&#x306E;&#x6295;&#x7A3F;&#x4E00;&#x89A7;
+      %ul.box-list
+        - @posts.each do |post|
+          = render partial: "/posts/post", locals: { post: post }
+        = paginate(@posts)
+    .main-content__box
+      %p.post-notion
+        = @nickname
+        \&#x3055;&#x3093;&#x304C;&#x3044;&#x3044;&#x306D;&#x3057;&#x3066;&#x3044;&#x308B;&#x6295;&#x7A3F;
+      %ul.box-list
+        - @liked.each do |post|
+          %li.box-list__image{:style => "background-image: url("}
+          = post.image
+          );"&gt;
+          .box-list__image--text-contents
+            %span.title
+              \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;
+              \#{post.title}
+            .more
+              %span.image_tag= image_tag 'arrow_top.png'
+              %ul.more_list
+                %li
+                  = link_to '詳細', /posts/#{post.id}, class: more_list__a-list
+                - if user_signed_in?  current_user.id == post.user_id
+                  %li
+                    = link_to '編集', /posts/#{post.id}/edit, class: more_list__a-list
+                  %li
+                    = link_to '削除', /posts/#{post.id}, method: :delete, class: more_list__a-list
+            %span.iine-box
+              %span.iine-count
+                \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
+                %span{:style => "font-size:22px; font-weight:bold;"}= post.liked_users.count
+            %span.name
+              %a{:href => "/users/"}
+              = post.user.id
+              ", class="name-link"&gt;
+              \&#x6295;&#x7A3F;&#x8005;
+              %br
+                = post.user.nickname
+      = paginate(@liked)
+    %span{:style => "padding:0 120px 60px; float:right;"}= link_to 投稿一覧へ戻る, /posts, class:back-to-toppage

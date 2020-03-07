@@ -1,0 +1,28 @@
+.devise-views
+  .devise-views__box
+    %p.sign-up ユーザー登録
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.label :nickname
+        %i{:style => "color:gray;"} ( 6 文字以内 )
+        %br/
+        = f.text_field :nickname, autofocus: true, maxlength: "6", class: "field__form"
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "field__form"
+      .field
+        = f.label :password
+        - if @minimum_password_length
+          %i{:style => "color:gray;"}
+            (#{@minimum_password_length} 文字以上)
+        %br/
+        = f.password_field :password, autocomplete: "new-password", class: "field__form"
+      .field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "field__form"
+      .actions
+        = f.submit "登録する", class: "actions--btn"
+    = render "devise/shared/links"
