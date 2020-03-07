@@ -1,0 +1,32 @@
+.search-form {
+  .search-input {
+    height: 20px;
+    width: 130px;
+    margin-top: 5px;
+    color: #ccc;
+    font-size: 12px;
+    line-height: 1;
+    box-sizing: border-box;
+    padding: 4px 24px 4px 10px;
+    border: none;
+    background: #414349;
+  }
+  .search-btn {
+    height: 20px;
+    width: 60px;
+  }
+}
+
+.limit {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  display: block;
+  width: 200px;
+  font-size: 12px;
+  #view_clock {
+    line-height: 20px;
+    // font-size: 14px;
+  }
+}
+

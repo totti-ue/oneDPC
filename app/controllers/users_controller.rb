@@ -15,5 +15,9 @@ class UsersController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 
+  def user_params
+    params.require(:user).permit(:name, :email)
+  end
+
 end
   
