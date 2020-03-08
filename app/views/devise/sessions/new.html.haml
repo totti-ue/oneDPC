@@ -1,20 +1,22 @@
-.devise-views
-  .devise-views__box
-    %p.sign-up ログイン
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: "field__form"
-      .field
-        = f.label :password
-        %br/
-        = f.password_field :password, autocomplete: "current-password", class: "field__form"
-      - if devise_mapping.rememberable?
-        .field
-          = f.check_box :remember_me
-          = f.label :remember_me
-      .actions
-        = f.submit "ログイン", class: "actions--btn actions--btn--login"
-    .shared-links
-      = render "devise/shared/links"
+.devise-view
+  .devise-view__wrapper
+    .action-title
+      ログイン
+    .action-contents
+      .action-contents__forms
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .input-box
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-box__form"
+          .input-box
+            = f.label :password
+            %br/
+            = f.password_field :password, autocomplete: "current-password", class: "input-box__form"
+          - if devise_mapping.rememberable?
+            .input-box
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .action-submit
+            = f.submit "ログイン", class: "submit-btn"
+          = render "devise/shared/links"

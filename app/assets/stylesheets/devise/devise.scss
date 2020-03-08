@@ -1,106 +1,64 @@
-.devise-views {
-  padding: 100px;
-  height: 100%;
-  &__box {
+.devise-view {
+  height: calc(100% - 100px);
+  width: 100%;
+  padding-top: 100px;
+  
+  &__wrapper {
+    width: 400px;
+    height: auto;
+    overflow: auto;
     margin: 0 auto;
-    width: 500px;
-    border: 1px solid black;
+    border: 1px solid lightgray;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    .sign-up {
-      height: 50px;
-      padding-left: 20px;
-      border-bottom: 1px solid gray;
-      line-height: 50px;
-      font-size: 18px;
+    .action-title {
+      height: 40px;
+      background-color: gray;
+      padding-left: 10px;
+      line-height: 40px;
+      color: white;
     }
-    // ーーーーーーーーー新規登録画面用ーーーーーーーーーーーーーー
-    #new_user {
+    .action-contents {
+      width: calc(100% - 40px);
       padding: 20px;
-      .field {
-        height: auto;
-        padding-bottom: 10px;
-        &__form {
-          height: 40px;
-          width: 100%;
-          margin-top: 5px;
-          border-radius: 2px;
-        }
-        &__form:hover {
-          background-color: blanchedalmond;
-
-        }
-      }
-    }
-    .actions {
-      height: 50px;
-      padding: 30px 40px;
-      display: flex;
-      justify-content: center;
-      &--btn {
+      &__forms {
         width: 100%;
-        background-color: rgb(255, 208, 0);
-        border-radius: 3px;
-      }
-      &--btn--login {
-        background-color: white;
-      }
-      &--btn:hover {
-        box-shadow: 3px 2px 5px gray;
-      }
-    }
-    .shared-links {
-      padding: 0 20px 40px;
-    }
-    // ーーーーーーーーー新規登録画面用ーーーーーーーーーーーーーー
-    #edit_user {
-      padding: 20px;
-      .field {
         height: auto;
-        padding-bottom: 10px;
-        &__form {
-          height: 40px;
-          width: 100%;
-          margin-top: 5px;
-          border-radius: 2px;
-        }
-        &__form:hover {
-          background-color: blanchedalmond;
-
-        }
-      }
-    }
-    .actions {
-      height: 50px;
-      padding: 30px 40px;
-      display: flex;
-      justify-content: center;
-      &--btn {
-        width: 100%;
-        background-color: rgb(255, 208, 0);
-        border-radius: 3px;
-      }
-      &--btn--login {
+        overflow: auto;
         background-color: white;
-      }
-      &--btn:hover {
-        box-shadow: 3px 2px 5px gray;
+        padding: 10px 0;
+        .input-box {
+          font-size: 14px;
+          margin-bottom: 20px;
+          &__form {
+            width: calc(100% - 20px);
+            padding-left: 5px;
+            height: 30px;
+          }
+        }
+        .nickname {
+          width: 60%;
+        }
+        .action-submit {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 60px;
+          margin-bottom: 20px;
+          .submit-btn {
+            background-color: cornflowerblue;
+            color: white;
+            font-weight: bold;
+            width: 80%;
+            height: 40px;
+            border-radius: 5px;
+            &:hover {
+              height: 42px;
+              opacity: 0.8;
+
+            }
+          }
+        }
       }
     }
-    
-  }
-  .delete-btn {
-    height: 30px;
-    background-color: snow;
-    color: darkgray;
-    padding: 0 20px;
-  }
-  .delete-btn:hover {
-    background-color: gray;
-    color: white;
-    box-shadow: 1px 1px 1px 1px gray;
   }
 }

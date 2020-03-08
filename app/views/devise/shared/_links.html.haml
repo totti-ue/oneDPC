@@ -1,13 +1,13 @@
 - if controller_name != 'sessions'
   %span{:style => "margin: 0 20px 30px;"}
-    if you already have an account
+    ユーザー登録済みの方はこちら
     %br/
-    = link_to "Log in", new_session_path(resource_name)
+    = link_to "サインイン", new_session_path(resource_name)
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  = link_to "Sign up", new_registration_path(resource_name)
+  = link_to "新規登録する", new_registration_path(resource_name)
   %br/
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-  = link_to "Forgot your password?", new_password_path(resource_name)
+  = link_to "パスワードをお忘れですか？", new_password_path(resource_name)
   %br/
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)

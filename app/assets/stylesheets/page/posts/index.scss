@@ -1,9 +1,16 @@
-// .additional {
-//   width: auto;
-//   display: inline-block;
-//   position: relative;
-//   height: auto;
-// }
+.theme-link {
+  text-decoration: none;
+  color: white;
+  .theme-tag {
+    font-size: 14px;
+    background-color: skyblue;
+    border-radius: 10px;
+    padding: 4px 10px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+}
 
 .main {
   animation-name: fade_in1;
@@ -23,13 +30,11 @@
     margin-top: 60px;
     border-bottom: 3px solid lightgray;
     z-index: 2;
-    // position: relative;
     &__box {
       height: 100%;
-      width: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      justify-content: flex-start;
       position: relative;
       &--todays-theme {
         font-size: 15px;
@@ -40,8 +45,186 @@
       }
     }
   }
+  .section-one {
+    color: white;
+    background-color: $hf-color;
+    height: auto;
+    margin-top: 90px;
+    padding: 40px 0 60px;
+    display: flex;
+    flex-direction: column;
+    &__notice-msg {
+      position: fixed;
+      top: 120px;
+      left: 0;
+    }
+    &__yesterdays-top {
+      margin: 0 auto;
+      width: 70%;    
+      &__img-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+        float: left;
+        width: 582px;
+      }
+
+    }
+    &__main {
+      display: flex;
+      margin: 0 auto;
+      width: 70%;
+      height: auto;
+      &__left {
+        height: 360px;
+        width: 582px;
+      }
+      &__right {
+        height: 340px;
+        width: calc(100% - 30px);
+        padding: 10px 10px 10px 20px;
+        position: relative;
+        .yesterdays-top-img {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 20px;
+          height: 25px;
+          line-height: 25px;
+          border-bottom: 1px solid white;
+        }
+        .img-detail {
+          &__list {
+            font-size: 14px;
+            padding-bottom: 10px;
+            .theme-link {
+
+              .theme-tag {
+              }
+            }
+            .name-link {
+              text-decoration: none;
+              color: white;
+              &:hover {
+                color: lightblue;
+              }
+            }
+          }
+        }
+        .likes-favorites-box {
+          display: flex;
+          height: 40px;
+          width: calc(100% - 30px);
+          position: absolute;
+          bottom: 0;
+          margin: 0;
+          &__count-box {
+            display: block;
+            height: 100%;
+            width: 50%;
+            border: 1px solid gray;
+            text-align: center;
+            line-height: 40px;
+          }
+          .likes-count:hover {
+            background-color: pink;
+          }
+          .favorites-count:hover {
+            background-color: lightblue;
+          }
+        }
+      }
+    }
+  }
+  .section-two {
+    height: 190px;
+    display: flex;
+    &__left {
+      background-color: gray;
+      width: 200px;
+      padding: 10px;
+    }
+    &__right {
+      background-color: black;
+      width: calc(100% - 200px);
+      padding: 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      .img-box {
+        background-color: white;
+        height: 150px;
+        width: 150px;
+        margin-right: 20px;
+        display: inline-block;
+      }
+    }
+  }
+  .section-three {
+    height: auto;
+    width: 100%;
+    overflow: auto;
+    &__top {
+      height: auto;
+      width: calc(100% - 100px);
+      padding: 120px 0;
+      margin: 0 50px;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 2px solid lightgray;
+      .sec3-text {
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;   
+      }
+      .todays-posts {
+        font-size: 50px;
+      }
+      .posts-theme {
+        padding: 10px 0;
+      }
+    }
+    &__contents {
+      max-width: 1200px;
+      padding-top: 80px;
+      width: 100%;
+      margin: 0 auto;
+      &__a-post{
+        #a-post-img {
+        }
+        .a-post-detail {
+          .theme-wrong-notice {
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    background-color: $hf-color;
+    // font-weight: bold;
+    margin-top: 40px;
+    height: 300px;
+    width: 100%;
+    color: white;
+    // z-index: 1;
+    // box-shadow: 0 0 5px 3px gray;
+    &__contents {
+      padding-top: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      // color: shite;
+      &--logo {
+        color: black;
+      }
+    }
+  }
+
 }
 
+
+
+// 携帯サイズの時
 
 @media screen and (max-width: 480px){
   .main {
@@ -56,7 +239,6 @@
       border-bottom: 3px solid lightgray;
       z-index: 2;
       color: white;
-      // position: relative;
       &__box {
         height: 100%;
         display: flex;
@@ -83,324 +265,3 @@
 
 }
 
-
-
-
-  // メイン（コンテント）
-//   .main-content{
-//     background-color: white;
-//     height: auto;
-//     width: 100%;
-//     &__box {
-//       height: 100%;
-//       width: 1200px;
-//       padding-top: 20px;
-//       margin: 0 auto;
-//       .box-list{
-//         white-space: nowrap;
-//         overflow-x: scroll;
-//         height: 360px;
-//         padding: 40px 100px 60px;
-//         &__image{
-//           min-height: 360px;
-//           min-width: 480px;
-//           margin: 0 20px 20px;
-//           background-size: cover;
-//           background-repeat: no-repeat;
-//           display: inline-block;
-//           position: relative;
-//           &--text-contents {
-//             height: 360px;
-//             width: 480px;
-//             position: relative;
-//             .title {  
-//               padding-left: 10px;
-//               padding-right: 50px;
-//               font-size: 16px;
-//               display: block;
-//               position: absolute;
-//               top: 10px;
-//             }
-//             .more {
-//               position: absolute;
-//               top: 10px;
-//               right: 0px;
-//               padding-top: 5px;
-//               width: 50px;
-//               display: flex;
-//               flex-direction: column;
-//               .image_tag {
-//                 display: flex;
-//                 justify-content: center;
-//               }
-//               .more_list {
-//                 overflow: hidden;
-//                 position: absolute;
-//                 top: 0px;
-//                 padding-top: 15px;
-//                 display: flex;
-//                 flex-direction: column;
-//                 height: 2px;
-//                 &__a-list {
-//                   text-decoration: none;
-//                   color: white;
-//                   &:hover {
-//                     color: yellow;
-//                     font-weight: bold;
-//                   }
-//                 }
-                
-//               }
-//               .more_list:hover {
-//                 overflow: visible;
-//                 animation-name: fade_in1;
-//                 animation-duration: 0.5s; //アニメーション時間
-//                 animation-timing-function: ease-out; //アニメーションさせるイージング
-//                 animation-iteration-count: 1; //繰り返し回数
-//                 text-shadow: 3px 2px 5px gray;
-//               }
-//             }
-//             .iine-box {
-//               position: absolute;
-//               bottom: 20px;
-//               left: 20px;
-//               .iine-count {
-//                 font-size: 14px;
-//               }
-//               .like {
-//                 text-decoration: none;
-//                 color: #fff;
-//                 opacity: 0.5;
-//               }
-//               .iine {
-//                 opacity: 1;
-//                 color: rgb(230, 101, 123);
-//               }
-//               .like:hover {
-//                 text-shadow: 3px 2px 5px gray;
-//                 opacity: 1;
-//               }
-//               .iine:hover {
-//                 color: blue;
-//               }
-//               .dislike:hover {
-//                 color: rgb(230, 101, 123);
-//               }
-//             }
-//             .name {
-//               padding-right: 10px;
-//               font-size: 18px;
-//               display: block;
-//               position: absolute;
-//               bottom: 10px;
-//               right: 0;
-//               color: #fff;
-//               .name-link {
-//                 text-decoration: none;
-//                 color: #fff;
-//               }
-//               &:hover .name-link{
-//                 text-shadow: 3px 2px 5px gray;
-//                 font-weight: bold;
-//                 color: skyblue;
-//               }
-//             }
-//             &:hover {
-//               opacity: 1;
-//               animation-name: fade_in1;
-//               animation-duration: 0.5s; //アニメーション時間
-//               animation-timing-function: ease-out; //アニメーションさせるイージング
-//               animation-iteration-count: 1; //繰り返し回数
-//               text-shadow: 3px 2px 5px gray;
-//             }
-//           } 
-//           &:hover {
-//             color: white;
-//             box-shadow: 1px 2px 20px gray;
-//             transform: scale(1.1);
-//             transition-duration: 0.3s;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-
-
-// フッター
-.footer {
-  background-color: $hf-color;
-  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
-  font-weight: bold;
-  margin-top: 40px;
-  height: 300px;
-  width: 100%;
-  min-width: 1200px;
-  z-index: 1;
-  box-shadow: 0 0 5px 3px gray;
-  &__box {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    &--logo {
-      color: black;
-    }
-  }
-}
-
-
-
-
-
-
-
-//         .first-box {
-//           background-image: url('https://d1f5hsy4d47upe.cloudfront.net/63/6333d84293f6fd6a764a44556b2b2e3d_t.jpeg');
-//           background-size: cover;
-//           width: 720px;
-//           margin: 20px;
-//           padding: 30px 130px;
-//           border: 10px solid gold;
-//           .rank-first {
-//             background-size: 720px 540px;
-//             min-width: 720px;
-//             min-height: 540px;
-//             &--contents {
-//               height: 540px;
-//               width: 720px;
-//               color: #fff;
-//               position: relative;
-//               opacity: 1;
-//               .title {  
-//                 padding-left: 10px;
-//                 padding-right: 50px;
-//                 font-size: 16px;
-//                 display: block;
-//                 position: absolute;
-//                 top: 10px;
-//               }
-//               .more {
-//                 position: absolute;
-//                 top: 10px;
-//                 right: 0px;
-//                 padding-top: 5px;
-//                 width: 50px;
-//                 display: flex;
-//                 flex-direction: column;
-//                 .image_tag {
-//                   display: flex;
-//                   justify-content: center;
-//                 }
-//                 .more_list {
-//                   overflow: hidden;
-//                   position: absolute;
-//                   top: 0px;
-//                   padding-top: 15px;
-//                   display: flex;
-//                   flex-direction: column;
-//                   height: 2px;
-//                   &__a-list {
-//                     text-decoration: none;
-//                     color: white;
-//                   }
-//                   &__a-list:hover {
-//                     color: yellow;
-//                     font-weight: bold;
-//                   }
-//                 }
-//                 .more_list:hover {
-//                   overflow: visible;
-//                   animation-name: fade_in1;
-//                   animation-duration: 0.5s; //アニメーション時間
-//                   animation-timing-function: ease-out; //アニメーションさせるイージング
-//                   animation-iteration-count: 1; //繰り返し回数
-//                   text-shadow: 3px 2px 5px gray;
-//                 }
-//               }
-//               .iine-box {
-//                 position: absolute;
-//                 bottom: 20px;
-//                 left: 20px;
-//                 .iine-count {
-//                   font-size: 14px;
-//                 }
-//                 .like {
-//                   text-decoration: none;
-//                   color: #fff;
-//                   opacity: 0.5;
-//                 }
-//                 .iine {
-//                   opacity: 1;
-//                   color: rgb(230, 101, 123);
-//                 }
-//                 .like:hover {
-//                   text-shadow: 3px 2px 5px gray;
-//                   opacity: 1;
-//                 }
-//                 .iine:hover {
-//                   color: blue;
-//                 }
-//                 .dislike:hover {
-//                   color: rgb(230, 101, 123);
-//                 }
-//               }
-//               .name {
-//                 padding-right: 10px;
-//                 font-size: 18px;
-//                 display: block;
-//                 position: absolute;
-//                 bottom: 10px;
-//                 right: 0;
-//                 color: #fff;
-//                 .name-link {
-//                   text-decoration: none;
-//                   color: #fff;
-//                 }
-//               }
-//               .name:hover .name-link{
-//                 text-shadow: 3px 2px 5px gray;
-//                 font-weight: bold;
-//                 color: skyblue;
-//               }
-//             } 
-//             &--contents:hover {
-//               opacity: 1;
-//             }
-//           }
-//         }
-//       }
-//       .theme {
-//         position: absolute;
-//         top: -30px;
-//         left: 0px;
-//         color: #fff;
-//         background-color: black;
-//         margin: 0 20px;
-//         width: calc(100% - 40px);
-//         text-align: center;
-//       }
-//       .theme.wrong {
-//         background-color: red;
-//       }
-//       .theme.right {
-//         visibility: hidden;
-//       }
-//     }
-//   }
-//   .top-page {
-//     float: right;
-//     margin-right: 160px;
-//     margin-bottom: 100px;
-//   }
-//   .second {
-//     margin-top: 60px;
-//     .main-content__box {
-//       .post-notion {
-//         padding-left: 60px;
-//         height: 60px;
-//         font-size: 16px;
-//       }
-//     }
-//   }
-// }

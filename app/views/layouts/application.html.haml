@@ -29,6 +29,7 @@
                 = current_user.nickname
               %ul.menu__second-level
                 %li= link_to "マイページ", "/users/#{current_user.id}", class: "pulldown-list"
+                %li= link_to "アカウント編集", "/users/edit", class: "pulldown-list"
                 %li= link_to "投稿する", "/posts/new", class: "pulldown-list"
                 %li= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "pulldown-list"
             %li.menu__single.single2

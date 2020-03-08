@@ -1,4 +1,18 @@
-%li.box-list__image.past-image{style: "background-image: url(#{post.image})"}
+= link_to "/users/#{post.user.id}", class: "a-post" do
+  %li
+    = image_tag asset_path("#{post.image}"), id: "a-post-img"
+    .a-post__detail
+      .a-post__detail__title
+        = post.title
+      .a-post__detail__post-user
+        by 
+        = post.user.nickname
+      - if post.themes.first.name != @today_theme.name
+        .theme-wrong-notice
+          テーマを確認してください
+
+
+-# %li.box-list__image.past-image{style: "background-image: url(#{post.image})"}
   -# .box-list__image--text-contents
   -#   %span.title
   -#     = post.themes.first.name

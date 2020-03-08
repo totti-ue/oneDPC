@@ -83,11 +83,12 @@ ja:
   helpers:
     label:
       user:
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード(確認)
-        remember_me: パスワードを記憶
-        nickname: ニックネーム
+        email: "メールアドレス"
+        password: "パスワード"
+        password_new: "新しいパスワード"
+        password_confirmation: "パスワード(確認)"
+        remember_me: "パスワードを記憶"
+        nickname: "ニックネーム"
 
 
 
@@ -112,10 +113,10 @@ ja:
               confirmation: "が内容とあっていません。"
     attributes:
       user:
-        current_password: "現在のパスワード"
+        current_password: "現在のパスワードを入力"
         name: 名前
         email: "メールアドレス"
-        password: "パスワード"
+        password: "新しいパスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
     models:

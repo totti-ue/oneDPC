@@ -7,16 +7,102 @@
         = @today_theme.name
         』
       = render partial: "/shared/clock"
-  %p#notice{style: "margin-top:120px; color:black;"}
-    = notice
+
 
   .section-one
+    %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
+      = notice
+    %p.section-one__yesterdays-top
+      %span.section-one__yesterdays-top__img-title
+        昨日の一枚  
+    .section-one__main
+      = link_to "#" do
+        = image_tag asset_path("#{@posts.second.image}"), class: "section-one__main__left"
+      .section-one__main__right
+        %p.yesterdays-top-img
+          投稿詳細
+        %ul.img-detail
+          %li.img-detail__list
+            テーマ：
+            = link_to "#", class: "theme-link" do
+              %span.theme-tag.tag1
+                = @posts.second.themes.first.name   
+          %li.img-detail__list
+            タイトル：
+            = @posts.second.title
+          %li.img-detail__list
+            メッセージ：
+            〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
+          %li.img-detail__list
+            投稿日：
+            = @posts.second.created_at
+          %li.img-detail__list
+            投稿者：
+            = link_to "#{@posts.second.user.nickname}", "#", class: "name-link"
+        .likes-favorites-box
+          %span.likes-favorites-box__count-box.likes-count
+            ❤️ 
+            = @likes
+          %span.likes-favorites-box__count-box.favorites-count
+            ⭐️ 5
 
 
 
+  .section-two
+    .section-two__left
+      nickname さんの投稿
+    %ul.section-two__right
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
+      %li.img-box
+        画像
 
 
+  .section-three
+    .section-three__top
+      %h1.todays-posts.sec3-text
+        Today's Posts
+      %p.posts-theme.sec3-text
+        本日のテーマ　
+        %br
+      %span.sec3-text
+        = link_to "#", class: "theme-link" do
+          %span.theme-tag
+            = @today_theme.name 
+    
+    %ul.section-three__contents
+      - @posts.each do |post|
+        = render partial: "post", locals: { post: post }
 
+      = paginate(@posts)
+
+
+  %footer.footer
+    .footer__contents
+      ここはフッターです
+
+
+  
   -# .main-content
   -#   .main-content__box
   -#     %ul.box-list
