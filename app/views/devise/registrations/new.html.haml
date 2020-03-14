@@ -1,0 +1,28 @@
+.devise-view
+  .devise-view__wrapper
+    .action-title
+      アカウント新規登録
+    .action-contents
+      .action-contents__forms
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .input-box.nickname
+            = f.label :nickname
+            %i{:style => "color:gray;"} ( 6 文字以内 )
+            %br/
+            = f.text_field :nickname, autofocus: true, maxlength: "6", class: "input-box__form"
+          .input-box
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-box__form"
+          .input-box
+            = f.label :password
+            - if @minimum_password_length
+              %i{:style => "color:gray;"}
+                ( #{@minimum_password_length} 文字以上 )
+            %br/
+            = f.password_field :password, autocomplete: "new-password", class: "input-box__form"
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認のため、もう一度入力してください", class: "input-box__form"
+          .action-submit
+            = f.submit "登録する", class: "submit-btn"
+          = render "devise/shared/links"

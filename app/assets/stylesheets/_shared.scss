@@ -1,0 +1,58 @@
+a {
+  text-decoration: none;
+  color: lightblue;
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.empty-box {
+  height: 92px;
+}
+
+
+
+// いいねぼたん
+.likes-favorites-box {
+  display: flex;
+  height: 40px;
+  width: calc(100% - 30px);
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  &__count-box {
+    display: block;
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    width: 50%;
+    border: 1px solid gray;
+    text-align: center;
+    line-height: 40px;
+  }
+  .likes-count:hover {
+    background-color: pink;
+    .icon-heart {
+      color: red;
+    }
+  }
+  .favorites-count:hover {
+    background-color: lightblue;
+  }
+}
+
+.dismiss-like {
+  color: red;
+  // background-color: pink;
+}
+
+.dismiss-favorite {
+  color: yellow;
+  // background-color: lightblue;
+}
+
+.icon-star {
+  &:hover {
+    color: yellow;
+  }
+}

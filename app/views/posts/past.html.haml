@@ -1,0 +1,37 @@
+.main
+  .main-top
+    .main-top__box
+      %p.main-top__box--todays-theme &#x904E;&#x53BB;&#x306E;&#x6295;&#x7A3F;&#x4E00;&#x89A7;
+      = render partial: "/shared/clock"
+  = succeed "," do
+    %div
+  %h1
+  -#   \&#x904E;&#x53BB;&#x306E;&#x6295;&#x7A3F;
+  -#   %span= link_to テーマ一覧はこちら, /themes
+  -# %br
+  -#   = month_calendar events: @posts do |date, posts|
+  -#     - if date.wday == 0
+  -#       %a{:href => "/posts/search"}, id: "theme-link", class: "sun"&gt;
+  -#       date.day
+  -#       %br
+  -#       %span= @theme.first.name
+  -#     - elseif date.wday == 6
+  -#       %a{:href => "/themes"}, id: "theme-link", class: "sat"&gt;
+  -#       date.day
+  -#       %br
+  -#       %span= @theme.find(date.day).name
+  -#     - else
+  -#       %a{:href => "/themes"}, id:  "theme-link", class: "not_holiday"&gt;
+  -#       {date.day}
+  -#       %br
+  -#       %span= @theme.find(date.day).name
+  -#     - posts.first(3).each do |post|
+  -#       .post-title-box
+  -#         = link_to post.title, post, class: post-title-a-day
+  -# .main-content
+    .main-content__box
+      %ul.box-list
+        - @posts.each do |post|
+          = render partial: post, locals: { post: post }
+        = paginate(@posts)
+  = link_to "メインページへ戻る", "/posts", class:"top-page"

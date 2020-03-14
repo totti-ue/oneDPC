@@ -1,0 +1,61 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %title OneDPC
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+    %link{href: "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css", rel: "stylesheet"}
+    %script{src: "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js", type: "text/javascript"}
+
+  -# <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+
+  %body
+
+
+    %header.header
+      .header__box
+        = link_to "ONE DPC", "/posts", class: "onedpc-logo"
+        - if user_signed_in?
+          %ul.menu
+            %li.menu__single.single1
+              .pulldown 
+                = current_user.nickname
+              %ul.menu__second-level
+                %li= link_to "マイページ", "/users/#{current_user.id}", class: "pulldown-list"
+                %li= link_to "アカウント編集", "/users/edit", class: "pulldown-list"
+                %li= link_to "投稿する", "/posts/new", class: "pulldown-list"
+                %li= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "pulldown-list"
+            %li.menu__single.single2
+              .pulldown 
+                投稿について
+              %ul.menu__second-level
+                %li= link_to "テーマ一覧", "/themes", class: "pulldown-list"
+                %li= link_to "ユーザー一覧", "/users", class: "pulldown-list"
+                %li= link_to "今日のTOP3", "/posts/rank", class: "pulldown-list"
+                %li= link_to "過去の投稿", "/posts/past", class: "pulldown-list"
+            %li.menu__single.single0
+              = link_to "コンテスト説明", "/tops/show", class: "pulldown"
+        - else
+          %ul.menu
+            %li.menu__single
+              = link_to "新規登録", new_user_registration_path, class: "pulldown"
+            %li.menu__single
+              = link_to "サインイン", new_user_session_path, class: "pulldown"
+            %li.menu__single
+              = link_to "投稿について", "#", class: "pulldown"
+              %ul.menu__second-level
+                %li= link_to "テーマ一覧", "/themes", class: "pulldown-list"
+                %li= link_to "今日のTOP3", "/posts/rank", class: "pulldown-list"
+                %li= link_to "過去の投稿", "/posts/past", class: "pulldown-list"
+            %li.menu__single.single0
+              = link_to "コンテスト説明", "/tops/show", class: "pulldown"
+
+
+    = yield

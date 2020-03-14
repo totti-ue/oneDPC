@@ -1,0 +1,42 @@
+%main
+  .bg-fixed.bg-1
+    .msg
+      %p.msg.msg-contents
+        One
+        %br
+        Day Photo Contest
+        %br 
+        %p{:style => "position: relative; margin-top: 500px;"}
+  .bg-scrolling.bg-color-1
+    .bg-container
+      %p.pg-theme
+        %i One Day Photo Cotest
+  .bg-fixed.bg-2
+    .msg
+      %p.msg.msg-contents
+  .bg-scrolling.bg-color-2
+    .bg-container
+      %p.pg-theme
+  .bg-fixed.bg-3
+    .msg
+      %p.msg.msg-contents
+  .bg-scrolling.bg-color-3
+    .bg-container
+      %p.pg-theme
+        .theme-table
+          - i = 1
+          - @theme.each do |theme|
+            .theme-one
+              = i
+              = theme.name
+              - i += 1
+        %p{:style => "padding-top:10px;"}
+
+  .bg-fixed.bg-4
+    .msg
+      %p.msg.msg-contents 
+    .btn-links
+      = link_to "TOP PAGE", "/posts", class: "top-btn"
+      = link_to "SING IN", "/users/sign_in", class: "top-btn"
+  .bg-scrolling.bg-color-4
+    .bg-container

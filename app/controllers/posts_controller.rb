@@ -4,11 +4,15 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
-    @posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
+    @posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(20)
+    @best = Post.create_all_ranks
+    @likes = Like.where(post_id: @best.first.id).count
+    # where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC")
   end
 
   def new
     @post = Post.new
+    @ex_post = Post.where(user_id: current_user.id).where("created_at> ?", Time.zone.today.beginning_of_day).first
   end
 
   def create
@@ -18,7 +22,9 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
+    if post.destroy
+      redirect_to "/users/#{post.user.id}"
+    end
   end
 
   def edit
@@ -26,7 +32,9 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(post_params)
+    if post.update(post_params)
+      redirect_to "/posts/#{post.id}"
+    end
   end
 
   def show

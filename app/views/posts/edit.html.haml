@@ -1,0 +1,54 @@
+-# .main
+-#   .main-top
+-#     .main-top__box
+-#       %p.main-top__box--todays-theme
+-#         \&#x672C;&#x65E5;&#x306E;&#x304A;&#x984C;&#xFF1A;
+-#         %span{:style => "font-weight:bold;"}
+-#           \&#x300E;&#x3000;#{@today_theme.name}&#x3000;&#x300F;
+-#       = render partial: "/shared/clock"
+-#       .new-message
+-#         = form_with(model: @post, local: true, id: "message-form") do |form|
+-#           %p.text
+-#             \&#x7DE8;&#x96C6;&#x3059;&#x308B;
+-#           = succeed "\#{@post.id}\"" do
+-#             %form{:action => "/users/"}
+-#           %span.select-theme &#x6295;&#x7A3F;&#x3059;&#x308B;&#x30C6;&#x30FC;&#x30DE;&#x3092;&#x9078;&#x629E;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;
+-#           = form.collection_select(:theme_ids, Theme.all, :id, :name, id: select-box)
+-#           = form.text_field :title, placeholder: タイトルを入力してください, class:form-style
+-#           - if @post.image.url.present?
+-#             = image_tag(@post.image.url)
+-#           %span{:style => "display:none;"}= form.datetime_select :start_time
+-#           = form.submit SEND, id: submit-btn
+-#           = link_to 戻る, :back
+
+
+.main
+  .main-top
+    .main-top__box
+      %p.main-top__box--todays-theme
+        本日のお題：
+        %span{:style => "font-weight:bold;"}
+          『　#{@today_theme.name}　』
+      = render partial: "/shared/clock"
+  .empty-box
+  .new-post
+    .new-post__left-box
+      = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
+        %p.action-post
+          投稿を編集する
+        .select-title
+          テーマを選択してください
+        = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
+        .select-title
+          タイトルを入力してください
+        = form.text_field :title, placeholder: "タイトル", class:"post-title-form"
+        .select-title
+          画像ファイルを選択してください
+        = form.file_field :image, class:"post-title-form"
+        %span{:style => "display:none;"}= form.datetime_select :start_time
+        .post-submit
+          = form.submit "SEND", action: "/posts", class: "post-submit-btn"
+
+
+    - if @post.image.url.present?
+      = image_tag(@post.image.url)

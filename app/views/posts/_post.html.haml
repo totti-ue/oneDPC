@@ -1,0 +1,38 @@
+= link_to "/posts/#{post.id}", class: "a-post" do
+  %li.a-post-img-box
+    = image_tag asset_path("#{post.image}"), id: "a-post-img"
+    .a-post__detail
+      .a-post__detail__title
+        = post.title
+      .a-post__detail__post-user
+        by 
+        = post.user.nickname
+      - if post.created_at > Time.zone.today.beginning_of_day && post.themes.first.name != @today_theme.name
+        .theme-wrong-notice
+          テーマを確認してください
+
+
+-# %li.box-list__image.past-image{style: "background-image: url(#{post.image})"}
+  -# .box-list__image--text-contents
+  -#   %span.title
+  -#     = post.themes.first.name
+  -#     %br
+  -#     = post.title
+  -#     .more
+  -#       %span.image_tag
+  -#         = image_tag 'arrow_top.png'
+  -#       %ul.more_list
+  -#         %li
+  -#           = link_to '詳細', "/posts/#{post.id}", class: "more_list__a-list"
+  -#         - if user_signed_in?  && current_user.id == post.user_id
+  -#           %li
+  -#             = link_to '編集', "/posts/#{post.id}/edit", class: "more_list__a-list"
+  -#           %li
+  -#             = link_to '削除', "/posts/#{post.id}", method: :delete, class: "more_list__a-list"
+  -#     %span.iine-box
+  -#       %span.iine-count
+  -#         %span{style: "font-size:22px; font-weight:bold;"}
+  -#           = post.liked_users.count
+  -#     %span.name
+  -#       = link_to "#{post.user.nickname}", "/users/#{post.user.id}", class: "name-link"
+

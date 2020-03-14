@@ -1,0 +1,9 @@
+.theme-index
+  .theme-index__lists-box
+    %p.theme-word
+    %ul.theme-index__lists-box__lists
+      - @themes.each do |theme|
+        = link_to "/themes/#{theme.id}", class: "theme-link" do
+          %li.a-theme-list
+            = theme.name
+  = link_to "戻る", :back

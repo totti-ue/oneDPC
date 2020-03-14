@@ -1,0 +1,24 @@
+.devise-view
+  .devise-view__wrapper
+    .action-title
+      パスワードを変更する
+    .action-contents
+      .action-contents__forms
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          = f.hidden_field :reset_password_token
+          .input-box
+            = f.label :password, "New password"
+            %br/
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+              %br/
+            = f.password_field :password, autofocus: true, autocomplete: "new-password", class: "input-box__form"
+          .input-box
+            = f.label :password_confirmation, "Confirm new password"
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: "input-box__form"
+          .action-submit
+            = f.submit "Change my password", class: "submit-btn"
+          = render "devise/shared/links"

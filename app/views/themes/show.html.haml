@@ -1,0 +1,71 @@
+.main
+  .main-top
+    .main-top__box
+      %p.main-top__box--todays-theme
+        %span{style: "font-weight:bold;"}
+          本日のテーマ『
+          = @today_theme.name
+          』
+      = render partial: "/shared/clock"
+
+  .section-three
+    .section-three__top#themes-show
+      %h1.todays-posts.sec3-text
+        Previous Posts
+      %p.posts-theme.sec3-text
+        選択中のテーマ　
+        %br
+      %span.sec3-text
+        = link_to "#", class: "theme-link" do
+          %span.theme-tag
+            = @theme.name 
+    
+    %ul.section-three__contents
+      - if (@themes.count == 0)
+        まだ投稿がありません
+      - else
+        - @themes.each do |post|
+          = render partial: "/posts/post", locals: { post: post }
+
+        = paginate(@themes)
+
+  = link_to "Back", :back
+
+
+
+
+
+
+
+
+
+
+
+
+
+-# .theme-1{style: "padding-top: 100px;"}
+-#   = @theme.name
+-# - @themes.each do |post|
+-#   %li.box-list__image.past-image{style: "background-image: url(#{post.image});"}
+-#   .box-list__image--text-contents
+-#     %span.title
+-#       = post.themes.first.name
+-#       %br
+-#       = post.title
+-#       .more
+-#         %span.image_tag= image_tag 'arrow_top.png'
+-#         %ul.more_list
+-#           %li
+-#             = link_to '詳細', "/posts/#{post.id}", class: "more_list__a-list"
+-#           - if user_signed_in? && current_user.id == post.user_id
+-#             %li
+-#               = link_to '編集', "/posts/#{post.id}/edit", class: "more_list__a-list"
+-#             %li
+-#               = link_to '削除', "/posts/#{post.id}", method: :delete, class: "more_list__a-list"
+-#       %span.iine-box
+-#         %span.iine-count
+-#           %span{style: "font-size:22px; font-weight:bold;"}
+-#             = post.liked_users.count
+-#       %span.name
+-#         = link_to "#{post.user.nickname}", "/users/#{post.user.id}", class: "name-link"
+

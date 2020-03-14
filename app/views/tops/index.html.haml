@@ -1,0 +1,16 @@
+.top-main
+  %link{href: "https://fonts.googleapis.com/css?family=Slabo+27px", rel: "stylesheet", type: "text/css"}/
+  %svg{version: "1.1", viewbox: "0 0 800 600"}
+    %symbol#fade-text
+      %text{"text-anchor": "middle", x: "50%", y: "40%"} ONE DAY
+      %text{"text-anchor": "middle", x: "50%", y: "60%"} Photo Contest
+    %g
+      %use.stroke{"xlink:href": "#fade-text"}
+      %use.fill{"xlink:href": "#fade-text"}
+  .links
+    .links__box1
+      = link_to "TOP PAGE", "/posts", method: :get, class: "links__box1--top-page"
+    .links__box2
+      = link_to "SIGN IN", "/users/sign_in", method: :get, class: "links__box2--sign-in"
+    .links__box2
+      = link_to "コンテスト説明へ", "/tops/show", method: :get, class: "links__box2--sign-in"
