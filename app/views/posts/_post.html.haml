@@ -1,5 +1,5 @@
-= link_to "/users/#{post.user.id}", class: "a-post" do
-  %li
+= link_to "/posts/#{post.id}", class: "a-post" do
+  %li.a-post-img-box
     = image_tag asset_path("#{post.image}"), id: "a-post-img"
     .a-post__detail
       .a-post__detail__title
@@ -7,7 +7,7 @@
       .a-post__detail__post-user
         by 
         = post.user.nickname
-      - if post.themes.first.name != @today_theme.name
+      - if post.created_at > Time.zone.today.beginning_of_day && post.themes.first.name != @today_theme.name
         .theme-wrong-notice
           テーマを確認してください
 

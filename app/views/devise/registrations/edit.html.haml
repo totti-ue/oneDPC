@@ -35,6 +35,8 @@
             = f.password_field :current_password, autocomplete: "current-password", class: "input-box__form"
           .action-submit
             = f.submit "更新する", class: "submit-btn"
-          = link_to "パスワードを編集する", "/users/password/edit", method: :get          
+          -# = link_to "パスワードを編集する", "/users/password/edit", method: :get
+          -# %br        
           = link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除して良いですか?" }, method: :delete, style: "margin-bottom:20px;", class:"delete-btn"
+          %br
           = link_to "戻る", :back

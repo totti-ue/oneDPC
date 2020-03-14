@@ -6,13 +6,45 @@
         %span{:style => "font-weight:bold;"}
           『　#{@today_theme.name}　』
       = render partial: "/shared/clock"
-      .new-message
-        - if current_user.posts.count >= 1 && current_user.posts.last.created_at > Time.zone.today.beginning_of_day
-          %p 一日に投稿できるのは一枚のみです。
-        - else
-          = form_with(model: @post, local: true, id: "message-form") do |form|
-            %p.text
-              新規投稿する
-            %span.select-theme 投稿するテーマを選択してください
-            = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
-            = render partial: "form", locals: { form: form}
+  .empty-box
+
+    -# ここからがnew画面
+  .new-post
+    - if current_user.posts.count >= 1 && current_user.posts.last.created_at > Time.zone.today.beginning_of_day
+      .empty-box
+      %p.color-black.text-center
+        一日に投稿できるのは一枚のみです。(以下すでに投稿済みの画像)
+        %br
+        = image_tag asset_path(@ex_post.image)
+        %br
+        投稿を編集しますか？
+        = link_to "はい", "/posts/#{@ex_post.id}/edit"
+
+        %br
+        投稿を削除しますか？
+        = link_to "はい", "/posts/#{@ex_post.id}", method: :delete
+    - else
+      .new-post__left-box
+        = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
+          %p.action-post
+            新規投稿する
+          .select-title
+            テーマを選択してください
+          = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
+          .select-title
+            タイトルを入力してください
+          = form.text_field :title, placeholder: "タイトル", class:"post-title-form"
+          .select-title
+            画像ファイルを選択してください
+          = form.file_field :image, type: "file", style: "display:none", class:"post-title-form", id: "new-img"
+          %label{for: "new-img"}
+            = fa_icon "image", style: "font-size: 130px;"
+            %img{id: "new-img_prev"}
+              %span.prev-msg
+                プレビュー画面
+              -# = form.check_box :remove_img
+              -# 画像を削除する
+          %span{:style => "display:none;"}
+            = form.datetime_select :start_time
+          .post-submit
+            = form.submit "SEND", class: "post-submit-btn"

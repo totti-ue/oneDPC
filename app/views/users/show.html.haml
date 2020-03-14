@@ -1,41 +1,69 @@
 .main
-  .main-content.second
-    .main-content__box
-      = link_to 'アカウント編集', "/users/edit/#{current_user}"
-      = link_to "戻る", :back
-      %p.post-notion
-        = @nickname
-      %ul.box-list
+  .main-top
+    .main-top__box
+      %p.main-top__box--todays-theme
+        %span{style: "font-weight:bold;"}
+          本日のテーマ『
+          = @today_theme.name
+          』
+      = render partial: "/shared/clock"
+
+  - if user_signed_in?
+    - if current_user.id == @user.id
+      .empty-box
+
+      ユーザーマイページ
+      .section-three
+        .section-three__top#users-show
+          %h1.todays-posts.sec3-text
+            My Posts
+
+        
+        %ul.section-three__contents
+          - if (@posts.count == 0)
+            まだ投稿がありません
+          - else
+            - @posts.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@posts)
+
+      = link_to "Back", :back
+
+    -else
+      .empty-box
+
+      = @user.nickname
+      .section-three
+        .section-three__top#users-show
+          %h1.todays-posts.sec3-text
+            = @user.nickname
+            's Posts
+
+        
+        %ul.section-three__contents
+          - @posts.each do |post|
+            = render partial: "/posts/post", locals: { post: post }
+          = paginate(@posts)
+      = link_to "Back", :back
+
+  - else
+    .empty-box
+
+    = @user.nickname
+    .section-three
+      .section-three__top#users-show
+        %h1.todays-posts.sec3-text
+          = @user.nickname
+          's Posts
+
+      
+      %ul.section-three__contents
         - @posts.each do |post|
           = render partial: "/posts/post", locals: { post: post }
+
         = paginate(@posts)
-    -# .main-content__box
-    -#   %p.post-notion
-    -#     = @nickname
-    -#   %ul.box-list
-    -#     - @liked.each do |post|
-    -#       %li.box-list__image
-    -#       = image_tag "#{post.image}"
-    -#       .box-list__image--text-contents
-    -#         %span.title
-    -#         = post.title
-    -#         .more
-    -#           %span.image_tag
-    -#           = image_tag 'arrow_top.png'
-    -#           %ul.more_list
-    -#             %li
-    -#               = link_to '詳細', "/posts/#{post.id}", class: "more_list__a-list"
-    -#             - if user_signed_in?  && current_user.id == post.user_id
-    -#               %li
-    -#                 = link_to '編集', "/posts/#{post.id}/edit", class: "more_list__a-list"
-    -#               %li
-    -#                 = link_to '削除', "/posts/#{post.id}", method: :delete, class: "more_list__a-list"
-    -#         %span.iine-box
-    -#           %span.iine-count
-    -#             %span{:style => "font-size:22px; font-weight:bold;"}
-    -#             = post.liked_users.count
-    -#         %span.name
-    -#           = link_to "#{post.user.nickname}", "/users/#{post.user.id}", class: "name-link"
-    -#   = paginate(@liked)
-    -# %span{:style => "padding:0 120px 60px; float:right;"}
+
+    = link_to "Back", :back
+
+
     = link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage"

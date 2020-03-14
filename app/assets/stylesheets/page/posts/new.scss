@@ -1,63 +1,74 @@
-.new-message {
-  padding-top: 80px;
+.new-post {
+  // background-color: $hf-color;
   width: 100%;
-  height: calc(100vh - 120px);
-  overflow: scroll;
-  #message-form {
-    border: 1px solid black;
-    height: auto;
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px 20px 50px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    margin-bottom: 200px;
-
-    .text {
-      height: 60px;
-      font-size: 16px;
-      text-align: center;
-      font-weight: bold;
-      line-height: 40px;
+  height: calc(100vh - 92px);
+  color: white;
+  position: relative;
+  &__left-box {
+    width: 460px;
+    height: calc(100% - 40px);
+    padding: 20px;
+    float: left;
+    // background-color: tan;
+    background-color: $hf-color;
+    .action-post {
+      font-size: 20px;
+      border-bottom: 2px solid white;
+      margin-bottom: 20px;
     }
-    .select-theme {
-      padding-left: 10px;
-      color: gray;
+    .select-title {
+      margin-bottom: 10px;
     }
     #post_theme_ids {
-      margin: 10px 10px 20px;
-      height: 50px;
+      width: 70%;
+      height: 30px;
+      margin-bottom: 20px;
     }
-    .form-style {
-      height: 40px;
-      padding-left: 10px;
-      margin: 0 10px 20px;
-      color: gray;
-      line-height: 40px;
-      border: 1px solid lightgray;
+    .post-title-form {
+      width: 90%;
+      margin-bottom: 20px;
     }
-    .form-style:hover {
-      box-shadow: 1px 2px 5px gray;
-      background-color: blanchedalmond;
-    }
-    #post_image {
-      line-height: 40px;
-      // display: none;
-    }
-    #submit-btn {
-      height: 50px;
-      width: 400px;
-      margin: 0 auto;
-      background-color: skyblue;
-      color: #fff;
-      line-height: 40px; 
-      text-align: center;
-      text-decoration: none;
-      border-radius: 15px;
-    }
-    #submit-btn:hover {
-      box-shadow: 1px 2px 5px gray;
+    .post-submit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      margin-bottom: 20px;
+      .post-submit-btn {
+        background-color: cornflowerblue;
+        color: white;
+        font-weight: bold;
+        width: 80%;
+        height: 40px;
+        border-radius: 5px;
+        &:hover {
+          height: 42px;
+          opacity: 0.8;
+        }
+      }
     }
   }
+}
+
+#new-img_prev{
+  width: 582px;
+  height: 390px;
+  position: absolute;
+  left: 520px;
+  top: 40px;
+
+}
+.prev-msg {
+  position: absolute;
+  top: 8px;
+  left: 520px;
+  color: black;
+}
+.color-black {
+  color: black;
+}
+.text-center {
+  width: 80%;
+  margin: 0 auto;
+  // text-align: center;
 }

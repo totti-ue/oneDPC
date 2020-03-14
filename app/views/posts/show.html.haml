@@ -1,78 +1,100 @@
-.show
-  .show__details
-    .show__details__image{:style => "background-image: url("}
-    = @post.image
-    );"&gt;
-    .show__details__image--text-contents
-      %span.show-title
-        \&#x30C6;&#x30FC;&#x30DE;&#x3000;&#xFF1A;#{@post.themes.first.name}
-        %br
-          \&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF1A;#{@post.title}
-        .show-more
-          %span.show-image_tag= image_tag 'arrow_top.png'
-          %ul.show-more_list
-            - if user_signed_in?  current_user.id == @post.user_id
-              %li
-                = link_to '編集', /posts/#{@post.id}/edit, method: :get, class: show-more_list__a-list
-              %li
-                = link_to '削除', /posts/#{@post.id}, method: :delete, class: show-more_list__a-list
-        %span.iine-box
+.main
+  .main-top
+    .main-top__box
+      %p.main-top__box--todays-theme
+        %span{style: "font-weight:bold;"}
+          本日のテーマ『
+          = @today_theme.name
+          』
+      = render partial: "/shared/clock"
+
+
+  .section-one#posts-section-one
+    %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
+      = notice
+    %p.section-one__yesterdays-top
+      %span.section-one__yesterdays-top__img-title
+        = @post.user.nickname
+        さんの一枚  
+    .section-one__main
+      .section-one__main__left
+        = image_tag asset_path("#{@post.image}"), class: "left-content-img"
+      .section-one__main__right
+        %p.yesterdays-top-img
+          投稿詳細
+        %ul.img-detail
+          %li.img-detail__list
+            テーマ：
+            = link_to "/themes/#{@post.themes.first.id}", class: "theme-link" do
+              %span.theme-tag.tag1
+                = @post.themes.first.name   
+          %li.img-detail__list
+            タイトル：
+            = @post.title
+          %li.img-detail__list
+            メッセージ：
+            〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
+          %li.img-detail__list
+            投稿日：
+            = @post.created_at.to_s(:datetime_jp)
+          %li.img-detail__list
+            投稿者：
+            = link_to "#{@post.user.nickname}", "/users/#{@post.user.id}", class: "name-link"
+          - if user_signed_in? && current_user.id == @post.user_id
+            %li.img-detail__list
+              = link_to '編集する', "/posts/#{@post.id}/edit", method: :get, class: "my-post-list"
+            %li.img-detail__list
+              = link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
+
+
+
+
+        .likes-favorites-box
+          -# ログイン中のユーザーのみ
           - if user_signed_in?
-            - if user_signed_in?  current_user.id == @post.user_id
-              %span.iine-count
-                \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
-                %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
-            - elsif current_user.already_liked?(@post)  @post.created_at  Time.zone.today.beginning_of_day
-              = link_to いいねを取り消す, post_like_path(@post), method: :delete, class: like iine
-              %br
-                %span.iine-count
-                  \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
-                  %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
-              - elsif @post.created_at  Time.zone.today.beginning_of_day
-                = link_to いいねを押す, post_likes_path(@post), method: :post, class: like dislike
-                %br
-                  %span.iine-count
-                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
-                    %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
-                - else
-                  %span.iine-count
-                    \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
-                    %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
-              - else
-                %span.iine-count
-                  \&#x3044;&#x3044;&#x306D;&#x306E;&#x6570;&#xFF1A;
-                  %span{:style => "font-size:22px; font-weight:bold;"}= @likes_count
-            %span.show-name
-              %a{:href => "/users/"}
-              = @post.user.id
-              ", class="show-name-link"&gt;
-              \&#x6295;&#x7A3F;&#x8005;
-              %br
-                = @post.user.nickname
-        \&#x6295;&#x7A3F;&#x65E5;&#x6642;&#xFF1A;#{@post.start_time.strftime(%Y-%m-%d %H:%M)}
-        \#{link_to 戻る, :back}
-        - if current_user.id == @post.user_id
-          %p{:style => "margin-top:20px;"} &#x3044;&#x3044;&#x306D;&#x3057;&#x305F;&#x30E6;&#x30FC;&#x30B6;&#x30FC;
-          - @post.liked_users.each do |user|
-            %li.user-list= user.nickname
-        .comment-box
-          - if current_user
-            = form_with(model: [@post, @comment], class: comment-box__form, local: true) do |form|
-              = form.text_area :comment, placeholder: コメントする, rows: 2
-              .submit-box
-                = form.submit SEND, class: submit-box__send-btn
+
+            -# 自分の投稿なら
+            - if current_user.id == @post.user.id
+              .likes-favorites-box__count-box
+                = fa_icon "heart", class: "icon-heart"
+                = @likes_count
+              .likes-favorites-box__count-box
+                = fa_icon "star", class: "icon-star"
+                = @liked_counts
+
+              -# すでにいいねをした投稿なら
+            - elsif current_user.already_liked?(@post)
+              = link_to post_like_path(@post), method: :delete, class: "likes-favorites-box__count-box likes-count dismiss-like" do
+                = fa_icon "heart", class: "icon-heart dismiss-like"
+                = @likes_count
+              .likes-favorites-box__count-box.favorites-count
+                = fa_icon "star", class: "icon-star"
+                = @liked_counts
+
+              -# まだいいねしていない投稿なら
+            - else
+              = link_to post_likes_path(@post), method: :post, class: "likes-favorites-box__count-box likes-count" do
+                = fa_icon "heart", class: "icon-heart"
+                = @likes_count
+              .likes-favorites-box__count-box.favorites-count
+                = fa_icon "star", class: "icon-star"
+                = @liked_counts
+
+            -# 未ログインユーザーはこちら
           - else
-            %strong
-              %p{:style => "text-align:center;"} &#x203B;&#x203B;&#x203B; &#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x6295;&#x7A3F;&#x306B;&#x306F;&#x65B0;&#x898F;&#x767B;&#x9332;/&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3059; &#x203B;&#x203B;&#x203B;
-        .comments
-          %h4 &#xFF1C;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x4E00;&#x89A7;&#xFF1E;
-          - if @comments
-            - @comments.each do |comment|
-              %p
-                %strong
-                  = link_to comment.user.nickname, /users/#{comment.user_id}
-                  \&#xFF1A;
-                = comment.comment
-                - if current_user.id == comment.user.id
-                  %span= link_to 削除, /posts/#{comment.post_id}/comments/#{comment.id}, method: :delete
-        = link_to 投稿一覧へ戻る, /posts, class:back-to-toppage
+            .likes-favorites-box__count-box
+              = fa_icon "heart", class: "icon-heart"
+              = @likes_count
+            .likes-favorites-box__count-box
+              = fa_icon "star", class: "icon-star"
+              = @liked_counts
+
+.show
+  %p{style: "margin: 0 auto; width:100px; text-align:center;"}
+    原寸比
+  .show__details
+
+    = image_tag asset_path("#{@post.image}"), class: "show__details__image"
+  .empty-box
+
+  = link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage"

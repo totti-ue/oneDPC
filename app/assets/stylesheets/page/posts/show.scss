@@ -2,66 +2,46 @@
   width: 100%;
   margin-top: 60px;
   &__details {
-    height: auto;
-    width: 800px;
-    padding: 20px 0 120px;
-    margin: 0 auto;
+    max-height: 800px;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
     &__image{
-      background-position: center center;
-      margin: 0 auto;
-      background-size: contain;
-      background-repeat: no-repeat;
+      height: auto;
+      // max-height: 800px;
+      max-width: 1200px;
+      // width: 80%;
       &--text-contents {
-        height: 600px;
-        width: 100%;
-        color: #fff;
+        // height: 600px;
+        // width: 100%;
+        // color: black;
         position: relative;
-        opacity: 0;
+        // opacity: 0;
         .show-title {  
-          padding-left: 10px;
           font-size: 20px;
-          display: block;
-          position: absolute;
-          top: 10px;
-          color: white;
         }
         .show-more {
           position: absolute;
-          top: 10px;
-          right: 0px;
-          padding-top: 5px;
-          width: 50px;
-          display: flex;
-          flex-direction: column;
           .show-image_tag {
-            display: flex;
-            justify-content: center;
           }
           .show-more_list {
-            overflow: hidden;
-            position: absolute;
-            top: 0px;
-            padding-top: 15px;
-            display: flex;
-            flex-direction: column;
-            height: 2px;
             &__a-list {
-              text-decoration: none;
-              color: white;
+              
+              color: black;
             }
-            &__a-list:hover {
-              color: yellow;
-              font-weight: bold;
-            }
+            // &__a-list:hover {
+            //   color: yellow;
+            //   font-weight: bold;
+            // }
           }
-          .show-more_list:hover {
-            overflow: visible;
-            animation-name: fade_in1;
-            animation-duration: 0.5s; //アニメーション時間
-            animation-timing-function: ease-out; //アニメーションさせるイージング
-            animation-iteration-count: 1; //繰り返し回数
-            text-shadow: 3px 2px 5px gray;
-          }
+          // .show-more_list:hover {
+          //   overflow: visible;
+          //   animation-name: fade_in1;
+          //   animation-duration: 0.5s; //アニメーション時間
+          //   animation-timing-function: ease-out; //アニメーションさせるイージング
+          //   animation-iteration-count: 1; //繰り返し回数
+          //   text-shadow: 3px 2px 5px gray;
+          // }
         }
         .iine-box {
           position: absolute;
@@ -71,25 +51,25 @@
             font-size: 14px;
           }
           .like { 
-            text-decoration: none;
+            
             font-size: 22px;
-            color: #fff;
-            opacity: 0.7;
+            color: black;
+            // opacity: 0.7;
           }
-          .iine {
-            opacity: 1;
-            color: rgb(230, 101, 123);
-          }
-          .like:hover {
-            text-shadow: 3px 2px 5px gray;
-            opacity: 1;
-          }
-          .iine:hover {
-            color: blue;
-          }
-          .dislike:hover {
-            color: rgb(230, 101, 123);
-          }
+          // .iine {
+          //   // opacity: 1;
+          //   color: rgb(230, 101, 123);
+          // }
+          // .like:hover {
+          //   text-shadow: 3px 2px 5px gray;
+          //   // opacity: 1;
+          // }
+          // .iine:hover {
+          //   color: blue;
+          // }
+          // .dislike:hover {
+          //   color: rgb(230, 101, 123);
+          // }
 
         }
         .show-name {
@@ -100,30 +80,30 @@
           bottom: 10px;
           right: 0;
           .show-name-link {
-            text-decoration: none;
+            
             color: #fff;
           }
         }
-        .show-name:hover .show-name-link{
-          text-shadow: 3px 2px 5px gray;
-          font-weight: bold;
-          color: skyblue;
-        }
+        // .show-name:hover .show-name-link{
+        //   text-shadow: 3px 2px 5px gray;
+        //   font-weight: bold;
+        //   color: skyblue;
+        // }
       } 
-      &--text-contents:hover {
-        opacity: 1;
-        animation-name: fade_in1;
-        animation-duration: 0.5s; //アニメーション時間
-        animation-timing-function: ease-out; //アニメーションさせるイージング
-        animation-iteration-count: 1; //繰り返し回数
-        text-shadow: 3px 2px 5px gray;
-      }
+      // &--text-contents:hover {
+      //   // opacity: 1;
+      //   animation-name: fade_in1;
+      //   animation-duration: 0.5s; //アニメーション時間
+      //   animation-timing-function: ease-out; //アニメーションさせるイージング
+      //   animation-iteration-count: 1; //繰り返し回数
+      //   text-shadow: 3px 2px 5px gray;
+      // }
     }
-    &__image:hover {
-      color: white;
-      box-shadow: 1px 2px 20px gray;
-      background-color: transparent;
-    }
+    // &__image:hover {
+    //   color: white;
+    //   box-shadow: 1px 2px 20px gray;
+    //   background-color: transparent;
+    // }
     .back-to-toppage {
       display: block;
       float: right;
@@ -154,10 +134,18 @@
           background-color: skyblue;
           color: white;
         }
-        &__send-btn:hover {
-          box-shadow: 3px 2px 5px gray;
-        }
+        // &__send-btn:hover {
+        //   box-shadow: 3px 2px 5px gray;
+        // }
       }
     }
   }
+}
+
+
+#posts-section-one {
+  padding: 100px 0 0px;
+  height: calc(100vh - 190px);
+  width: 100%;
+  // position: fixed;
 }

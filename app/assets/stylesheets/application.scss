@@ -4,6 +4,9 @@
 @import "modules/header";
 @import "modules/post";
 @import "devise/devise";
+@import "font-awesome";
+@import "mixin/main";
+@import "shared";
 @import "page/tops/index";
 @import "page/tops/show";
 @import "page/posts/index";
@@ -12,6 +15,9 @@
 @import "page/posts/past";
 @import "page/posts/rank";
 @import "page/users/index";
+@import "page/users/show";
+@import "page/themes/index";
+@import "page/themes/show";
 @import "vender/calendar";
 @import "vender/clock&search";
 

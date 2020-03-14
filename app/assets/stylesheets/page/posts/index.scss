@@ -1,9 +1,9 @@
 .theme-link {
-  text-decoration: none;
+  
   color: white;
   .theme-tag {
     font-size: 14px;
-    background-color: skyblue;
+    background-color: green;
     border-radius: 10px;
     padding: 4px 10px;
   }
@@ -13,12 +13,12 @@
 }
 
 .main {
-  animation-name: fade_in1;
-  animation-duration: 3s; //アニメーション時間
-  animation-timing-function: ease-out; //アニメーションさせるイージング
-  animation-iteration-count: 1; //繰り返し回数
-  animation-direction: normal; //往復処理をするかどうか
-  animation-fill-mode: forwards; 
+  // animation-name: fade_in1;
+  // animation-duration: 3s; //アニメーション時間
+  // animation-timing-function: ease-out; //アニメーションさせるイージング
+  // animation-iteration-count: 1; //繰り返し回数
+  // animation-direction: normal; //往復処理をするかどうか
+  // animation-fill-mode: forwards; 
 
 // メイン（テーマ）
   .main-top {
@@ -55,8 +55,10 @@
     flex-direction: column;
     &__notice-msg {
       position: fixed;
-      top: 120px;
-      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: slategray;
+      color: white;
     }
     &__yesterdays-top {
       margin: 0 auto;
@@ -77,8 +79,22 @@
       width: 70%;
       height: auto;
       &__left {
+        // height: 360px;
+        // width: 582px;
         height: 360px;
         width: 582px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        .left-content-img {
+          // height: auto;
+          // width: 100%;
+          // max-height: 390px;
+          max-height: 360px;
+          height: auto;
+          max-width: 582px;
+        }
       }
       &__right {
         height: 340px;
@@ -103,36 +119,41 @@
               }
             }
             .name-link {
-              text-decoration: none;
+              
               color: white;
               &:hover {
                 color: lightblue;
               }
             }
+            .my-post-link {
+              
+            }
           }
         }
-        .likes-favorites-box {
-          display: flex;
-          height: 40px;
-          width: calc(100% - 30px);
-          position: absolute;
-          bottom: 0;
-          margin: 0;
-          &__count-box {
-            display: block;
-            height: 100%;
-            width: 50%;
-            border: 1px solid gray;
-            text-align: center;
-            line-height: 40px;
-          }
-          .likes-count:hover {
-            background-color: pink;
-          }
-          .favorites-count:hover {
-            background-color: lightblue;
-          }
-        }
+        // .likes-favorites-box {
+        //   display: flex;
+        //   height: 40px;
+        //   width: calc(100% - 30px);
+        //   position: absolute;
+        //   bottom: 0;
+        //   margin: 0;
+        //   &__count-box {
+        //     display: block;
+        //     
+        //     color: white;
+        //     height: 100%;
+        //     width: 50%;
+        //     border: 1px solid gray;
+        //     text-align: center;
+        //     line-height: 40px;
+        //   }
+        //   .likes-count:hover {
+        //     background-color: pink;
+        //   }
+        //   .favorites-count:hover {
+        //     background-color: lightblue;
+        //   }
+        // }
       }
     }
   }
@@ -141,8 +162,8 @@
     display: flex;
     &__left {
       background-color: gray;
-      width: 200px;
-      padding: 10px;
+      width: 190px;
+      padding: 10px 10px 10px 20px;
     }
     &__right {
       background-color: black;
@@ -165,11 +186,13 @@
     width: 100%;
     overflow: auto;
     &__top {
-      height: auto;
+      // height: auto;
+      height: 100vh;
       width: calc(100% - 100px);
-      padding: 120px 0;
+      // padding: 120px 0;
       margin: 0 50px;
       display: flex;
+      justify-content: center;
       flex-direction: column;
       border-bottom: 2px solid lightgray;
       .sec3-text {
@@ -185,7 +208,7 @@
       }
     }
     &__contents {
-      max-width: 1200px;
+      // max-width: 1200px;
       padding-top: 80px;
       width: 100%;
       margin: 0 auto;
@@ -201,19 +224,15 @@
   }
   .footer {
     background-color: $hf-color;
-    // font-weight: bold;
     margin-top: 40px;
     height: 300px;
     width: 100%;
     color: white;
-    // z-index: 1;
-    // box-shadow: 0 0 5px 3px gray;
     &__contents {
       padding-top: 20px;
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      // color: shite;
       &--logo {
         color: black;
       }
