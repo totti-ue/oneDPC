@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root to: "tops#index"
   resources :tops, only: [:index, :show]
-  devise_for :users
+  devise_for :users, controllers: {registrations: "users/registrations"}
   resources :posts do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get 'past'
     end
   end
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :edit]
   resources :themes, only: [:index, :show]
 
 

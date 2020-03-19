@@ -8,10 +8,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @nickname = @user.nickname 
+    @post = @user.posts.where("created_at > ?", Time.zone.today.beginning_of_day)
     @posts = @user.posts.order("created_at DESC").page(params[:page]).per(20)
     @liked = @user.liked_posts.order("created_at DESC").page(params[:page]).per(20)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
 
   private
 

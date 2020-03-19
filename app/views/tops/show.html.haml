@@ -4,25 +4,60 @@
       %p.msg.msg-contents
         One
         %br
-        Day Photo Contest
+        Day Photo Contest 
         %br 
+        コンテストの説明
+        %br
         %p{:style => "position: relative; margin-top: 500px;"}
+          ⬇︎下へスクロール
   .bg-scrolling.bg-color-1
     .bg-container
       %p.pg-theme
-        %i One Day Photo Cotest
+        %i One Day Photo Cotest とは
+      %br
+      『写真初心者』『アマチュア写真愛好家』向けのフォトコンテストです。
+      %br
+      一日（one day）ごとに出されるお題（テーマ）に沿って、
+      %br
+      一人一枚（one photo）写真を投稿します。
+      %br
+      一日における、『いいね』の総獲得数が多い写真が、
+      %br
+      その日のコンテスト（one contest）の優勝者となります。
+
   .bg-fixed.bg-2
     .msg
       %p.msg.msg-contents
+        スマホやパソコンにしまったままの
+        %br
+        写真を投稿しよう
   .bg-scrolling.bg-color-2
     .bg-container
       %p.pg-theme
+        %i 過去に撮った自信作はありせんか？
+      %p
+        カメラ初心者が集まるコンテストだからこそ、
+        %br
+        現存のフォトコンテストのように敷居は高くありません。
+        %br
+        テーマに沿っていれば、古い写真でも大丈夫！
+        %br
+        学生時代に撮った写真や、今のコレクションなど、
+        %br
+        参加したい時に自由に参加可能です。  
   .bg-fixed.bg-3
     .msg
       %p.msg.msg-contents
+        %i
+          テーマは日付で固定
+          %br
+          １日と日曜は『自由（フリーテーマ）』
+        
   .bg-scrolling.bg-color-3
     .bg-container
       %p.pg-theme
+        %i テーマに合わせて好きな写真を投稿しよう
+        %p テーマ一覧
         .theme-table
           - i = 1
           - @theme.each do |theme|
@@ -30,13 +65,15 @@
               = i
               = theme.name
               - i += 1
-        %p{:style => "padding-top:10px;"}
+        %p{:style => "padding-top:10px;"} ※毎週日曜日は日付に関係なく、『自由（フリーテーマ）』となります。
+
 
   .bg-fixed.bg-4
     .msg
       %p.msg.msg-contents 
+        今日からコンテストに参加しよう
     .btn-links
       = link_to "TOP PAGE", "/posts", class: "top-btn"
       = link_to "SING IN", "/users/sign_in", class: "top-btn"
-  .bg-scrolling.bg-color-4
-    .bg-container
+  -# .bg-scrolling.bg-color-4
+  -#   .bg-container

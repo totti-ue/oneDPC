@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   # サインイン後のリダイレクト先をマイページへ
   def after_sign_in_path_for(resource)
-    posts_path  #　指定したいパスに変更
+    posts_path  #指定したいパスに変更
   end
 
   # サインアウト後のリダイレクト先をトップページへ
@@ -11,8 +11,13 @@ class ApplicationController < ActionController::Base
     posts_path
   end
 
+  def after_update_path_for(resource)
+    edit_user_registration_path
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
   end
 end
