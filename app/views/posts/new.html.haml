@@ -4,7 +4,9 @@
       %p.main-top__box--todays-theme
         本日のお題：
         %span{:style => "font-weight:bold;"}
-          『　#{@today_theme.name}　』
+          『
+          = @today_theme.name
+          』
       = render partial: "/shared/clock"
   .empty-box
 
@@ -33,7 +35,7 @@
           = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
           .select-title
             タイトルを入力してください
-          = form.text_field :title, placeholder: "タイトル", class:"post-title-form"
+          = form.text_field :title, autofocus: true, placeholder: "タイトル", class:"post-title-form"
           .select-title
             画像ファイルを選択してください
           = form.file_field :image, type: "file", style: "display:none", class:"post-title-form", id: "new-img"

@@ -149,3 +149,20 @@
   width: 100%;
   // position: fixed;
 }
+
+
+.comments-wrapper {
+  width: 800px;
+  margin: 0 auto;
+  .liked-users{
+    &__list {
+      overflow: hidden;
+      height: 20px;
+      width: 145px;
+      &:hover {
+        overflow: visible;
+        height: auto;
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@
           .input-box
             = f.label :email
             %br/
-            = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-box__form"
+            = f.email_field :email, autocomplete: "email", class: "input-box__form"
           .input-box
             = f.label :password
             - if @minimum_password_length
