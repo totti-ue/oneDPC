@@ -1,7 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Themeテーブルの初期データを書く
+themes = Theme.create([
+  {name: "自由(フリーテーマ)"},
+  {name: "自然"},
+  {name: "動物"},
+  {name: "家族"},
+  {name: "乗り物"},
+  {name: "季節"},
+  {name: "イベント"},
+  {name: "おもしろい"},
+  {name: "かわいい"},
+  {name: "癒される"},
+  {name: "旅"},
+  {name: "食べ物"},
+  {name: "楽しい"},
+  {name: "迫力がある"},
+  {name: "躍動感"},
+  {name: "黒"},
+  {name: "カラー"},
+  {name: "ぼけ"},
+  {name: "天気"},
+  {name: "動くもの"},
+  {name: "花"},
+  {name: "お気に入り"},
+  {name: "身近なもの"},
+  {name: "夜景"},
+  {name: "動かないもの"},
+  {name: "空"},
+  {name: "時間"},
+  {name: "建物"},
+  {name: "人"},
+  {name: "光"},
+  {name: "幸せ"},
+  ])
