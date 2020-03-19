@@ -8,7 +8,9 @@ class PostsController < ApplicationController
     # @posts = Post.where(created_at: Time.zone.yesterday.beginning_of_day..Time.zone.yesterday.end_of_day).order("created_at DESC").page(params[:page]).per(20)
     @posts = Post.all.order("created_at DESC").page(params[:page]).per(20)
     @best = Post.create_all_ranks
-    @likes = Like.where(post_id: @best.first.id).count
+    if Like.count != 0
+      @likes = Like.where(post_id: @best.first.id).count
+    end
     # where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC")
   end
 

@@ -8,48 +8,55 @@
           』
       = render partial: "/shared/clock"
 
-
-  .section-one
-    %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
-      = notice
-    %p.section-one__yesterdays-top
-      %span.section-one__yesterdays-top__img-title
-        = fa_icon "trophy", {style: "color: yellow;"}
-        昨日の一枚  
-    .section-one__main
-      .section-one__main__left
-        = link_to "#" do
-          = image_tag asset_path("#{@best.first.image}"), class: "left-content-img"
-      .section-one__main__right
-        %p.yesterdays-top-img
-          投稿詳細
-        %ul.img-detail
-          %li.img-detail__list
-            テーマ：
-            = link_to "/themes/#{@best.first.themes.first.id}", class: "theme-link" do
-              %span.theme-tag.tag1
-                = @best.first.themes.first.name   
-          %li.img-detail__list
-            タイトル：
-            = @best.first.title
-          %li.img-detail__list
-            メッセージ：
-            〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
-          %li.img-detail__list
-            投稿日：
-            = @best.first.created_at.to_s(:datetime_jp)
-          %li.img-detail__list
-            投稿者：
-            = link_to "#{@best.first.user.nickname}", "#", class: "name-link"
-        .likes-favorites-box
-          - if user_signed_in?
-            - if current_user.already_liked?(@best.first)
-              %span.likes-favorites-box__count-box.dismiss-like
-                = fa_icon "heart", class: "icon-heart"
-                = @likes
-              %span.likes-favorites-box__count-box
-                = fa_icon "star", class: "icon-star"
-                5
+  - if @best.present?
+    .section-one
+      %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
+        = notice
+      %p.section-one__yesterdays-top
+        %span.section-one__yesterdays-top__img-title
+          = fa_icon "trophy", {style: "color: yellow;"}
+          昨日の一枚  
+      .section-one__main
+        .section-one__main__left
+          = link_to "#" do
+            = image_tag asset_path("#{@best.first.image}"), class: "left-content-img"
+        .section-one__main__right
+          %p.yesterdays-top-img
+            投稿詳細
+          %ul.img-detail
+            %li.img-detail__list
+              テーマ：
+              = link_to "/themes/#{@best.first.themes.first.id}", class: "theme-link" do
+                %span.theme-tag.tag1
+                  = @best.first.themes.first.name   
+            %li.img-detail__list
+              タイトル：
+              = @best.first.title
+            %li.img-detail__list
+              メッセージ：
+              〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
+            %li.img-detail__list
+              投稿日：
+              = @best.first.created_at.to_s(:datetime_jp)
+            %li.img-detail__list
+              投稿者：
+              = link_to "#{@best.first.user.nickname}", "#", class: "name-link"
+          .likes-favorites-box
+            - if user_signed_in?
+              - if current_user.already_liked?(@best.first)
+                %span.likes-favorites-box__count-box.dismiss-like
+                  = fa_icon "heart", class: "icon-heart"
+                  = @likes
+                %span.likes-favorites-box__count-box
+                  = fa_icon "star", class: "icon-star"
+                  5
+              - else
+                %span.likes-favorites-box__count-box
+                  = fa_icon "heart", class: "icon-heart"
+                  = @likes
+                %span.likes-favorites-box__count-box
+                  = fa_icon "star", class: "icon-star"
+                  5
             - else
               %span.likes-favorites-box__count-box
                 = fa_icon "heart", class: "icon-heart"
@@ -57,30 +64,23 @@
               %span.likes-favorites-box__count-box
                 = fa_icon "star", class: "icon-star"
                 5
-          - else
-            %span.likes-favorites-box__count-box
-              = fa_icon "heart", class: "icon-heart"
-              = @likes
-            %span.likes-favorites-box__count-box
-              = fa_icon "star", class: "icon-star"
-              5
 
 
 
-  .section-two
-   
-    .section-two__left
-      = @best.first.user.nickname
-      さんの投稿
-      %br
-      投稿総数
-      = @best.first.user.posts.count
-      枚
-    %ul.section-two__right
-      - @best.first.user.posts.each do |best|
-        %li.img-box
-          = link_to "/posts/#{best.id}" do
-            = image_tag asset_path("#{best.image}"), class: "img-box"
+    .section-two
+    
+      .section-two__left
+        = @best.first.user.nickname
+        さんの投稿
+        %br
+        投稿総数
+        = @best.first.user.posts.count
+        枚
+      %ul.section-two__right
+        - @best.first.user.posts.each do |best|
+          %li.img-box
+            = link_to "/posts/#{best.id}" do
+              = image_tag asset_path("#{best.image}"), class: "img-box"
 
 
   .section-three
