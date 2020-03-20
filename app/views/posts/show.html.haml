@@ -33,7 +33,7 @@
             = @post.title
           %li.img-detail__list
             メッセージ：
-            〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
+            = @post.message
           %li.img-detail__list
             投稿日：
             = @post.created_at.to_s(:datetime_jp)
@@ -52,7 +52,6 @@
         .likes-favorites-box
           -# ログイン中のユーザーのみ
           - if user_signed_in?
-
             -# 自分の投稿なら
             - if current_user.id == @post.user.id
               .likes-favorites-box__count-box
@@ -61,7 +60,6 @@
               .likes-favorites-box__count-box
                 = fa_icon "star", class: "icon-star"
                 = @liked_counts
-
               -# すでにいいねをした投稿なら
             - elsif current_user.already_liked?(@post)
               = link_to post_like_path(@post), method: :delete, class: "likes-favorites-box__count-box likes-count dismiss-like" do
@@ -70,7 +68,6 @@
               .likes-favorites-box__count-box.favorites-count
                 = fa_icon "star", class: "icon-star"
                 = @liked_counts
-
               -# まだいいねしていない投稿なら
             - else
               = link_to post_likes_path(@post), method: :post, class: "likes-favorites-box__count-box likes-count" do
@@ -79,7 +76,6 @@
               .likes-favorites-box__count-box.favorites-count
                 = fa_icon "star", class: "icon-star"
                 = @liked_counts
-
             -# 未ログインユーザーはこちら
           - else
             .likes-favorites-box__count-box

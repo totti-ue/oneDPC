@@ -34,7 +34,7 @@
               = @best.first.title
             %li.img-detail__list
               メッセージ：
-              〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
+              = @best.first.message
             %li.img-detail__list
               投稿日：
               = @best.first.created_at.to_s(:datetime_jp)
@@ -105,6 +105,7 @@
 
         = paginate(@posts)
 
+  = render "/shared/new_post"
 
   %footer.footer
     .footer__contents
