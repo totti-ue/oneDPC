@@ -30,12 +30,20 @@
         = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
           %p.action-post
             新規投稿する
+          - if @post.errors.any?
+            %h3{style: "color: palevioletred;"} 入力内容に#{@post.errors.count}件のエラーがあります。          
+            - @post.errors.full_messages.each do |error|
+              = error
           .select-title
             テーマを選択してください
           = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
           .select-title
             タイトルを入力してください
           = form.text_field :title, autofocus: true, placeholder: "タイトル", class:"post-title-form"
+          .select-title
+            メッセージを入力してください
+          = form.text_field :message, placeholder: "メッセージ(任意)", maxlength: "250", class:"post-title-form"
+
           .select-title
             画像ファイルを選択してください
           = form.file_field :image, type: "file", style: "display:none", class:"post-title-form", id: "new-img"

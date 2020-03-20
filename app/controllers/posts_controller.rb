@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_params, only: [:edit, :show]
-  before_action :todays_theme, except: [:create, :destroy, :update]
+  before_action :set_params, only: [:edit, :update, :show]
+  before_action :todays_theme, except: :destroy
   before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
@@ -20,8 +20,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to action: :index 
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to posts_path 
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -35,9 +39,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
-      redirect_to "/posts/#{post.id}"
+    if @post.update(post_params)
+      redirect_to post_path(@post.id)
+    else
+      render :edit
     end
   end
 
@@ -77,7 +82,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :image, :start_time, :theme_ids).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :image, :message, :start_time, :theme_ids).merge(user_id: current_user.id)
   end
 
   def set_params

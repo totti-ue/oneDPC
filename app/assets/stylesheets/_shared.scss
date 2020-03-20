@@ -11,6 +11,36 @@ a {
 }
 
 
+// 投稿するボタン
+.new-post-icon {
+  @include wid-height(100px, 100px);
+  @include flex-center(center);
+  flex-direction: column;
+  background-color: deepskyblue;
+  color: white;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 10px;
+  &__text {
+
+  }
+  &__camera-icon {
+    font-size: 40px;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.non-user {
+  background-color: #333;
+  border: 1px solid white;
+}
+.re-post {
+  background-color: goldenrod;
+}
+
+
 
 // いいねぼたん
 .likes-favorites-box {
@@ -56,3 +86,5 @@ a {
     color: yellow;
   }
 }
+
+

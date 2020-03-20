@@ -1,0 +1,17 @@
+- if signed_in?
+  - if current_user.posts.where("created_at > ?", Time.zone.today.beginning_of_day).present?
+    = link_to new_post_path, class: "new-post-icon re-post" do
+      %span.new-post-icon_text
+        やり直す
+      %span.new-post-icon__camera-icon
+        %i.fa.fa-camera
+  - else
+    = link_to new_post_path, class: "new-post-icon" do
+      %span.new-post-icon_text
+        投稿する
+      %span.new-post-icon__camera-icon
+        %i.fa.fa-camera
+- else
+  = link_to new_user_session_path, class: "new-post-icon non-user" do
+    %span.new-post-icon_text
+      新規登録
