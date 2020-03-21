@@ -62,6 +62,10 @@ ja:
         password_confirmation: "パスワード(確認)"
         remember_me: "パスワードを記憶"
         nickname: "ニックネーム"
+        avator: プロフィール画像
+        gender: 性別
+        age: 年齢
+        introduction: 紹介
 
 
 

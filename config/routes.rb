@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get 'past'
     end
   end
-  resources :users, only: [:index, :show, :edit]
+  resources :users, only: [:index, :show]
   resources :themes, only: [:index, :show]
 
 

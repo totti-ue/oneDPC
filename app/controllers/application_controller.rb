@@ -10,14 +10,11 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     posts_path
   end
-
-  def after_update_path_for(resource)
-    edit_user_registration_path
-  end
+  
 
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :avator, :gender, :age, :introduction])
   end
 end

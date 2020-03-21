@@ -5,18 +5,11 @@
     max-height: 800px;
     display: flex;
     justify-content: center;
-    // align-items: center;
     &__image{
       height: auto;
-      // max-height: 800px;
       max-width: 1200px;
-      // width: 80%;
       &--text-contents {
-        // height: 600px;
-        // width: 100%;
-        // color: black;
         position: relative;
-        // opacity: 0;
         .show-title {  
           font-size: 20px;
         }
@@ -144,7 +137,7 @@
 
 
 #posts-section-one {
-  padding: 100px 0 0px;
+  // padding: 100px 0 0px;
   height: calc(100vh - 190px);
   width: 100%;
   // position: fixed;

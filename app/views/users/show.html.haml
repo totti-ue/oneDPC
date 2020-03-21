@@ -7,99 +7,93 @@
           = @today_theme.name
           』
       = render partial: "/shared/clock"
-
+    -# A ログイン中のユーザー ーーーーー
   - if user_signed_in?
-    - if current_user.id == @user.id && @post.exists?
-      .section-one#posts-section-one
-        %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
-          = notice
-        %p.section-one__yesterdays-top
-          %span.section-one__yesterdays-top__img-title
-            本日投稿中の一枚
-        .section-one__main
-          .section-one__main__left
-            = image_tag asset_path("#{@post.first.image}"), class: "left-content-img"
-          .section-one__main__right
-            %p.yesterdays-top-img
-              投稿詳細
-            %ul.img-detail
-              %li.img-detail__list
-                テーマ：
-                = link_to "/themes/#{@post.first.themes.first.id}", class: "theme-link" do
-                  %span.theme-tag.tag1
-                    = @post.first.themes.first.name   
-              %li.img-detail__list
-                タイトル：
-                = @post.first.title
-              %li.img-detail__list
-                メッセージ：
-                〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇
-              %li.img-detail__list
-                投稿日：
-                = @post.first.created_at.to_s(:datetime_jp)
-              %li.img-detail__list
-                投稿者：
-                = link_to "#{@post.first.user.nickname}", "/users/#{@post.first.user.id}", class: "name-link"
-              - if user_signed_in? && current_user.id == @post.first.user_id
-                %li.img-detail__list
-                  = link_to '編集する', "/posts/#{@post.first.id}/edit", method: :get, class: "my-post-list"
-                %li.img-detail__list
-                  = link_to '削除する', "/posts/#{@post.first.id}", method: :delete, class: "my-post-list"
+    - if current_user.id == @user.id && @post.exists? # A_1 マイページ
+      .user-show-top
+        = render "profile"
+        = render "todays_post"
 
-      .empty-box
-
-      ユーザーマイページ
-      .section-three
-        .section-three__top#users-show
-          %h1.todays-posts.sec3-text
-            My Posts
-
-        
-        %ul.section-three__contents
-          - if (@posts.count == 0)
+      %h1.other-user-page__heading
+        >
+        %b #{@user.nickname}
+        さんの投稿一覧
+      %ul
+        - if (@posts.count == 0)
+          .no-posts-show
             まだ投稿がありません
+        - else
+          - @posts.each do |post|
+            = render partial: "/posts/post", locals: { post: post }
+          = paginate(@posts)
+
+      = render "/shared/page_back"
+
+    - elsif current_user.id == @user.id && @post.blank?
+      .user-show-top
+        = render "profile"
+        .request-new-post
+          本日まだ投稿していません
+          %br
+          投稿しますか？
+          = link_to "はい", new_post_path
+          ーー
+          = link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage"
+
+      %h1.other-user-page__heading
+        >
+        %b #{@user.nickname}
+        さんの投稿一覧
+      %ul
+        - if (@posts.count == 0)
+          .no-posts-show
+            まだ投稿がありません
+        - else
+          - @posts.each do |post|
+            = render partial: "/posts/post", locals: { post: post }
+          = paginate(@posts)
+      = render "/shared/page_back"
+
+
+      
+      -# A_2 他ユーザーのページ --------------------------
+    -else
+      .other-user-page
+        = render "profile"
+        %h1.other-user-page__heading
+          >
+          %b #{@user.nickname}
+          さんの投稿一覧
+        %ul
+          - if (@posts.count == 0)
+            .no-posts-show
+              まだ投稿がありません
           - else
             - @posts.each do |post|
               = render partial: "/posts/post", locals: { post: post }
             = paginate(@posts)
 
-      = link_to "Back", :back
+      = render "/shared/page_back"
 
-    -else
-      .empty-box
 
-      = @user.nickname
-      .section-three
-        .section-three__top#users-show
-          %h1.todays-posts.sec3-text
-            = @user.nickname
-            's Posts
 
-        
-        %ul.section-three__contents
+
+    -# B ログインしてないユーザー -----------------------------
+  - else
+    .other-user-page
+      = render "profile"
+      %h1.other-user-page__heading
+        >
+        %b #{@user.nickname}
+        さんの投稿一覧
+      %ul
+        - if (@posts.count == 0)
+          .no-posts-show
+            まだ投稿がありません
+        - else
           - @posts.each do |post|
             = render partial: "/posts/post", locals: { post: post }
           = paginate(@posts)
-      = link_to "Back", :back
 
-  - else
-    .empty-box
+    = render "/shared/page_back"
 
-    = @user.nickname
-    .section-three
-      .section-three__top#users-show
-        %h1.todays-posts.sec3-text
-          = @user.nickname
-          's Posts
-
-      
-      %ul.section-three__contents
-        - @posts.each do |post|
-          = render partial: "/posts/post", locals: { post: post }
-
-        = paginate(@posts)
-
-    = link_to "Back", :back
-
-
-    = link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage"
