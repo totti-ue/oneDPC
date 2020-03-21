@@ -2,8 +2,8 @@
   .devise-view__wrapper
     .action-title
       アカウントを編集する
-    %h2{:style => "display:none;"}
-      Edit #{resource_name.to_s.humanize}
+    %h2{style: "display:none;"}
+      #{resource_name.to_s.humanize}
     .action-contents
       .action-contents__forms
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
@@ -17,9 +17,52 @@
             = f.label :email
             %br/
             = f.email_field :email, autocomplete: "email", class: "input-box__form"
+          .input-box
+            = f.label :avator
+            %br/
+            = f.file_field :avator, tyle: "file"
+            = image_tag asset_path(@user.avator),{style:"width:80px;height:80px;object-fit:cover;"} if @user.avator?
+          .input-box-alfa
+            %span.alfa-box
+              = f.label :gender
+              = f.select :gender do
+                %option{value: ""}--
+                %option{value: "男性"}男性
+                %option{value: "女性"}女性
+                %option{value: "不明"}不明
+            %span.alfa-box
+              = f.label :age
+              = f.select :age do
+                %option{value: ""}--
+                %option{value: "20歳以下"}20歳以下
+                %option{value: "20~29歳"}20~29歳
+                %option{value: "30~39歳"}30~39歳
+                %option{value: "40~49歳"}40~49歳
+                %option{value: "50~59歳"}50~59歳
+                %option{value: "60歳以上"}60歳以上
+                %option{value: "？"}？
+          .input-box
+            = f.label :introduction
+            %br/
+            = f.text_area :introduction,{type: "textarea", maxlength: "200", placeholder: "200文字以内",style:"width:96%;height:100px;padding:5px;"}
+
+
           - if devise_mapping.confirmable? && resource.pending_reconfirmation?
             %div
               Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+
+          .action-submit
+            = f.submit "更新する", class: "submit-btn"
+          -# = link_to "パスワードを編集する", edit_user_password_path
+          -# %br        
+          = link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除して良いですか?" }, method: :delete, style: "margin-bottom:20px;", class:"delete-btn"
+          %br
+          = link_to "戻る", :back
+
+
+
+          -# 必須事項から外した
           -# .input-box
             -# = f.label :password_new
             -# = f.password_field :password, autocomplete: "new-password", class: "input-box__form"
@@ -33,10 +76,6 @@
           -#   = f.label :current_password
           -#   %br/
           -#   = f.password_field :current_password, autocomplete: "current-password", class: "input-box__form"
-          .action-submit
-            = f.submit "更新する", class: "submit-btn"
-          = link_to "パスワードを編集する", "/users/password/edit", method: :get
-          %br        
-          = link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除して良いですか?" }, method: :delete, style: "margin-bottom:20px;", class:"delete-btn"
-          %br
-          = link_to "戻る", :back
+
+
+%script $(document).ready(function(){alert("性別、年齢を設定済みの方は再設定が必要です。")})

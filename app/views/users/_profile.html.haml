@@ -1,0 +1,25 @@
+.user-profile
+  .upper-contents
+    .avator-img-box
+      - if @user[:avator].nil?
+        = image_tag asset_path("no_img.png"), style:"object-fit:cover;", class: "avator-img"
+      - else 
+        = image_tag asset_path(@user.avator.thumb), style:"object-fit:cover;", class: "avator-img"
+    .name-box
+      %b{style: "font-size:18px;"} #{@user.nickname}
+      %span さん
+      - if current_user.id == @user.id
+        = link_to "編集する", edit_user_registration_path
+      %br
+      %span 投稿総数：
+      = @user.posts.count
+      .follow-icon
+        フォローする
+    .profile-details
+      %ul.profile-details__list
+        %li 性別：#{@user.gender}
+        %li 年齢：#{@user.age}
+      .self-introduction
+        紹介：#{@user.introduction}
+
+

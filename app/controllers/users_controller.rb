@@ -13,15 +13,8 @@ class UsersController < ApplicationController
     @liked = @user.liked_posts.order("created_at DESC").page(params[:page]).per(20)
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
 
   private
-
-  # def move_to_index  
-  #   redirect_to action: :index unless user_signed_in?
-  # end
   
   def today_theme
     @today_theme = Theme.find(today_num)
