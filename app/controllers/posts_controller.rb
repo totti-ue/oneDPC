@@ -14,6 +14,9 @@ class PostsController < ApplicationController
     if Like.count != 0
       @likes = Like.where(post_id: @best.first.id).count
     end
+    if Favorite.count != 0
+      @favorites = Favorite.where(post_id: @best.first.id).count
+    end
   end
 
   def new
@@ -55,6 +58,8 @@ class PostsController < ApplicationController
     @like = Like.new
     @likes_count = Like.where(post_id: params[:id]).count
     @theme = Theme.where(post_id: params[:id])
+    @favorite = Favorite.new
+    @favorites_count = Favorite.where(post_id: params[:id]).count
   end
 
   def search

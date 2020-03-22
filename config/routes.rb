@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations"}
   resources :posts do
     resources :likes, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     collection do
       get 'search'

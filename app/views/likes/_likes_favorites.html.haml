@@ -6,9 +6,14 @@
           いいね取消
         = @likes_count
       %span.like-push
-        = link_to "#", class: "like-submit" do
-          お気に入り追加
-        = @likes_count
+        - if current_user.already_favorited?(@post)
+          = link_to post_favorite_path(@post), method: :delete, class: "like-submit" do
+            お気に入り解除
+          = @favorites_count
+        - else
+          = link_to post_favorites_path(@post), method: :post, class: "like-submit" do
+            お気に入り追加
+          = @favorites_count
     - elsif current_user.id == @post.user.id #自分の投稿なら
       %span.like-push
         %span.like-submit
@@ -17,16 +22,21 @@
       %span.like-push
         %span.like-submit
           お気に入りされた数
-        = @likes_count
+        = @favorites_count
     - else #まだいいね!してなければ いいね! 表示
       %span.like-push
         = link_to post_likes_path(@post), method: :post, class: "like-submit" do
           いいね!
         = @likes_count
       %span.like-push
-        = link_to "#", class: "like-submit" do
-          お気に入り追加
-        = @likes_count
+        - if current_user.already_favorited?(@post)
+          = link_to post_favorite_path(@post), method: :delete, class: "like-submit" do
+            お気に入り解除
+          = @favorites_count
+        - else
+          = link_to post_favorites_path(@post), method: :post, class: "like-submit" do
+            お気に入り追加
+          = @favorites_count
 
   - elsif user_signed_in? && @post.created_at < Time.zone.today.beginning_of_day #昨日以前
     %span.like-push
@@ -34,9 +44,14 @@
         いいね集計済
       = @likes_count
     %span.like-push
-      = link_to "#", class: "like-submit" do
-        お気に入り追加
-      = @likes_count
+      - if current_user.already_favorited?(@post)
+        = link_to post_favorite_path(@post), method: :delete, class: "like-submit" do
+          お気に入り解除
+        = @favorites_count
+      - else
+        = link_to post_favorites_path(@post), method: :post, class: "like-submit" do
+          お気に入り追加
+        = @favorites_count
 
   - else #未ログイン → サインイン画面へ進む
     %span.like-push

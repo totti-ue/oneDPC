@@ -9,7 +9,7 @@
       = render partial: "/shared/clock"
     -# A ログイン中のユーザー ーーーーー
   - if user_signed_in?
-    - if current_user.id == @user.id && @post.exists? # A_1 マイページ
+    - if current_user.id == @user.id && @post.present? # A_1 マイページ
       .user-show-top
         = render "profile"
         = render "todays_post"
@@ -40,6 +40,39 @@
           ーー
           = link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage"
 
+      .section-four
+        %ul.tab-group
+          %li.tab.is-active
+            私の投稿集
+          %li.tab
+            お気に入り
+          %li.tab
+            いいねした投稿
+        .panel-group
+          .panel.is-show
+            - @posts.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@posts)
+          .panel
+            - @faved.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@faved)
+          .panel
+            - @liked.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@liked)
+      = render "/shared/page_back"
+
+
+      
+      -# A_2 他ユーザーのページ --------------------------
+    -elsif @post.blank? # A_2'_a
+      .user-show-top
+        = render "profile"
+        .request-new-post
+          本日まだ投稿していません
+
+
       %h1.other-user-page__heading
         >
         %b #{@user.nickname}
@@ -52,26 +85,26 @@
           - @posts.each do |post|
             = render partial: "/posts/post", locals: { post: post }
           = paginate(@posts)
+
       = render "/shared/page_back"
 
-
-      
-      -# A_2 他ユーザーのページ --------------------------
-    -else
-      .other-user-page
+    -else # A_2'_b
+      .user-show-top
         = render "profile"
-        %h1.other-user-page__heading
-          >
-          %b #{@user.nickname}
-          さんの投稿一覧
-        %ul
-          - if (@posts.count == 0)
-            .no-posts-show
-              まだ投稿がありません
-          - else
-            - @posts.each do |post|
-              = render partial: "/posts/post", locals: { post: post }
-            = paginate(@posts)
+        = render "todays_post"
+
+      %h1.other-user-page__heading
+        >
+        %b #{@user.nickname}
+        さんの投稿一覧
+      %ul
+        - if (@posts.count == 0)
+          .no-posts-show
+            まだ投稿がありません
+        - else
+          - @posts.each do |post|
+            = render partial: "/posts/post", locals: { post: post }
+          = paginate(@posts)
 
       = render "/shared/page_back"
 
@@ -80,20 +113,22 @@
 
     -# B ログインしてないユーザー -----------------------------
   - else
-    .other-user-page
+    .user-show-top
       = render "profile"
-      %h1.other-user-page__heading
-        >
-        %b #{@user.nickname}
-        さんの投稿一覧
-      %ul
-        - if (@posts.count == 0)
-          .no-posts-show
-            まだ投稿がありません
-        - else
-          - @posts.each do |post|
-            = render partial: "/posts/post", locals: { post: post }
-          = paginate(@posts)
+      = render "todays_post"
+
+    %h1.other-user-page__heading
+      >
+      %b #{@user.nickname}
+      さんの投稿一覧
+    %ul
+      - if (@posts.count == 0)
+        .no-posts-show
+          まだ投稿がありません
+      - else
+        - @posts.each do |post|
+          = render partial: "/posts/post", locals: { post: post }
+        = paginate(@posts)
 
     = render "/shared/page_back"
 

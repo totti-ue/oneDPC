@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :today_theme, only: [:index, :show]
+  before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @users = User.where.not(id: current_user.id)
@@ -8,9 +9,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @nickname = @user.nickname 
-    @post = @user.posts.where("created_at > ?", Time.zone.today.beginning_of_day)
+    @post = @user.posts.find_by(created_at: Time.zone.today.beginning_of_day...Time.zone.today.end_of_day)
     @posts = @user.posts.order("created_at DESC").page(params[:page]).per(20)
     @liked = @user.liked_posts.order("created_at DESC").page(params[:page]).per(20)
+    @faved = @user.fav_posts.order("created_at DESC").page(params[:page]).per(20)
   end
 
 
