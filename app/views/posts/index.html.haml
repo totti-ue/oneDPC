@@ -46,7 +46,7 @@
               = @best.first.created_at.to_s(:datetime_jp)
             %li.yesterdays-number-one__details__lists--a-list
               投稿者：
-              = link_to "#{@best.first.user.nickname}", "#", class: "name-link"
+              = link_to "#{@best.first.user.nickname}", user_path(@best.first.user.id), class: "name-link"
             .likes-favorites
               - if user_signed_in? #登録、ログイン済
                 - unless current_user.already_liked?(@best.first) #いいね!済
@@ -96,8 +96,8 @@
       枚
     %ul.section-two__user-posts
       - @best.first.user.posts.each do |best|
-        %li.img-box
-          = link_to "/posts/#{best.id}" do
+        = link_to post_path(best.id) do
+          %li.img-box
             = image_tag asset_path("#{best.image}"), class: "img-box"
 
 
