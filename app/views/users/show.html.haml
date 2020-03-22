@@ -14,19 +14,27 @@
         = render "profile"
         = render "todays_post"
 
-      %h1.other-user-page__heading
-        >
-        %b #{@user.nickname}
-        さんの投稿一覧
-      %ul
-        - if (@posts.count == 0)
-          .no-posts-show
-            まだ投稿がありません
-        - else
-          - @posts.each do |post|
-            = render partial: "/posts/post", locals: { post: post }
-          = paginate(@posts)
-
+      .section-four
+        %ul.tab-group
+          %li.tab.is-active
+            私の投稿集
+          %li.tab
+            お気に入り
+          %li.tab
+            いいねした投稿
+        .panel-group
+          .panel.is-show
+            - @posts.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@posts)
+          .panel
+            - @faved.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@faved)
+          .panel
+            - @liked.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@liked)
       = render "/shared/page_back"
 
     - elsif current_user.id == @user.id && @post.blank?
