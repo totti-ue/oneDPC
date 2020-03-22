@@ -1,139 +1,128 @@
-.show {
+.post-show-top {
+  background-color: white;
   width: 100%;
-  margin-top: 60px;
-  &__details {
-    max-height: 800px;
-    display: flex;
-    justify-content: center;
-    &__image{
-      height: auto;
-      max-width: 1200px;
-      &--text-contents {
-        position: relative;
-        .show-title {  
-          font-size: 20px;
-        }
-        .show-more {
-          position: absolute;
-          .show-image_tag {
-          }
-          .show-more_list {
-            &__a-list {
-              
-              color: black;
-            }
-            // &__a-list:hover {
-            //   color: yellow;
-            //   font-weight: bold;
-            // }
-          }
-          // .show-more_list:hover {
-          //   overflow: visible;
-          //   animation-name: fade_in1;
-          //   animation-duration: 0.5s; //アニメーション時間
-          //   animation-timing-function: ease-out; //アニメーションさせるイージング
-          //   animation-iteration-count: 1; //繰り返し回数
-          //   text-shadow: 3px 2px 5px gray;
-          // }
-        }
-        .iine-box {
-          position: absolute;
-          bottom: 20px;
-          left: 20px;
-          .iine-count {
-            font-size: 14px;
-          }
-          .like { 
-            
-            font-size: 22px;
-            color: black;
-            // opacity: 0.7;
-          }
-          // .iine {
-          //   // opacity: 1;
-          //   color: rgb(230, 101, 123);
-          // }
-          // .like:hover {
-          //   text-shadow: 3px 2px 5px gray;
-          //   // opacity: 1;
-          // }
-          // .iine:hover {
-          //   color: blue;
-          // }
-          // .dislike:hover {
-          //   color: rgb(230, 101, 123);
-          // }
+  height: calc(100vh - 370px);
+  margin-top: 92px;
+  padding-top: 20px;
 
-        }
-        .show-name {
-          padding-right: 10px;
-          font-size: 20px;
-          display: block;
-          position: absolute;
-          bottom: 10px;
-          right: 0;
-          .show-name-link {
-            
-            color: #fff;
-          }
-        }
-        // .show-name:hover .show-name-link{
-        //   text-shadow: 3px 2px 5px gray;
-        //   font-weight: bold;
-        //   color: skyblue;
-        // }
-      } 
-      // &--text-contents:hover {
-      //   // opacity: 1;
-      //   animation-name: fade_in1;
-      //   animation-duration: 0.5s; //アニメーション時間
-      //   animation-timing-function: ease-out; //アニメーションさせるイージング
-      //   animation-iteration-count: 1; //繰り返し回数
-      //   text-shadow: 3px 2px 5px gray;
-      // }
+  // padding-top: 30px;
+  .post-show-wrapper {
+    width: 870px;
+    height: calc(100% - 22px);
+    margin: 22px auto 0;
+    &__img-description {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 8px;
     }
-    // &__image:hover {
-    //   color: white;
-    //   box-shadow: 1px 2px 20px gray;
-    //   background-color: transparent;
-    // }
-    .back-to-toppage {
-      display: block;
-      float: right;
-      padding-top: 20px;
-    }
-    .comment-box {
-      height: auto;
-      padding: 10px;
-      &__form {
-        height: auto;
-        padding: 20px;
-        border: 1px solid;
-        border-radius: 5px;
-        #comment_comment {
-          width: 100%;
-          height: auto;
+    .post-contents {
+      display: flex;
+      &__img {
+        max-height: 360px;
+        max-width: 582px;
+        float: left;
+        &--prev {
+          max-height: 360px;
+          max-width: 582px;
+          object-fit: contain;
+          object-position: left;
+          box-shadow: 0px 0px 6px 2px $hf-color;
         }
       }
-      .submit-box {
-        height: auto;
-        margin-top: 10px;
-        display: flex;
-        justify-content: flex-end;
-        &__send-btn {
-          height: 30px;
-          width: 80px;
-          border: 1px solid skyblue;
-          background-color: skyblue;
-          color: white;
+      &__details {
+        min-width: calc(870px - 592px);
+        max-width: 500px;
+        height: 360px;
+        float: left;
+        margin-left: 10px;
+        background-color: rgba(0, 0, 0, 0.2);
+        position: relative;
+        &__heading {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 20px;
+          border-bottom: 2px solid $hf-color;
         }
-        // &__send-btn:hover {
-        //   box-shadow: 3px 2px 5px gray;
-        // }
+        &__lists {
+          &--a-list {
+            font-size: 14px;
+            padding-bottom: 10px;
+            .theme-link {
+              .theme-tag {
+              }
+            }
+            .name-link {
+              
+              &:hover {
+                color: lightblue;
+              }
+            }
+            .my-post-link {
+            }
+          }
+        }
       }
     }
   }
 }
+
+
+
+.comments-wrapper {
+  width: 870px;
+  min-height: 300px;
+  margin: 0 auto 80px;
+  display: flex;
+  position: relative;
+  .comment-box {
+    height: auto;
+    width: 300px;
+    // float: left;
+    &__form {
+      height: auto;
+      padding: 20px;
+      border: 1px solid;
+      border-radius: 5px;
+      #comment_comment {
+        width: 100%;
+        height: 60px;
+      }
+    }
+    .submit-box {
+      height: auto;
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      &__send-btn {
+        height: 30px;
+        width: 80px;
+        border: 1px solid skyblue;
+        background-color: skyblue;
+        color: white;
+      }
+      &__send-btn:hover {
+        box-shadow: 3px 2px 5px gray;
+      }
+    }
+  }
+  .comments__heading {
+    width: calc(100% - 312px);
+    position: absolute;
+    right: 0;
+  }
+  .comments {
+    width: calc(100% - 312px);
+    max-height: 340px;
+    overflow: scroll;
+    // float: left;
+    margin-top: 26px;
+    margin-left: 10px;
+    // background-color: rgba(0, 0, 0, 0.2);
+
+  }
+}
+
+
 
 
 #posts-section-one {
@@ -143,19 +132,24 @@
   // position: fixed;
 }
 
+.liked-users{
+  height: 20px;
+  width: 200px;
+  overflow: hidden;
+  margin-top: 10px;
+  box-shadow: 2px 2px 2px 2px #333;
+  &__list {
+    height: 20px;
+    width: 200px;
+    margin-bottom: 5px;
+    // background-color: springgreen;
 
-.comments-wrapper {
-  width: 800px;
-  margin: 0 auto;
-  .liked-users{
-    &__list {
-      overflow: hidden;
-      height: 20px;
-      width: 145px;
-      &:hover {
-        overflow: visible;
-        height: auto;
-      }
+    &--a-list {
+      display: inline;
     }
+
+  }
+  &:hover {
+    overflow: visible;
   }
 }

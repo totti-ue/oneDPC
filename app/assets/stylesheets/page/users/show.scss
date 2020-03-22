@@ -59,7 +59,7 @@
 // マイページの設定--------------------------------
 .user-show-top {
   color: white;
-  background-color: #333;
+  background-color: $hf-color;
   height: calc(100vh - 122px);
   // height: 668px;
   margin-top: 92px;
@@ -133,7 +133,8 @@
 
 .page-back-or-page-index {
   display: block;
-  width: calc(100% - 40px);
+  // width: calc(100% - 40px);
+  width: 870px;
   margin: 20px auto;
 }
 

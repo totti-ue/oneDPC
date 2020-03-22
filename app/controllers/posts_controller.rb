@@ -4,14 +4,16 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
-    # @posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(20)
-    # @posts = Post.where(created_at: Time.zone.yesterday.beginning_of_day..Time.zone.yesterday.end_of_day).order("created_at DESC").page(params[:page]).per(20)
+    @best = Post.todays_post
+    @yesterday_posts = Post.where(created_at: Time.zone.yesterday.beginning_of_day..Time.zone.yesterday.end_of_day).order("created_at DESC").page(params[:page]).per(20)
     @posts = Post.all.order("created_at DESC").page(params[:page]).per(20)
-    @best = Post.create_all_ranks
+    @today_posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
+    @yesterday_posts = Post.includes(:user).where(created_at: Time.zone.yesterday.beginning_of_day...Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
+    @old_posts = Post.includes(:user).where("created_at < ?", Time.zone.yesterday.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
+    @yesterday_theme = Theme.find(yesterday_num)
     if Like.count != 0
       @likes = Like.where(post_id: @best.first.id).count
     end
-    # where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC")
   end
 
   def new
@@ -59,25 +61,6 @@ class PostsController < ApplicationController
     @posts = Post.search(params[:keyword])
     @likes_count = Like.where(post_id: params[:id]).count
   end
-
-  def rank
-    # @all_ranks = Post.create_today_ranks
-    # @rank_first = @all_ranks.first
-    # @rank_second = @all_ranks.second
-    # @rank_third = @all_ranks.third
-    @today_posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
-    @yesterday_posts = Post.includes(:user).where(created_at: Time.zone.yesterday.beginning_of_day...Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
-    @old_posts = Post.includes(:user).where("created_at < ?", Time.zone.yesterday.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
-    @yesterday_theme = Theme.find(yesterday_num)
-
-  end
-
-  def past
-    @posts = Post.includes(:user).where("created_at < ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
-    @themes = Theme.includes(:post_id)
-    @theme = Theme.all
-  end
-
 
 
   private

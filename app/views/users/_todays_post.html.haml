@@ -1,12 +1,11 @@
 .todays-post
-  %p.todays-post__img-description           
+  %h2.todays-post__img-description           
     本日投稿中の一枚
   .todays-post__img
     = image_tag asset_path("#{@post.first.image}"), class: "todays-post__img--prev"
   .todays-post__details
-    %p.todays-post__details__heading
+    %h3.todays-post__details__heading
       投稿詳細
-    
     %ul.todays-post__details__lists
       %li.todays-post__details__lists--a-list
         テーマ：

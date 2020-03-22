@@ -3,21 +3,19 @@
     .main-top__box
       %p.main-top__box--todays-theme
         本日のお題：
-        %span{:style => "font-weight:bold;"}
+        %span{style: "font-weight:bold;"}
           『
           = @today_theme.name
           』
       = render partial: "/shared/clock"
-  .empty-box
 
     -# ここからがnew画面
   .new-post
     - if current_user.posts.count >= 1 && current_user.posts.last.created_at > Time.zone.today.beginning_of_day
-      .empty-box
-      %p.color-black.text-center
+      %p.one-post-message
         一日に投稿できるのは一枚のみです。(以下すでに投稿済みの画像)
         %br
-        = image_tag asset_path(@ex_post.image)
+        = image_tag asset_path(@ex_post.image), class: "changeif-prev"
         %br
         投稿を編集しますか？
         = link_to "はい", "/posts/#{@ex_post.id}/edit"
@@ -26,35 +24,32 @@
         投稿を削除しますか？
         = link_to "はい", "/posts/#{@ex_post.id}", method: :delete
     - else
-      .new-post__left-box
+      .new-post__create
         = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
-          %p.action-post
+          %h3.new-post__create__action-description
             新規投稿する
           - if @post.errors.any?
-            %h3{style: "color: palevioletred;"} 入力内容に#{@post.errors.count}件のエラーがあります。          
+            %h3{style: "color: palevioletred;"} 入力内容に#{@post.errors.count}件のエラーがあります。
             - @post.errors.full_messages.each do |error|
               = error
-          .select-title
+          .new-post__create__form
             テーマを選択してください
           = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
-          .select-title
+          .new-post__create__form
             タイトルを入力してください
-          = form.text_field :title, autofocus: true, placeholder: "タイトル", class:"post-title-form"
-          .select-title
+          = form.text_field :title, autofocus: true, placeholder: "タイトル（必須）", class:"form-box", required: :true
+          .new-post__create__form
             メッセージを入力してください
-          = form.text_field :message, placeholder: "メッセージ(任意)", maxlength: "250", class:"post-title-form"
-
-          .select-title
-            画像ファイルを選択してください
-          = form.file_field :image, type: "file", style: "display:none", class:"post-title-form", id: "new-img"
+          = form.text_field :message, placeholder: "メッセージ(任意) 最大２５０文字", maxlength: "250", class:"form-box message-form-box"
+          .new-post__create__form
+            画像ファイルを選択してください（アイコンをクリック）
+          = form.file_field :image, type: "file", style: "display:none", class:"form-box", id: "new-img"
           %label{for: "new-img"}
             = fa_icon "image", style: "font-size: 130px;"
             %img{id: "new-img_prev"}
               %span.prev-msg
                 プレビュー画面
-              -# = form.check_box :remove_img
-              -# 画像を削除する
-          %span{:style => "display:none;"}
+          %span{style: "display:none;"}
             = form.datetime_select :start_time
           .post-submit
             = form.submit "SEND", class: "post-submit-btn"

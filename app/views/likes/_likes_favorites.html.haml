@@ -1,0 +1,49 @@
+.likes-favorites
+  - if user_signed_in? && @post.created_at > Time.zone.today.beginning_of_day #今日の投稿の場合
+    - if current_user.already_liked?(@post) #いいね!済なら 取消 表示
+      %span.like-push.already-liked
+        = link_to post_like_path(@post), method: :delete, class: "like-submit" do
+          いいね取消
+        = @likes_count
+      %span.like-push
+        = link_to "#", class: "like-submit" do
+          お気に入り追加
+        = @likes_count
+    - elsif current_user.id == @post.user.id #自分の投稿なら
+      %span.like-push
+        %span.like-submit
+          いいね獲得数
+        = @likes_count
+      %span.like-push
+        %span.like-submit
+          お気に入りされた数
+        = @likes_count
+    - else #まだいいね!してなければ いいね! 表示
+      %span.like-push
+        = link_to post_likes_path(@post), method: :post, class: "like-submit" do
+          いいね!
+        = @likes_count
+      %span.like-push
+        = link_to "#", class: "like-submit" do
+          お気に入り追加
+        = @likes_count
+
+  - elsif user_signed_in? && @post.created_at < Time.zone.today.beginning_of_day #昨日以前
+    %span.like-push
+      %span.like-submit
+        いいね集計済
+      = @likes_count
+    %span.like-push
+      = link_to "#", class: "like-submit" do
+        お気に入り追加
+      = @likes_count
+
+  - else #未ログイン → サインイン画面へ進む
+    %span.like-push
+      = link_to new_user_registration_path, class: "like-submit" do
+        いいね!
+      = @likes_count
+    %span.like-push
+      = link_to new_user_registration_path, class: "like-submit" do
+        お気に入り追加
+      = @likes_count

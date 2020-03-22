@@ -1,22 +1,21 @@
 .new-post {
-  // background-color: $hf-color;
   width: 100%;
   height: calc(100vh - 92px);
   color: white;
-  position: relative;
-  &__left-box {
+  position: fixed;
+  margin-top: 92px;
+  &__create {
     width: 460px;
     height: calc(100% - 40px);
     padding: 20px;
     float: left;
-    // background-color: tan;
     background-color: $hf-color;
-    .action-post {
+    &__action-description {
       font-size: 20px;
       border-bottom: 2px solid white;
       margin-bottom: 20px;
     }
-    .select-title {
+    &__form {
       margin-bottom: 10px;
     }
     #post_theme_ids {
@@ -24,9 +23,13 @@
       height: 30px;
       margin-bottom: 20px;
     }
-    .post-title-form {
+    .form-box {
       width: 90%;
       margin-bottom: 20px;
+      padding-left: 10px;
+    }
+    .message-form-box {
+      height: 100px;
     }
     .post-submit {
       display: flex;
@@ -51,8 +54,8 @@
 }
 
 #new-img_prev{
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 500px;
+  max-height: 500px;
   position: absolute;
   left: 520px;
   top: 40px;
@@ -67,8 +70,14 @@
 .color-black {
   color: black;
 }
-.text-center {
-  width: 80%;
-  margin: 0 auto;
+.one-post-message {
+  width: 1200px;
+  margin: 120px auto 0;
+  color: black;
   // text-align: center;
+  .changeif-prev {
+    max-width: 500px;
+    max-height: 500px;
+    object-fit: contain;
+  }
 }

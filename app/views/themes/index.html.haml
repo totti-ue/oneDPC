@@ -1,9 +1,17 @@
-.theme-index
-  .theme-index__lists-box
-    %p.theme-word
-    %ul.theme-index__lists-box__lists
-      - @themes.each do |theme|
+.theme-index-page
+  .theme-index-page__lists-box
+    %ul.theme-index-page__lists-box__lists
+      - @themes.each_with_index do |theme, i|
+        - i += 1
         = link_to "/themes/#{theme.id}", class: "theme-link" do
           %li.a-theme-list
-            = theme.name
-  = link_to "戻る", :back
+            #{i}.#{theme.name}
+
+    = render "/shared/page_back"
+
+    .theme-description
+      テーマが選ばれる順番について
+      %p.theme-description__message
+        テーマは全て順番通りに選ばれています。
+        日にちとテーマ番号はリンクしており、日曜日を除いて該当日の日にち(数字)のテーマ番号が選ばれます。
+        日曜日は自動的に『自由(フリーテーマ)』となります。
