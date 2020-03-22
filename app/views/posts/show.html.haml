@@ -8,112 +8,63 @@
           』
       = render partial: "/shared/clock"
 
-
-  .section-one#posts-section-one
-    %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
-      = notice
-    %p.section-one__yesterdays-top
-      %span.section-one__yesterdays-top__img-title
-        = @post.user.nickname
-        さんの一枚  
-    .section-one__main
-      .section-one__main__left
-        = image_tag asset_path("#{@post.image}"), class: "left-content-img"
-      .section-one__main__right
-        %p.yesterdays-top-img
-          投稿詳細
-        %ul.img-detail
-          %li.img-detail__list
-            テーマ：
-            = link_to "/themes/#{@post.themes.first.id}", class: "theme-link" do
-              %span.theme-tag.tag1
-                = @post.themes.first.name   
-          %li.img-detail__list
-            タイトル：
-            = @post.title
-          %li.img-detail__list
-            メッセージ：
-            = @post.message
-          %li.img-detail__list
-            投稿日：
-            = @post.created_at.to_s(:datetime_jp)
-          %li.img-detail__list
-            投稿者：
-            = link_to "#{@post.user.nickname}", "/users/#{@post.user.id}", class: "name-link"
-          - if user_signed_in? && current_user.id == @post.user_id
-            %li.img-detail__list
-              = link_to '編集する', "/posts/#{@post.id}/edit", method: :get, class: "my-post-list"
-            %li.img-detail__list
-              = link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
+  .post-show-top
+    .post-show-wrapper
+      %h2.post-wrapper__img-description           
+        #{@post.user.nickname}さんの投稿
+      .post-contents
+        .post-contents__img
+          = image_tag asset_path("#{@post.image}"), class: "post-contents__img--prev"
+        .post-contents__details
+          %h3.post-contents__details__heading
+            投稿詳細
+          %ul.post-contents__details__lists
+            %li.post-contents__details__lists--a-list
+              テーマ：
+              = link_to "/themes/#{@post.themes.first.id}", class: "theme-link" do
+                %span.theme-tag.tag1
+                  = @post.themes.first.name   
+            %li.post-contents__details__lists--a-list
+              タイトル：
+              = @post.title
+            %li.post-contents__details__lists--a-list
+              メッセージ：
+              = @post.message
+            %li.post-contents__details__lists--a-list
+              投稿日：
+              = @post.created_at.to_s(:datetime_jp)
+            %li.post-contents__details__lists--a-list
+              投稿者：
+              = link_to "#{@post.user.nickname}", "/users/#{@post.user.id}", class: "name-link"
+            - if user_signed_in? && current_user.id == @post.user_id
+              %li.post-contents__details__lists--a-list
+                = link_to '編集する', "/posts/#{@post.id}/edit", method: :get, class: "my-post-list"
+              %li.post-contents__details__lists--a-list
+                = link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
 
 
+          = render "/likes/likes_favorites"
+      -# - if user_signed_in? && current_user.id == @post.user_id #マウスオーバーするまで隠す
+      -#   .liked-users
+      -#     %ul.liked-users__list
+      -#       いいねしたユーザー
+      -#     - @post.liked_users.each do |user|
+      -#       %li.liked-users__list--a-list
+      -#         = link_to "#{user.nickname}", user_path(user.id)
+  = render "/shared/page_back"
 
-
-        .likes-favorites-box
-          -# ログイン中のユーザーのみ
-          - if user_signed_in?
-            -# 自分の投稿なら
-            - if current_user.id == @post.user.id
-              .likes-favorites-box__count-box
-                = fa_icon "heart", class: "icon-heart"
-                = @likes_count
-              .likes-favorites-box__count-box
-                = fa_icon "star", class: "icon-star"
-                = @liked_counts
-              -# すでにいいねをした投稿なら
-            - elsif current_user.already_liked?(@post)
-              = link_to post_like_path(@post), method: :delete, class: "likes-favorites-box__count-box likes-count dismiss-like" do
-                = fa_icon "heart", class: "icon-heart dismiss-like"
-                = @likes_count
-              .likes-favorites-box__count-box.favorites-count
-                = fa_icon "star", class: "icon-star"
-                = @liked_counts
-              -# まだいいねしていない投稿なら
-            - else
-              = link_to post_likes_path(@post), method: :post, class: "likes-favorites-box__count-box likes-count" do
-                = fa_icon "heart", class: "icon-heart"
-                = @likes_count
-              .likes-favorites-box__count-box.favorites-count
-                = fa_icon "star", class: "icon-star"
-                = @liked_counts
-            -# 未ログインユーザーはこちら
-          - else
-            .likes-favorites-box__count-box
-              = fa_icon "heart", class: "icon-heart"
-              = @likes_count
-            .likes-favorites-box__count-box
-              = fa_icon "star", class: "icon-star"
-              = @liked_counts
-
-.show
-  %p{style: "margin: 0 auto; width:100px; text-align:center;"}
-    原寸比
-  .show__details
-
-    = image_tag asset_path("#{@post.image}"), class: "show__details__image"
-  .empty-box
-
-.comments-wrapper
-  -# マウスオーバーするまで隠す
-  .liked-users
-    - if user_signed_in? && current_user.id == @post.user_id
-      %ul.liked-users__list
-        いいねしたユーザー
-        - @post.liked_users.each do |user|
-          %li 
-            = user.nickname
-  .comment-box
-    - if current_user
-      = form_with(model: [@post, @comment], class: "comment-box__form", local: true) do |form|
-        = form.text_area :comment, placeholder: "コメントする", rows: "2"
-        .submit-box
-          = form.submit "SEND", class: "submit-box__send-btn"
-    - else
-      %strong
-        %p{:style => "text-align:center;"} ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-  .comments
-    %h4 ＜コメント一覧＞
-    - if @comments
+  .comments-wrapper
+    .comment-box
+      - if current_user
+        = form_with(model: [@post, @comment], class: "comment-box__form", local: true) do |form|
+          = form.text_area :comment, placeholder: "コメントする", rows: "2"
+          .submit-box
+            = form.submit "SEND", class: "submit-box__send-btn"
+      - else
+        %strong
+          %p{style: "text-align:center;"} ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+    %h3.comments__heading ＜コメント一覧＞
+    .comments
       - @comments.each do |comment|
         %p
           %strong
@@ -122,7 +73,5 @@
           = comment.comment
           - if current_user.id == comment.user.id
             %span= link_to "削除", "/posts/#{comment.post_id}/comments/#{comment.id}", method: :delete
-
-  = link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage"
-  .empty-box
+      
 

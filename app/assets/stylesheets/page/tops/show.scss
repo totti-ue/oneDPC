@@ -21,7 +21,6 @@ body, html, main {
 }
 .bg-1::before, .bg-2:before, .bg-3:before, .bg-4:before {
   content: "";
-  position: absolute;
   top: 0;
   left: 0;
   height: 100%;

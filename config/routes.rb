@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     collection do
       get 'search'
-      get 'rank'
-      get 'past'
     end
   end
   resources :users, only: [:index, :show]

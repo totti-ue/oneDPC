@@ -1,4 +1,4 @@
-.theme-index {
+.theme-index-page {
   margin-top: 60px;
   height: auto;
   width: 100%;
@@ -6,9 +6,7 @@
     width: 800px;
     margin: 0 auto;
     padding-top: 30px;
-    .theme-word {
-      margin: 20px 0px;
-    }
+
     &__lists {
       display: flex;
       justify-content: flex-start;
@@ -37,6 +35,17 @@
           color: white;
    
         }
+      }
+    }
+    .theme-description {
+      margin-top: 20px;
+      padding: 5px 10px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 3px outset $hf-color;
+      &__message {
+        font-size: 14px;
+        font-weight: 100;
       }
     }
   }

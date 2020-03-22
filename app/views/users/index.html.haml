@@ -1,10 +1,11 @@
-.theme-index
-  .theme-index__lists-box
-    %p.theme-word
-    %ul.theme-index__lists-box__lists
-      - @users.each.with_index(1) do |user, index|
+.theme-index-page
+  .theme-index-page__lists-box
+    %ul.theme-index-page__lists-box__lists
+      - @users.each_with_index do |user|
         = link_to "/users/#{user.id}", class: "theme-link" do
           %li.a-theme-list
             = user.nickname
+
+    = render "/shared/page_back"
 
 

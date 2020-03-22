@@ -30,32 +30,32 @@
               %ul.menu__second-level
                 %li= link_to "マイページ", "/users/#{current_user.id}", class: "pulldown-list"
                 %li= link_to "アカウント編集", edit_user_registration_path, class: "pulldown-list"
-                %li= link_to "投稿する", "/posts/new", class: "pulldown-list"
                 %li= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "pulldown-list"
             %li.menu__single.single2
               .pulldown 
                 投稿関連
               %ul.menu__second-level
+                %li= link_to "投稿する", "/posts/new", class: "pulldown-list"
                 %li= link_to "テーマ一覧", "/themes", class: "pulldown-list"
                 %li= link_to "ユーザー一覧", "/users", class: "pulldown-list"
-                %li= link_to "今日のTOP3", "/posts/rank", class: "pulldown-list"
-                %li= link_to "過去の投稿", "/posts/past", class: "pulldown-list"
-            %li.menu__single.single0
-              = link_to "コンテスト説明", "/tops/show", class: "pulldown"
+            %li.menu__single.single2
+              .pulldown 
+                アプリ説明
+              %ul.menu__second-level
+                %li= link_to "ONE DPCとは", "/tops/show", class: "pulldown-list"
         - else
           %ul.menu
-            %li.menu__single
-              = link_to "新規登録", new_user_registration_path, class: "pulldown"
-            %li.menu__single
-              = link_to "サインイン", new_user_session_path, class: "pulldown"
-            %li.menu__single
-              = link_to "投稿について", "#", class: "pulldown"
+            %li.menu__single.single2
+              .pulldown 
+                ユーザーメニュー
               %ul.menu__second-level
-                %li= link_to "テーマ一覧", "/themes", class: "pulldown-list"
-                %li= link_to "今日のTOP3", "/posts/rank", class: "pulldown-list"
-                %li= link_to "過去の投稿", "/posts/past", class: "pulldown-list"
-            %li.menu__single.single0
-              = link_to "コンテスト説明", "/tops/show", class: "pulldown"
+                %li= link_to "新規登録", new_user_registration_path, class: "pulldown-list"
+                %li= link_to "サインイン", new_user_session_path, class: "pulldown-list"
+            %li.menu__single.single2
+              .pulldown 
+                アプリ説明
+              %ul.menu__second-level
+                %li= link_to "ONE DPCとは", "/tops/show", class: "pulldown-list"
 
 
     = yield
