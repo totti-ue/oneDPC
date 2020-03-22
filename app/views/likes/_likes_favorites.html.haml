@@ -1,5 +1,5 @@
 .likes-favorites
-  - if user_signed_in? && @post.created_at > Time.zone.today.beginning_of_day #今日の投稿の場合
+  - if user_signed_in? && @post.created_at > Time.zone.today.beginning_of_day #今日の投稿があれば
     - if current_user.already_liked?(@post) #いいね!済なら 取消 表示
       %span.like-push.already-liked
         = link_to post_like_path(@post), method: :delete, class: "like-submit" do
@@ -47,6 +47,10 @@
       - if current_user.already_favorited?(@post)
         = link_to post_favorite_path(@post), method: :delete, class: "like-submit" do
           お気に入り解除
+        = @favorites_count
+      - elsif current_user.id == @post.user.id #自分の投稿なら
+        %span.like-submit
+          お気に入りされた数
         = @favorites_count
       - else
         = link_to post_favorites_path(@post), method: :post, class: "like-submit" do
