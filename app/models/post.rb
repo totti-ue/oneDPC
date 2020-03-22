@@ -4,6 +4,8 @@
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :favorites, dependent: :destroy
+  has_many :fav_posts, through: :favorites, source: :user
   has_many :post_themes, dependent: :destroy
   has_many :themes, through: :post_themes
 

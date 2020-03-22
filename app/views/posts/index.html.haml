@@ -55,18 +55,28 @@
                       いいね集計済
                     = @best.first.likes.count
                   %span.like-push
-                    = link_to "#", class: "like-submit" do
-                      お気に入り追加
-                    = @best.first.likes.count
-                - else
+                    - if current_user.already_favorited?(@best.first)
+                      %span.like-submit
+                        お気に入り登録済
+                      = @best.first.favorites.count
+                    - else
+                      = link_to post_favorites_path(@best.first), method: :post, class: "like-submit" do
+                        お気に入り追加
+                      = @best.first.favorites.count
+                - else #未いいね!
                   %span.like-push.already-liked
                     %span.like-submit
                       いいね集計済
                     = @best.first.likes.count
                   %span.like-push
-                    = link_to "#", class: "like-submit" do
-                      お気に入り追加
-                    = @best.first.likes.count
+                    - if current_user.already_favorited?(@best.first)
+                      %span.like-submit
+                        お気に入り登録済
+                      = @best.first.favorites.count
+                    - else
+                      = link_to post_favorites_path(@best.first), method: :post, class: "like-submit" do
+                        お気に入り追加
+                      = @best.first.favorites.count
               - else #未ログイン
                 %span.like-push
                   %span.like-submit
