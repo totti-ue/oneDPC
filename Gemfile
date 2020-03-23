@@ -87,3 +87,4 @@ gem 'rails-i18n', '~> 5.1'
 gem "font-awesome-rails"
 gem "font-awesome-sass"
 gem 'haml-rails'
+gem 'fog-aws'
