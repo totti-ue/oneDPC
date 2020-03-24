@@ -106,11 +106,10 @@
       %b #{@best.first.user.nickname}
       さんの投稿 投稿総数 #{@best.first.user.posts.count}
       枚
-    %ul.section-two__user-posts
+    .section-two__user-posts
       - @best.first.user.posts.each do |best|
-        = link_to post_path(best.id) do
-          %li.img-box
-            = image_tag asset_path("#{best.image}"), class: "img-box"
+        = link_to post_path(best.id), class: "img-link" do
+          = image_tag asset_path("#{best.image}"), class: "img-box"
 
 
   .section-three
