@@ -4,8 +4,7 @@
   height: calc(100vh - 370px);
   margin-top: 92px;
   padding-top: 20px;
-
-  // padding-top: 30px;
+  overflow: auto;
   .post-show-wrapper {
     width: 870px;
     height: calc(100% - 22px);
