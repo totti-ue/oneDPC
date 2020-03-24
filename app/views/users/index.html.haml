@@ -1,9 +1,13 @@
-.theme-index-page
-  .theme-index-page__lists-box
-    %ul.theme-index-page__lists-box__lists
+.users-index
+  .users-index__wrapper
+    .all-users
       - @users.each_with_index do |user|
-        = link_to "/users/#{user.id}", class: "theme-link" do
-          %li.a-theme-list
+        = link_to user_path(user), class: "all-users__show" do
+          - unless user.avator.file.nil?
+            = image_tag asset_path(user.avator.thumb), class: "all-users__show__user-avator"
+          - else
+            = image_tag asset_path("no_img.png"), class: "all-users__show__user-avator"
+          %span.all-users__show__user-nickname
             = user.nickname
 
     = render "/shared/page_back"

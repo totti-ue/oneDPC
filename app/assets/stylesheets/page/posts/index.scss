@@ -228,28 +228,31 @@
   margin: 40px auto;
   width: 100%;
   overflow: auto;
+  .tab-group{
+    display: flex;
+    border-bottom: 1px solid gray;
+    margin: 0 40px 20px;
+    height: 80px;
+    .tab{
+      flex-grow: 1;
+      padding: 5px;
+      list-style: none;
+      border: solid 1px #CCC;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+      width: 100px;
+    }
+  }
+  .panel-group{
+  }
 }
-.tab-group{
-  display: flex;
-  border-bottom: 1px solid gray;
-  margin: 0 40px 20px;
-  height: 80px;
-}
-.tab{
-  flex-grow: 1;
-  padding: 5px;
-  list-style: none;
-  border: solid 1px #CCC;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  cursor: pointer;
-  width: 100px;
-}
-.panel-group{
-}
+
+
+
 .panel{
   display:none;
 }
@@ -267,6 +270,34 @@
 .img-img {
   width: 500px;
   object-fit: contain;
+}
+
+.follow-users {
+  overflow: auto;
+  &__show {
+    padding: 10px;
+    display: flex;
+    margin: 0 5px 5px 5px;
+    line-height: 48px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    object-fit: cover;
+    background-color: $hf-color;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    float: left;
+    &__avator {
+      @include wid-height(50px, 50px);
+    }
+    &__nickname {
+      margin-left: 5px;
+      color: $main-color;
+    }
+    &:hover {
+      padding-right: 20px;
+      background-color: deepskyblue;
+    }
+  }
 }
 
 
