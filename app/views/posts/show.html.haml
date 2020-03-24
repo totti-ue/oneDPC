@@ -55,7 +55,7 @@
 
   .comments-wrapper
     .comment-box
-      - if current_user
+      - if user_signed_in?
         = form_with(model: [@post, @comment], class: "comment-box__form", local: true) do |form|
           = form.text_area :comment, placeholder: "コメントする", rows: "2"
           .submit-box
@@ -71,7 +71,7 @@
             = link_to comment.user.nickname, "/users/#{comment.user_id}"
             ：
           = comment.comment
-          - if current_user.id == comment.user.id
+          - if user_signed_in? && current_user.id == comment.user.id
             %span= link_to "削除", "/posts/#{comment.post_id}/comments/#{comment.id}", method: :delete
       
 
