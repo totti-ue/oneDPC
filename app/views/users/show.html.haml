@@ -22,6 +22,8 @@
             お気に入り
           %li.tab
             いいねした投稿
+          %li.tab
+            フォローしているユーザー
         .panel-group
           .panel.is-show
             - @posts.each do |post|
@@ -35,7 +37,16 @@
             - @liked.each do |post|
               = render partial: "/posts/post", locals: { post: post }
             = paginate(@liked)
-      = render "/shared/page_back"
+          .panel
+            .follow-users
+              - @following.each do |follow|
+                = link_to user_path(follow), class: "follow-users__show" do
+                  - unless follow.avator.file.nil?
+                    = image_tag asset_path(follow.avator.thumb), class: "follow-users__show__avator"
+                  - else
+                    = image_tag asset_path("no_img.png"), class: "follow-users__show__avator"
+                  %span.follow-users__show__nickname
+                    = follow.nickname      = render "/shared/page_back"
 
     - elsif current_user.id == @user.id && @post.blank?
       .user-show-top
@@ -56,6 +67,8 @@
             お気に入り
           %li.tab
             いいねした投稿
+          %li.tab
+            フォローしているユーザー
         .panel-group
           .panel.is-show
             - @posts.each do |post|
@@ -69,8 +82,16 @@
             - @liked.each do |post|
               = render partial: "/posts/post", locals: { post: post }
             = paginate(@liked)
-      = render "/shared/page_back"
-
+          .panel
+            .follow-users
+              - @following.each do |follow|
+                = link_to user_path(follow), class: "follow-users__show" do
+                  - unless follow.avator.file.nil?
+                    = image_tag asset_path(follow.avator.thumb), class: "follow-users__show__avator"
+                  - else
+                    = image_tag asset_path("no_img.png"), class: "follow-users__show__avator"
+                  %span.follow-users__show__nickname
+                    = follow.nickname
 
       
       -# A_2 他ユーザーのページ --------------------------

@@ -5,17 +5,18 @@
         = link_to post_like_path(@post), method: :delete, class: "like-submit" do
           いいね取消
         = @likes_count
-      %span.like-push
-        - if current_user.already_favorited?(@post)
+      - if current_user.already_favorited?(@post)
+        %span.fav-push.already-faved
           = link_to post_favorite_path(@post), method: :delete, class: "like-submit" do
             お気に入り解除
           = @favorites_count
-        - else
+      - else
+        %span.fav-push
           = link_to post_favorites_path(@post), method: :post, class: "like-submit" do
             お気に入り追加
           = @favorites_count
     - elsif current_user.id == @post.user.id #自分の投稿なら
-      %span.like-push
+      %span.like-push-time-over
         %span.like-submit
           いいね獲得数
         = @likes_count
@@ -28,31 +29,34 @@
         = link_to post_likes_path(@post), method: :post, class: "like-submit" do
           いいね!
         = @likes_count
-      %span.like-push
-        - if current_user.already_favorited?(@post)
+      - if current_user.already_favorited?(@post)
+        %span.fav-push.already-faved
           = link_to post_favorite_path(@post), method: :delete, class: "like-submit" do
             お気に入り解除
           = @favorites_count
-        - else
+      - else
+        %span.fav-push
           = link_to post_favorites_path(@post), method: :post, class: "like-submit" do
             お気に入り追加
           = @favorites_count
 
   - elsif user_signed_in? && @post.created_at < Time.zone.today.beginning_of_day #昨日以前
-    %span.like-push
+    %span.like-push-time-over
       %span.like-submit
         いいね集計済
       = @likes_count
-    %span.like-push
-      - if current_user.already_favorited?(@post)
+    - if current_user.already_favorited?(@post)
+      %span.fav-push.already-faved
         = link_to post_favorite_path(@post), method: :delete, class: "like-submit" do
           お気に入り解除
         = @favorites_count
-      - elsif current_user.id == @post.user.id #自分の投稿なら
+    - elsif current_user.id == @post.user.id #自分の投稿なら
+      %span.fav-push
         %span.like-submit
           お気に入りされた数
         = @favorites_count
-      - else
+    - else
+      %span.fav-push
         = link_to post_favorites_path(@post), method: :post, class: "like-submit" do
           お気に入り追加
         = @favorites_count
@@ -62,7 +66,7 @@
       = link_to new_user_registration_path, class: "like-submit" do
         いいね!
       = @likes_count
-    %span.like-push
+    %span.fav-push
       = link_to new_user_registration_path, class: "like-submit" do
         お気に入り追加
       = @likes_count

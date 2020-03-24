@@ -49,21 +49,67 @@ a {
   color: #333;
   .like-push {
     padding: 8px;
-    // color: #333333;
     font-size: 12px;
     font-weight: bold;
     border-radius: 10px;
     background-color: white;
     box-shadow: 2px 2px 2px 1px #333;
     margin-right: 10px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
     .like-submit {
       color: #333;
     }
     &:hover {
-      opacity: 0.6;
+      // opacity: 0.6;
+      padding-right: 5px;
+      background-color: pink;
     }
   }
   .already-liked {
+    background-color: pink;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    &:hover {
+      background-color: white;
+    }
+  }
+  .fav-push {
+    padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 1px #333;
+    margin-right: 10px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    .like-submit {
+      color: #333;
+    }
+    &:hover {
+      padding-right: 5px;
+      background-color: yellow;
+    }
+  }
+  .already-faved {
+    background-color: yellow;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    &:hover {
+      background-color: white;
+    }
+  }
+  .like-push-time-over {
+    padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 1px #333;
+    margin-right: 10px;
+  }
+  .time-over-liked {
     background-color: pink;
   }
 }

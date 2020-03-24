@@ -50,30 +50,32 @@
             .likes-favorites
               - if user_signed_in? #登録、ログイン済
                 - unless current_user.already_liked?(@best.first) #いいね!済
-                  %span.like-push
-                    %span.like-submit.already_liked
+                  %span.like-push-time-over.already_liked
+                    %span.like-submit
                       いいね集計済
                     = @best.first.likes.count
-                  %span.like-push
-                    - if current_user.already_favorited?(@best.first)
-                      %span.like-submit
-                        お気に入り登録済
+                  - if current_user.already_favorited?(@best.first)
+                    %span.fav-push.already-faved
+                      = link_to post_favorite_path(@best.first, id: current_user.id), method: :delete, class: "like-submit" do
+                        お気に入り解除
                       = @best.first.favorites.count
-                    - else
+                  - else
+                    %span.fav-push
                       = link_to post_favorites_path(@best.first), method: :post, class: "like-submit" do
                         お気に入り追加
                       = @best.first.favorites.count
                 - else #未いいね!
-                  %span.like-push.already-liked
+                  %span.like-push-time-over.time-over-liked
                     %span.like-submit
                       いいね集計済
                     = @best.first.likes.count
-                  %span.like-push
-                    - if current_user.already_favorited?(@best.first)
-                      %span.like-submit
-                        お気に入り登録済
+                  - if current_user.already_favorited?(@best.first)
+                    %span.fav-push.already-faved
+                      = link_to post_favorite_path(@best.first, id: current_user.id), method: :delete, class: "like-submit" do
+                        お気に入り解除
                       = @best.first.favorites.count
-                    - else
+                  - else
+                    %span.fav-push
                       = link_to post_favorites_path(@best.first), method: :post, class: "like-submit" do
                         お気に入り追加
                       = @best.first.favorites.count
