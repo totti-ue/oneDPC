@@ -46,7 +46,8 @@
                   - else
                     = image_tag asset_path("no_img.png"), class: "follow-users__show__avator"
                   %span.follow-users__show__nickname
-                    = follow.nickname      = render "/shared/page_back"
+                    = follow.nickname
+      = render "/shared/page_back"
 
     - elsif current_user.id == @user.id && @post.blank?
       .user-show-top
@@ -92,6 +93,7 @@
                     = image_tag asset_path("no_img.png"), class: "follow-users__show__avator"
                   %span.follow-users__show__nickname
                     = follow.nickname
+      = render "/shared/page_back"
 
       
       -# A_2 他ユーザーのページ --------------------------
