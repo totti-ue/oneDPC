@@ -9,3 +9,24 @@ jQuery(function($){
       $('.panel').eq(index).addClass('is-show');
   });
 });
+
+
+
+$(function(){
+  $('.btn_menu').click(function(){
+    if (!$('nav').hasClass('open')){
+      $('nav').toggleClass('open');
+      $('.btn_text').remove();
+      $('.btn_menu').append(`<span class="btn_text"><i class="fa fa-times-circle">閉じる</i></span>`);
+
+    } else {
+      $('nav').toggleClass('open');
+      $('.btn_text').remove();
+      $('.btn_menu').append(`<span class="btn_text"><i class="fa fa-bars"></i></span>`);
+    }
+    // $('nav').toggleClass('open');
+    // $('.up_text').remove();
+    // $('.btn_text').show('up_text');
+  });
+});
+

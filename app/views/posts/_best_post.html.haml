@@ -1,0 +1,91 @@
+= image_tag asset_path("#{post.image}"), class: "behind-img"
+.behind-boke
+.section-one
+  %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
+    = notice
+  %h2.section-one__img-description
+    = fa_icon "trophy", {style: "color: yellow;"}
+    - if post.created_at >= Time.zone.yesterday.beginning_of_day
+      = fa_icon "trophy", {style: "color: yellow;"}
+      今日の一枚
+      %span{style: "font-size:12px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
+    - else
+      過去のベストショット
+      %span{style: "font-size:12px;color:lightgray;padding-left:10px;cursor:pointer;"} ※昨日の投稿がなかったため、過去のベストショットを掲載中
+  .yesterdays-number-one
+    .yesterdays-number-one__img
+      = link_to post_path(post.id) do
+        = image_tag asset_path("#{post.image}"), class: "yesterdays-number-one__img--prev"
+    .yesterdays-number-one__details
+      %h3.yesterdays-number-one__details__heading
+        投稿詳細
+      %ul.yesterdays-number-one__details__lists
+        %li.yesterdays-number-one__details__lists--a-list
+          テーマ：
+          = link_to "/themes/#{post.themes.first.id}", class: "theme-link" do
+            %span.theme-tag.tag1
+              = post.themes.first.name   
+        %li.yesterdays-number-one__details__lists--a-list
+          タイトル：
+          = post.title
+        %li.yesterdays-number-one__details__lists--a-list
+          メッセージ：
+          = post.message
+        %li.yesterdays-number-one__details__lists--a-list
+          投稿日：
+          = post.created_at.to_s(:datetime_jp)
+        %li.yesterdays-number-one__details__lists--a-list
+          投稿者：
+          = link_to "#{post.user.nickname}", user_path(post.user.id), class: "name-link"
+        .likes-favorites
+          - if user_signed_in? #登録、ログイン済
+            - unless current_user.already_liked?(post) #いいね!済
+              %span.like-push-time-over.time-over-liked
+                %span.like-submit
+                  いいね集計済
+                = post.likes.count
+              - if current_user.already_favorited?(post)
+                %span.fav-push.already-faved
+                  = link_to post_favorite_path(post, id: current_user.id), method: :delete, class: "like-submit" do
+                    お気に入り解除
+                  = post.favorites.count
+              - else
+                %span.fav-push
+                  = link_to post_favorites_path(post), method: :post, class: "like-submit" do
+                    お気に入り追加
+                  = post.favorites.count
+            - else #未いいね!
+              %span.like-push-time-over.time-over-liked
+                %span.like-submit
+                  いいね集計済
+                = post.likes.count
+              - if current_user.already_favorited?(post)
+                %span.fav-push.already-faved
+                  = link_to post_favorite_path(post, id: current_user.id), method: :delete, class: "like-submit" do
+                    お気に入り解除
+                  = post.favorites.count
+              - else
+                %span.fav-push
+                  = link_to post_favorites_path(post), method: :post, class: "like-submit" do
+                    お気に入り追加
+                  = post.favorites.count
+          - else #未ログイン
+            %span.like-push-time-over
+              %span.like-submit
+                いいね集計済
+              = post.likes.count
+            %span.fav-push
+              = link_to new_user_registration_path, class: "like-submit" do
+                お気に入り追加
+              = post.likes.count
+
+.section-two
+
+  .section-two__heading
+    %b #{post.user.nickname}
+    さんの投稿 投稿総数 #{post.user.posts.count}
+    枚
+  .section-two__user-posts
+    - post.user.posts.each do |best|
+      = link_to post_path(best.id), class: "img-link" do
+        = image_tag asset_path("#{best.image}"), class: "img-box"

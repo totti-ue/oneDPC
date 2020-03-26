@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
+  
   before_action :set_params, only: [:edit, :update, :show]
   before_action :todays_theme, except: :destroy
   before_action :move_to_index, except: [:index, :show, :search, :rank, :past]
  
   def index
-    @best = Post.todays_post
-    @best_one = Post.best_post_for_all
+    @best = Post.todays_post.first
+    @best_one = Post.best_post_for_all.first
     @yesterday_posts = Post.where(created_at: Time.zone.yesterday.beginning_of_day..Time.zone.yesterday.end_of_day).order("created_at DESC").page(params[:page]).per(20)
     @posts = Post.all.order("created_at DESC").page(params[:page]).per(20)
     @today_posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @yesterday_posts = Post.includes(:user).where(created_at: Time.zone.yesterday.beginning_of_day...Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @old_posts = Post.includes(:user).where("created_at < ?", Time.zone.yesterday.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @yesterday_theme = Theme.find(yesterday_num)
-    unless @best.empty?
+    unless @best.nil?
       if Like.count != 0
         @likes = Like.where(post_id: @best.first.id).count
       end

@@ -332,42 +332,7 @@
 
 // 携帯サイズの時
 
+
 @media screen and (max-width: 480px){
-  .main {
-    .main-top {
-      background-color: black;
-      height: 30px;
-      width: calc(100% - 10px);
-      position: fixed;
-      top: 0px;
-      margin-top: 60px;
-      padding-left: 10px;
-      border-bottom: 3px solid lightgray;
-      z-index: 2;
-      color: white;
-      &__box {
-        height: 100%;
-        display: flex;
-        justify-content: flex-start;
-        position: relative;
-        &--todays-theme {
-          font-size: 12px;
-          font-weight: bold;
-          font-family: $main-font;
-          margin-right: 20px;
-          margin-top: 5px;
-        }
-        .search-input {
-          width: 80px;
-          position: absolute;
-          right: 10px;
-        }
-        .limit {
-          display: none;
-        }
-      }
-    }
-  }
 
 }
-
