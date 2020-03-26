@@ -7,12 +7,10 @@
     %g
       %use.stroke{"xlink:href": "#fade-text"}
       %use.fill{"xlink:href": "#fade-text"}
-  .links
-    .links__box1
-      = link_to "TOP PAGE", posts_path, class: "links__box1--top-page"
-    .links__box2
-      = link_to "SIGN IN", "/users/sign_in", class: "links__box2--sign-in"
-    .links__box2
-      = link_to "コンテスト説明へ", "/tops/show", class: "links__box2--sign-in"
+  .top-page-links
+    .top-page-links__wrapper
+      = link_to "TOP PAGE", posts_path, class: "top-page-links__wrapper__a-list"
+      = link_to "SIGN IN", "/users/sign_in", class: "top-page-links__wrapper__a-list"
+      = link_to "ABOUT", "/tops/show", class: "top-page-links__wrapper__a-list"
 
 

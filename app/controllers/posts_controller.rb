@@ -5,18 +5,21 @@ class PostsController < ApplicationController
  
   def index
     @best = Post.todays_post
+    @best_one = Post.best_post_for_all
     @yesterday_posts = Post.where(created_at: Time.zone.yesterday.beginning_of_day..Time.zone.yesterday.end_of_day).order("created_at DESC").page(params[:page]).per(20)
     @posts = Post.all.order("created_at DESC").page(params[:page]).per(20)
     @today_posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @yesterday_posts = Post.includes(:user).where(created_at: Time.zone.yesterday.beginning_of_day...Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @old_posts = Post.includes(:user).where("created_at < ?", Time.zone.yesterday.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
     @yesterday_theme = Theme.find(yesterday_num)
-    if Like.count != 0
-      @likes = Like.where(post_id: @best.first.id).count
-    end
-    if Favorite.count != 0
-      @favorites = Favorite.where(post_id: @best.first.id).count
-    end
+    unless @best.empty?
+      if Like.count != 0
+        @likes = Like.where(post_id: @best.first.id).count
+      end
+      if Favorite.count != 0
+        @favorites = Favorite.where(post_id: @best.first.id).count
+      end
+    end      
   end
 
   def new
