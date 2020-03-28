@@ -1,0 +1,25 @@
+.mobile-top-main
+  %link{href: "https://fonts.googleapis.com/css?family=Slabo+27px", rel: "stylesheet", type: "text/css"}/
+  %svg{version: "1.1", viewbox: "0 0 800 600"}
+    %symbol#fade-text
+      %text{"text-anchor": "middle", x: "50%", y: "40%"} ONE DAY
+      %text{"text-anchor": "middle", x: "50%", y: "60%"} Photo Contest
+    %g
+      %use.stroke{"xlink:href": "#fade-text"}
+      %use.fill{"xlink:href": "#fade-text"}
+  %button.click-menu{ type: "button" }
+    %span.click-text
+      ここをクリックで開く
+      %br
+      %i.fa.fa-chevron-up
+  .mobile-top
+    .mobile-top__links
+      = link_to posts_path, class: "mobile-top__links__page-link" do
+        %i.fa.fa-home.mobile-top-icon
+        %span.mobile-top-icon-description HOME
+      = link_to new_user_session_path, class: "mobile-top__links__page-link" do
+        %i.fa.fa-user.mobile-top-icon
+        %span.mobile-top-icon-description SIGN IN
+      = link_to "/tops/show", class: "mobile-top__links__page-link" do
+        %i.fa.fa-book.mobile-top-icon
+        %span.mobile-top-icon-description ABOUT

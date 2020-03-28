@@ -24,9 +24,21 @@ $(function(){
       $('.btn_text').remove();
       $('.btn_menu').append(`<span class="btn_text"><i class="fa fa-bars"></i></span>`);
     }
-    // $('nav').toggleClass('open');
-    // $('.up_text').remove();
-    // $('.btn_text').show('up_text');
   });
 });
 
+
+$(function(){
+  $('.mobile-top').addClass('icon-show');
+  $('.click-menu').click(function(){
+    if (!$('.mobile-top').hasClass('icon-show')){
+      $('.mobile-top').toggleClass('icon-show');
+      $('.click-text').remove();
+      $('.click-menu').append(`<span class="click-text"><i class="fa fa-chevron-up"></i></span>`)
+    } else {
+      $('.mobile-top').toggleClass('icon-show');
+      $('.click-text').remove();
+      $('.click-menu').append(`<span class="click-text"><i class="fa fa-chevron-down"></i></span>`)
+    }
+  })
+})

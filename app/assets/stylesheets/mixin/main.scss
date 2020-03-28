@@ -49,16 +49,12 @@
 }
 
 
-
-// .mixin-box {
-//   @include wid-height(800px, 400px);
-//   @include padding-margin(10px 20px 30px 40px, 5px 10px 20px);
-//   background-color: red;
-
-// }
-
-
-// .boxbox {
-//   background-color: gray;
-//   @include wid-height(100px, 100px);
-// }
+@mixin main-animation (){
+  animation-name: fade_in1;
+  animation-duration: 4s; 
+  animation-timing-function: ease-out; 
+  animation-delay: 5s; 
+  animation-iteration-count: 1; 
+  animation-direction: normal; 
+  animation-fill-mode: forwards; 
+}
