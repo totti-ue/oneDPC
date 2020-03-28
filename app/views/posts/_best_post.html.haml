@@ -6,7 +6,6 @@
   %h2.section-one__img-description
     = fa_icon "trophy", {style: "color: yellow;"}
     - if post.created_at >= Time.zone.yesterday.beginning_of_day
-      = fa_icon "trophy", {style: "color: yellow;"}
       今日の一枚
       %span{style: "font-size:12px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
     - else

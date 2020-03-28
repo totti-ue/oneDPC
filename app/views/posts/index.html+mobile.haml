@@ -1,0 +1,87 @@
+- if @best.present?
+  = render partial: "best_post", locals: {post: @best}
+
+- else
+  .mobile-posts-index
+
+    = image_tag asset_path("#{@best_one.image}"), class: "behind-img"
+    .behind-boke
+    .best-shot-description
+      = fa_icon "trophy"
+      今日の一枚
+      %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
+    .best-shot-img
+      = link_to post_path(@best_one.id), class: "best-shot-img-link" do
+        = image_tag asset_path("#{@best_one.image}"), class: "best-shot-img__prev"
+      .best-shot-img__like-fav-counts
+        %i.fa.fa-heart.best-shot-img__like-fav-counts__likes
+          = @best_one.likes.count
+        %i.fa.fa-star.best-shot-img__like-fav-counts__favs
+          = @best_one.favorites.count
+
+  %button.open-details{ type: "button" }
+    %span.open-text
+      投稿詳細を見る
+      %br
+      %i.fa.fa-chevron-down
+
+  .best-shot-details-show
+    %ul.best-shot-details-show__lists
+      %li テーマ：#{@best_one.themes.first.name}
+      %li タイトル：#{@best_one.title}
+      %li メッセージ：#{@best_one.message}
+      %li 投稿日：#{@best_one.created_at.to_s(:datetime_jp)}
+      %li.display-inline 投稿者：
+      = link_to "#{@best_one.user.nickname}", user_path(@best_one.user.id)
+      %li 投稿総数：#{@best_one.user.posts.count}
+
+.mobile-main
+  .mobile-main__posts
+    %ul.mobile-tab-group
+      %li.mobile-tab.is-mobile-active
+        今日の投稿
+        .theme-link
+          %span.theme-tag
+            = @today_theme.name 
+      %li.mobile-tab
+        昨日の投稿
+        .theme-link
+          %span.theme-tag
+            = @yesterday_theme.name 
+      %li.mobile-tab
+        過去の投稿
+        
+    .mobile-panel-group
+      .mobile-panel.is-mobile-show
+        - @today_posts.each do |post|
+          = render partial: "post", locals: { post: post }
+        = paginate(@today_posts)
+      .mobile-panel
+        - @yesterday_posts.each do |post|
+          = render partial: "post", locals: { post: post }
+        = paginate(@yesterday_posts)
+      .mobile-panel
+        - @old_posts.each do |post|
+          = render partial: "post", locals: { post: post }
+        = paginate(@old_posts)
+%footer.mobile-footer
+  .mobile-footer__contents
+    %h3.mobile-footer__contents--heading ONE DPC (One Day Photo Contest)
+    %p.mobile-footer__contents__contest-description
+      ONE DPC とは、One Day Photo Contest の略で、カメラ初心者やアマチュア写真愛好家向けの写真投稿サイトです。
+      %br
+      （One Day 毎日開催、一日限定。  One Photo 投稿できるのは一人一枚。   One Contest 一日完結のコンテスト。）
+      %br
+      %br
+      ルールは以下の通り。
+      %br
+      ①ユーザーがその日のテーマに合わせて写真を投稿。
+      %br
+      ②他ユーザーからのいいねが評価の対象。
+      %br
+      ③当日24時までに一番多くのいいねを獲得した写真がその日の優勝作品となり、次の日の『今日の一枚』として表示される。
+      %br
+    %ul.mobile-footer__contents__links
+      %li
+        近日公開予定
+        = link_to "開発者のポートフォリオサイト", "#"
