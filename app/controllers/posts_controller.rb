@@ -15,10 +15,10 @@ class PostsController < ApplicationController
     @yesterday_theme = Theme.find(yesterday_num)
     unless @best.nil?
       if Like.count != 0
-        @likes = Like.where(post_id: @best.first.id).count
+        @likes = Like.where(post_id: @best.id).count
       end
       if Favorite.count != 0
-        @favorites = Favorite.where(post_id: @best.first.id).count
+        @favorites = Favorite.where(post_id: @best.id).count
       end
     end      
   end
