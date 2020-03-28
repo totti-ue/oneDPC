@@ -17,7 +17,7 @@ $(function(){
     if (!$('nav').hasClass('open')){
       $('nav').toggleClass('open');
       $('.btn_text').remove();
-      $('.btn_menu').append(`<span class="btn_text"><i class="fa fa-times-circle">閉じる</i></span>`);
+      $('.btn_menu').append(`<span class="btn_text"><i class="fa fa-times-circle"></i></span>`);
 
     } else {
       $('nav').toggleClass('open');
