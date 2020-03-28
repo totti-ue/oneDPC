@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %title OneDPC
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+    %link{href: "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css", rel: "stylesheet"}
+    %script{src: "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js", type: "text/javascript"}
+
+
+
+  %body
+
+
+    %header.mobile-header
+      .mobile-header__logo
+        = link_to posts_path, class: "mobile-header__logo--toppage-link" do
+          ONE DPC
+      %button.btn_menu{ type: "button" }
+        %span.btn_text 
+          %i.fa.fa-bars
+      %nav.mobile-header__slide-menu
+        %ul
+          - unless user_signed_in?
+            %li.mobile-header__slide-menu__list= link_to "新規登録", new_user_registration_path, class: "side-menu-list"
+            %li.mobile-header__slide-menu__list= link_to "サインイン", new_user_session_path, class: "side-menu-list"
+            %li.mobile-header__slide-menu__list= link_to "ONE DPCとは", "/tops/show", class: "side-menu-list"
+          - else
+            %li.mobile-header__slide-menu__list= link_to "マイページ", "/users/#{current_user.id}", class: "side-menu-list"
+            %li.mobile-header__slide-menu__list= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "side-menu-list"
+            %li.mobile-header__slide-menu__list= link_to "投稿する", "/posts/new", class: "side-menu-list"
+            %li.mobile-header__slide-menu__list= link_to "テーマ一覧", "/themes", class: "side-menu-list"
+            %li.mobile-header__slide-menu__list= link_to "ユーザー一覧", "/users", class: "side-menu-list"
+            %li.mobile-header__slide-menu__list= link_to "ONE DPCとは", "/tops/show", class: "side-menu-list"
+
+
+
+    = yield

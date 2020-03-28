@@ -9,107 +9,14 @@
       = render partial: "/shared/clock"
 
 
-
-
     -# ----------------------------------------------------------
   - if @best.present?
-    = image_tag asset_path("#{@best.first.image}"), class: "behind-img"
-    .behind-boke
-    .section-one
-      %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
-        = notice
-      %h2.section-one__img-description
-        = fa_icon "trophy", {style: "color: yellow;"}
-        今日の一枚
-        %span{style: "font-size:12px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
-      .yesterdays-number-one
-        .yesterdays-number-one__img
-          = link_to post_path(@best.first.id) do
-            = image_tag asset_path("#{@best.first.image}"), class: "yesterdays-number-one__img--prev"
-        .yesterdays-number-one__details
-          %h3.yesterdays-number-one__details__heading
-            投稿詳細
-          %ul.yesterdays-number-one__details__lists
-            %li.yesterdays-number-one__details__lists--a-list
-              テーマ：
-              = link_to "/themes/#{@best.first.themes.first.id}", class: "theme-link" do
-                %span.theme-tag.tag1
-                  = @best.first.themes.first.name   
-            %li.yesterdays-number-one__details__lists--a-list
-              タイトル：
-              = @best.first.title
-            %li.yesterdays-number-one__details__lists--a-list
-              メッセージ：
-              = @best.first.message
-            %li.yesterdays-number-one__details__lists--a-list
-              投稿日：
-              = @best.first.created_at.to_s(:datetime_jp)
-            %li.yesterdays-number-one__details__lists--a-list
-              投稿者：
-              = link_to "#{@best.first.user.nickname}", user_path(@best.first.user.id), class: "name-link"
-            .likes-favorites
-              - if user_signed_in? #登録、ログイン済
-                - unless current_user.already_liked?(@best.first) #いいね!済
-                  %span.like-push-time-over.already_liked
-                    %span.like-submit
-                      いいね集計済
-                    = @best.first.likes.count
-                  - if current_user.already_favorited?(@best.first)
-                    %span.fav-push.already-faved
-                      = link_to post_favorite_path(@best.first, id: current_user.id), method: :delete, class: "like-submit" do
-                        お気に入り解除
-                      = @best.first.favorites.count
-                  - else
-                    %span.fav-push
-                      = link_to post_favorites_path(@best.first), method: :post, class: "like-submit" do
-                        お気に入り追加
-                      = @best.first.favorites.count
-                - else #未いいね!
-                  %span.like-push-time-over.time-over-liked
-                    %span.like-submit
-                      いいね集計済
-                    = @best.first.likes.count
-                  - if current_user.already_favorited?(@best.first)
-                    %span.fav-push.already-faved
-                      = link_to post_favorite_path(@best.first, id: current_user.id), method: :delete, class: "like-submit" do
-                        お気に入り解除
-                      = @best.first.favorites.count
-                  - else
-                    %span.fav-push
-                      = link_to post_favorites_path(@best.first), method: :post, class: "like-submit" do
-                        お気に入り追加
-                      = @best.first.favorites.count
-              - else #未ログイン
-                %span.like-push
-                  %span.like-submit
-                    いいね集計済
-                  = @best.first.likes.count
-                %span.like-push
-                  = link_to new_user_registration_path, class: "like-submit" do
-                    お気に入り追加
-                  = @best.first.likes.count
-
+    = render partial: "best_post", locals: {post: @best}
 
   - else
-    .section-one
-      %span.section-one__notice-msg{style: "margin-top:80px; color:black;"}
-        = notice
-      %h2.section-one__img-description
-        = fa_icon "trophy", {style: "color: yellow;"}
-        昨日の投稿はひとつもありませんでした。
-      -# ----------------------------------------------------------
+    = render partial: "best_post", locals: {post: @best_one}
 
-
-  .section-two
-  
-    .section-two__heading
-      %b #{@best.first.user.nickname}
-      さんの投稿 投稿総数 #{@best.first.user.posts.count}
-      枚
-    .section-two__user-posts
-      - @best.first.user.posts.each do |best|
-        = link_to post_path(best.id), class: "img-link" do
-          = image_tag asset_path("#{best.image}"), class: "img-box"
+    -# ----------------------------------------------------------
 
 
   .section-three
