@@ -1,6 +1,35 @@
 - if @best.present?
-  = render partial: "best_post", locals: {post: @best}
+  .mobile-posts-index
+    = image_tag asset_path("#{@best.image}"), class: "behind-img"
+    .behind-boke
+    .best-shot-description
+      = fa_icon "trophy"
+      今日の一枚
+      %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
+    .best-shot-img
+      = link_to post_path(@best.id), class: "best-shot-img-link" do
+        = image_tag asset_path("#{@best.image}"), class: "best-shot-img__prev"
+      .best-shot-img__like-fav-counts
+        %i.fa.fa-heart.best-shot-img__like-fav-counts__likes
+          = @best.likes.count
+        %i.fa.fa-star.best-shot-img__like-fav-counts__favs
+          = @best.favorites.count
 
+  %button.open-details{ type: "button" }
+    %span.open-text
+      投稿詳細を見る
+      %br
+      %i.fa.fa-chevron-down
+
+  .best-shot-details-show
+    %ul.best-shot-details-show__lists
+      %li テーマ：#{@best.themes.first.name}
+      %li タイトル：#{@best.title}
+      %li メッセージ：#{@best.message}
+      %li 投稿日：#{@best.created_at.to_s(:datetime_jp)}
+      %li.display-inline 投稿者：
+      = link_to "#{@best.user.nickname}", user_path(@best.user.id)
+      %li 投稿総数：#{@best.user.posts.count}
 - else
   .mobile-posts-index
 
