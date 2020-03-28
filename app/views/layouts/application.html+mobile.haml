@@ -38,6 +38,10 @@
             %li.mobile-header__slide-menu__list= link_to "ユーザー一覧", "/users", class: "side-menu-list"
             %li.mobile-header__slide-menu__list= link_to "ONE DPCとは", "/tops/show", class: "side-menu-list"
 
-
+      - if user_signed_in?
+        .user-name-on-header
+          %span #{current_user.nickname}
+          %br
+          %span{style:"font-size:12px; color:gray;"} ログイン中
 
     = yield

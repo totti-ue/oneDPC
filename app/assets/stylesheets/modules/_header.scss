@@ -117,5 +117,12 @@
     &__slide-menu.open {
       transform: translate(0);
     }
+    .user-name-on-header {
+      position: absolute;
+      top: 18px;
+      right: 50px;
+      line-height: 16px;
+      text-align: end;
+    }
   }
 }
