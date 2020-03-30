@@ -336,32 +336,28 @@
 }
 
 @media screen and (max-width: 480px){
+  .best-shot-description {
+    background-color: #333;
+    padding: 0 10px;
+    color: yellow;
+    margin-top: 61px;
+  }
   .mobile-posts-index {
     width: 100vw;
     height: 400px;
     .behind-img{
-      position: absolute;
-      z-index: 0;
+      // position: absolute;
+      // z-index: 0;
       width: 100%;
       height: 400px;
       object-fit: cover;
     }
     .behind-boke {
-      position: absolute;
-      background-color: $hf-color;
+      // position: absolute;
+      // top: 85px;
+      background-color: #333;
       opacity: 0.5;
-      z-index: 1;
-      width: 100%;
       height: 400px;
-    }
-    .best-shot-description {
-      z-index: 100;
-      position: absolute;
-      top: 82px;
-      left: 60px;
-      background-color: gray;
-      padding: 0 10px;
-      color: yellow;
     }
     .best-shot-img {
       position: absolute;
