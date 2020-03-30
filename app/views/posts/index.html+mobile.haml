@@ -1,11 +1,12 @@
 - if @best.present?
+  .best-shot-description
+    = fa_icon "trophy"
+    今日の一枚
+    %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
+
   .mobile-posts-index
     = image_tag asset_path("#{@best.image}"), class: "behind-img"
     .behind-boke
-    .best-shot-description
-      = fa_icon "trophy"
-      今日の一枚
-      %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
     .best-shot-img
       = link_to post_path(@best.id), class: "best-shot-img-link" do
         = image_tag asset_path("#{@best.image}"), class: "best-shot-img__prev"
@@ -31,14 +32,15 @@
       = link_to "#{@best.user.nickname}", user_path(@best.user.id)
       %li 投稿総数：#{@best.user.posts.count}
 - else
+  .best-shot-description
+    = fa_icon "trophy"
+    今日の一枚
+    %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
+
   .mobile-posts-index
 
     = image_tag asset_path("#{@best_one.image}"), class: "behind-img"
     .behind-boke
-    .best-shot-description
-      = fa_icon "trophy"
-      今日の一枚
-      %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
     .best-shot-img
       = link_to post_path(@best_one.id), class: "best-shot-img-link" do
         = image_tag asset_path("#{@best_one.image}"), class: "best-shot-img__prev"

@@ -2,7 +2,7 @@ body, html, main {
   /* important */
   height: 100%;
 }
-// ーーーーー　背景の共通部分 ーーーーー
+// ーーーーー 背景の共通部分 ーーーーー
 
 .bg-fixed {
   min-height: 100vh;
@@ -30,7 +30,7 @@ body, html, main {
   position: absolute;
 }
 
-// ーーーーー　背景（メッセージ）共通部分 ーーーーー
+// ーーーーー 背景（メッセージ）共通部分 ーーーーー
 
 .msg {
   width: 800px;
@@ -51,10 +51,9 @@ body, html, main {
   }
 }
 
-// ーーーーー　コンテンツ共通部分 ーーーーー
+// ーーーーー コンテンツ共通部分 ーーーーー
 .bg-scrolling {
   min-height: 100%;
-  background-color: cornsilk;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +63,6 @@ body, html, main {
 
 .bg-container {
   width: 800px;
-  // text-align: center;
   font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
   font-weight: bold;
   font-size: 20px;
@@ -76,35 +74,37 @@ body, html, main {
   }
 }
 
-// ーーーーー　ここまでが共通部分 ーーーーー
+// ーーーーー ここまでが共通部分 ーーーーー
 
 
 
 
-// ーーーーー　写真　１　枚目 ーーーーー
+// ーーーーー 写真 １ 枚目 ーーーーー
 
 .bg-fixed.bg-1 {
-  background-image: url("https://www.aflo.com/pages/creative/zekkei/img/gal/02_aflo_ZQCA010793.jpg");
+  background-image: image-url("wallpaper11.jpg");
 }
 
 .bg-scrolling.bg-color-1 {
-  background-color: cornsilk;
+  background-color: lightblue;
 }
-// ーーーーー　写真　１　枚目 ーーーーー
-// ーーーーー　写真　２　枚目 ーーーーー
+
+
+// ーーーーー 写真 ２ 枚目 ーーーーー
 
 .bg-fixed.bg-2 {
-  background-image: url("https://webdesign-trends.net/wp/wp-content/uploads/2017/01/picture-945x630.jpg");
+  background-image: image-url("wallpaper12.jpg");
 }
 
 .bg-scrolling.bg-color-2 {
-  background-color: cadetblue;
+  background-color: wheat;
 }
-// ーーーーー　写真　２　枚目 ーーーーー
-// ーーーーー　写真　３　枚目 ーーーーー
+
+
+// ーーーーー 写真 ３ 枚目 ーーーーー
 
 .bg-fixed.bg-3 {
-  background-image: url("https://webseisaku.webtame.jp/dcms_media/image/free_material_site_collection_cover_thum.jpg");
+  background-image: image-url("wallpaper13.jpg");
 }
 
 .bg-scrolling.bg-color-3 {
@@ -119,11 +119,11 @@ body, html, main {
   }
 }
 
-// ーーーーー　写真　３　枚目 ーーーーー
-// ーーーーー　写真　４　枚目 ーーーーー
+
+// ーーーーー 写真 ４ 枚目 ーーーーー
 
 .bg-fixed.bg-4 {
-  background-image: url("https://2.bp.blogspot.com/-yEDrzhWXPk4/UmAcaPhNvJI/AAAAAAAADlQ/EXXWFBxj2lo/s2560/tokyo-wallpaper-night2.jpg");
+  background-image: image-url("tokyo.jpg");
   flex-direction: column;
   .btn-links {
     display: flex;
@@ -140,9 +140,11 @@ body, html, main {
       line-height: 40px;
       text-decoration: none;
       color: black;
+      -webkit-transition: all 0.5s ease;
+      transition: all 0.5 ease;
     }
     .top-btn:hover {
-      box-shadow: 3px 3px 3px 3px #fff;
+      box-shadow: 0px 0px 3px 3px #fff;
       background-color: yellow;
       color: blue;
     }
@@ -152,6 +154,4 @@ body, html, main {
 .bg-scrolling.bg-color-4 {
   background-color: midnightblue;
 }
-
-
 

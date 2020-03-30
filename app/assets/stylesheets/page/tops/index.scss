@@ -55,7 +55,7 @@ svg {
 }
 
 .top-main {
-  background-image: image-url('wallpaper.jpg');
+  background-image: image-url('wallpaper2.jpg');
   background-size: cover;
   background-position: center;
   font: 16em Arial;
@@ -112,6 +112,7 @@ svg {
   opacity: 0.8;
   text-align: center;
   line-height: 30px;
+  background-color: #333;
   .click-text {
     color: white;
     font-size: 24px;
@@ -119,8 +120,8 @@ svg {
 }
 
 .mobile-top-main {
-  background-image: image-url('wallpaper.jpg');
-  background-size: cover;
+  background-image: image-url('wallpaper3.jpg');
+  background-size: 110% 100vh;
   background-position: center;
   font: 16em Arial;
   height: 100vh;
