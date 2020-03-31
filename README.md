@@ -1,7 +1,10 @@
 # README
 # oneDPC
-画像を貼る
-概要
+![top-img](https://user-images.githubusercontent.com/60683508/77989869-d40b9080-735a-11ea-9e16-91a37f6e74b2.jpg)
+
+アプリ概要
+カメラ初心者、アマチュア写真愛好家
+
 ## Description
 詳細説明
 
