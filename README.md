@@ -33,29 +33,95 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nicakname|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
+|nickname|string|null: false|
+|avator|text||
+|gender|string||
+|age|string||
+|introduction|text||
 ### Association
 - has_many :posts
 - has_many :comments
+- has_many :likes
+- has_many :liked_posts, through: :likes, source: :post
+- has_many :favorites
+- has_many :fav_posts, through: :favorites, source: :post
+- has_many :relationships
+- has_many :followings, through: :relationships, source: :follow
+- has_many :reverse_of_relationships, class_name: 'Relationhip', foreign_key: 'follow_id'
+- has_many :followers, through: :reverse_of_relationships, source: :user
 
 ## postsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |title|text|null: false|
 |image|text|null: false|
+|message|text||
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - has_many :comments
+- has_many :likes
+- has_many :liked_posts, through: :likes, source: :user
+- has_many :favorites
+- has_many :fav_posts, through: :favorites, source: :user
+- has_many :post_themes
+- has_many :themes, through: :post_themes
+
+## themesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :post_themes
+- has_many :posts, through: :post_themes
+
+## post_themesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|post_id|bigint|foreign_key: true|
+|theme_id|bigint|foreign_key: true|
+
+### Association
+- belongs_to :post
+- belongs_to :theme
 
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |comment|text|null: false|
-|post_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
+|post_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :post
 - belongs_to :user
+
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|foreign_key: true|
+|psot_id|integer|foreign_key: true|
+### Association
+belongs_to :user
+belongs_to :post
+
+## favoritesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|foreign_key: true|
+|psot_id|integer|foreign_key: true|
+### Association
+belongs_to :user
+belongs_to :post
+
+## relationshipsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|bigint|foreign_key: true|
+|follow_id|bigint|foreign_key: true|
+### Association
+belongs_to :user
+belongs_to :follow, class_name: 'User'
