@@ -70,6 +70,17 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 - インクリメンタルサーチ
 - 画像投稿時に本日のテーマ自動入力
 
+## Usage
+##### リポジトリをクローンされる方へ
+
+```:ターミナル
+保存したいディレクトリ
+$ git clone https://github.com/totti-ue/oneDPC.git
+保存したいディレクトリ $ cd oneDPC
+oneDPC $ rails db:create
+
+```
+
 ## DB設計
 ## usersテーブル
 |Column|Type|Options|
