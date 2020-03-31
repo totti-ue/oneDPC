@@ -300,30 +300,55 @@
 .footer {
   background-color: $hf-color;
   margin-top: 40px;
-  height: 300px;
   width: 100%;
   color: white;
   &__contents {
-    padding-top: 20px;
-    height: calc(100% - 20px);
-    width: 100%;
+    padding: 20px;
+    height: calc(100% - 40px);
+    width: calc(100% - 40px);
     max-width: 1200px;
     margin: 0 auto;
-    &--heading {
-      font-size: 18px;
-      font-weight: bold;
+    display: flex;
+    &__developer-msg {
+      width: 70%;
+      &--heading {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      &--contest-description {
+        font-size: 15px;
+        color: lightslategray;
+      }
+      &--links {
+        padding-right: 20px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .inquiry-form-btn {
+        padding: 0 20px;
+        border-radius: 5px;
+      }
     }
-    &__contest-description {
-      font-size: 14px;
-      color: lightslategray;
-      width: 1000px;
-      float: left;
-      padding-right: 20px;
-    }
-    &__links {
-      width: 500px;
-      float: left;
-      margin-top: 20px;
+    .inquiry-form-wrapper {
+      width: 30%;
+      .inquiry-form {
+        display: none;
+        width: 100%;
+        &__title {
+          font-size: 16px;
+        }
+        &__input {
+          width: calc(100% - 10px);
+          padding: 0 5px;
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
+        &__submit {
+          width: 60px;
+          height: 60px;
+        }
+      }
     }
   }
 }

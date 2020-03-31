@@ -113,3 +113,18 @@ a {
     background-color: pink;
   }
 }
+
+
+// thanks.html.haml
+.after-mailed-page {
+  margin-top: 80px;
+  &__thanks-msg {
+    text-align: center;
+    font-size: 50px;
+  }
+  &__msg-success{
+    text-align: center;
+    font-size: 30px;
+    color: darkcyan;
+  }
+}
