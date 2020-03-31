@@ -83,6 +83,10 @@ $ rails db:migrate
 $ rails db:seed
 $ rails s
 ```
+## ER diagram
+### ER図
+![oneDPC_ER図](https://user-images.githubusercontent.com/60683508/78011468-97ea2700-737e-11ea-8bea-5cca676ca35b.png)
+
 
 ## DB設計
 ## usersテーブル
