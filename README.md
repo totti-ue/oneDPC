@@ -74,10 +74,14 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 ##### リポジトリをクローンされる方へ
 
 ```:ターミナル
-保存したいディレクトリ
+*保存したいディレクトリで
 $ git clone https://github.com/totti-ue/oneDPC.git
-保存したいディレクトリ $ cd oneDPC
-oneDPC $ rails db:create
+*ディレクトリの移動
+$ cd oneDPC
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+$ rails s
 
 ```
 
