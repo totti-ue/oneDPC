@@ -69,3 +69,10 @@ $(function(){
     }
   })
 })
+
+
+$(function(){
+  $('.inquiry-form-btn').click(function(){
+    $('.inquiry-form').fadeToggle(500);
+  });
+});

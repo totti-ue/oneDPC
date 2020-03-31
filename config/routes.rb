@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     collection do
       get 'search'
+      get 'thanks'
     end
   end
   resources :users, only: [:index, :show]

@@ -71,6 +71,8 @@ class PostsController < ApplicationController
     @likes_count = Like.where(post_id: params[:id]).count
   end
 
+  def thanks
+  end
 
   private
   def post_params

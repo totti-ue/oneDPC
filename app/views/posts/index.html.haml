@@ -68,23 +68,39 @@
 
   %footer.footer
     .footer__contents
-      %h3.footer__contents--heading ONE DPC (One Day Photo Contest)
-      %p.footer__contents__contest-description
-        ONE DPC とは、One Day Photo Contest の略で、カメラ初心者やアマチュア写真愛好家向けの写真投稿サイトです。
-        %br
-        （One Day 毎日開催、一日限定。  One Photo 投稿できるのは一人一枚。   One Contest 一日完結のコンテスト。）
-        %br
-        %br
-        ルールは以下の通り。
-        %br
-        ①ユーザーがその日のテーマに合わせて写真を投稿。
-        %br
-        ②他ユーザーからのいいねが評価の対象。
-        %br
-        ③当日24時までに一番多くのいいねを獲得した写真がその日の優勝作品となり、次の日の『今日の一枚』として表示される。
-        %br
-      %ul.footer__contents__links
-        %li
-          近日公開予定
-          = link_to "開発者のポートフォリオサイト", "#"
+      .footer__contents__developer-msg
+        %h3.footer__contents__developer-msg--heading ONE DPC (One Day Photo Contest) アプリ概要
+        %p.footer__contents__developer-msg--contest-description
+          カメラ初心者、アマチュア写真愛好家向けのフォトコンテストアプリ。
+          %br
+          ONE DPCとは one Day, one Photo, one Contest の略であり、一日限定フォトコンテストの意味。
+          %br
+          %br
+          ルールは以下の通り。
+          %br
+          ①ユーザーがその日のテーマに合わせて写真を投稿。
+          %br
+          ②投稿へのいいねの数がその日一番多い画像がコンテストの優勝作品となり、翌日の「今日の一枚」として表示される。
+          %br
+        %ul.footer__contents__developer-msg--links
+          %li
+            公開中
+            = link_to "開発者のポートフォリオサイト", "https://zen-stonebraker-c82f4a.netlify.com/"
+          %button.inquiry-form-btn
+            お問い合わせフォーム
+      .inquiry-form-wrapper
+        %form{action: "https://api.staticforms.xyz/submit", method: :post, class: "inquiry-form", id: "inquiry-form"}
+          %h4.inquiry-form__title お名前
+          %input{name: "name", placeholder: "", type: "text", class: "inquiry-form__input", required: true}
+          %h4.inquiry-form__title メールアドレス
+          %input{name: "email", placeholder: "", type: "text", class: "inquiry-form__input", required: true}
+          %h4.inquiry-form__title メッセージ
+          %textarea{name: "message", placeholder: "", class: "inquiry-form__input", required: true}
+          %input{name: "honeypot", style: "display:none", type: "text", class: "inquiry-form__input"}
+          %input{name: "accessKey", type: "hidden", value: "a11fa1c6-a381-4734-9057-443a8d60c397", class: "inquiry-form__input"}
+          %input{name: "subject", type: "hidden", value: "Contact us from - example.com", class: "inquiry-form__input"}
+          %input{name: "replyTo", type: "hidden", value: "@", class: "inquiry-form__input"}
+          %input{name: "redirectTo", type: "hidden", value: "http://3.115.17.18:4000/posts/thanks", class: "inquiry-form__input"}
+          %input{type: "submit", value: "送信", class: "inquiry-form__submit"}
+
 
