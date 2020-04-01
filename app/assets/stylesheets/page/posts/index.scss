@@ -30,14 +30,7 @@
 }
 
 .main {
-  // animation-name: fade_in1;
-  // animation-duration: 3s; //アニメーション時間
-  // animation-timing-function: ease-out; //アニメーションさせるイージング
-  // animation-iteration-count: 1; //繰り返し回数
-  // animation-direction: normal; //往復処理をするかどうか
-  // animation-fill-mode: forwards; 
   position: relative;
-// メイン（テーマ）
   .main-top {
     background-color: $font-color;
     height: 30px;

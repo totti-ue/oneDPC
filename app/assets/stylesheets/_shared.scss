@@ -128,3 +128,22 @@ a {
     color: darkcyan;
   }
 }
+
+
+// ページネーション
+.page.current {
+  text-decoration:underline slategray;
+}
+
+.page {
+  padding: 5px;
+  margin-right: 7px;
+}
+
+.pagination {
+  display: inline;
+}
+
+.translation_missing {
+  display: none;
+}

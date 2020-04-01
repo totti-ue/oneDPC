@@ -144,8 +144,9 @@
 
 .page-back-or-page-index {
   display: block;
-  width: 870px;
-  margin: 20px auto;
+  width: 80%;
+  max-width: 870px;
+  margin: 20px 0;
 }
 
 .request-new-post {
