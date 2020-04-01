@@ -1,24 +1,20 @@
 $(function($){
   $('.tab').click(function(){
-      $('.is-active').removeClass('is-active');
-      $(this).addClass('is-active');
-      $('.is-show').removeClass('is-show');
-      // クリックしたタブからインデックス番号を取得
-      const index = $(this).index();
-      // クリックしたタブと同じインデックス番号をもつコンテンツを表示
-      $('.panel').eq(index).addClass('is-show');
+    $('.is-active').removeClass('is-active');
+    $(this).addClass('is-active');
+    $('.is-show').removeClass('is-show');
+    const index = $(this).index();
+    $('.panel').eq(index).addClass('is-show');
   });
 });
 
 $(function($){
   $('.mobile-tab').click(function(){
-      $('.is-mobile-active').removeClass('is-mobile-active');
-      $(this).addClass('is-mobile-active');
-      $('.is-mobile-show').removeClass('is-mobile-show');
-      // クリックしたタブからインデックス番号を取得
-      const index = $(this).index();
-      // クリックしたタブと同じインデックス番号をもつコンテンツを表示
-      $('.mobile-panel').eq(index).addClass('is-mobile-show');
+    $('.is-mobile-active').removeClass('is-mobile-active');
+    $(this).addClass('is-mobile-active');
+    $('.is-mobile-show').removeClass('is-mobile-show');
+    const index = $(this).index();
+    $('.mobile-panel').eq(index).addClass('is-mobile-show');
   });
 });
 

@@ -27,16 +27,24 @@
               - @post.errors.full_messages.each do |error|
                 = error
             .new-post__wrapper__create__form
-              テーマを選択してください
+              テーマ
+              %span.input-info.required-info
+                必須
             = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
             .new-post__wrapper__create__form
-              タイトルを入力してください
+              タイトル
+              %span.input-info.required-info
+                必須
             = form.text_field :title, autofocus: true, placeholder: "タイトル（必須）", class:"form-box", required: :true
             .new-post__wrapper__create__form
-              メッセージを入力してください
-            = form.text_field :message, placeholder: "メッセージ(任意) 最大２５０文字", maxlength: "250", class:"form-box message-form-box"
+              メッセージ
+              %span.input-info.optional-info
+                任意
+            = form.text_area :message, placeholder: "メッセージ(任意) 最大２５０文字", maxlength: "250", class:"form-box message-form-box"
             .new-post__wrapper__create__form
-              画像ファイルを選択してください（アイコンをクリック）
+              画像ファイル（アイコンをクリック）
+              %span.input-info.required-info
+                必須
             = form.file_field :image, type: "file", style: "display:none", class:"form-box", id: "new-img"
             .file-upload
               %label{for: "new-img"}
@@ -44,8 +52,8 @@
             %span{style: "display:none;"}
               = form.datetime_select :start_time
             .post-submit
-              = form.submit "SEND", class: "post-submit-btn"
+              = form.submit "投稿する", class: "post-submit-btn"
         .prev-img-wrapper
           %span.prev-msg
             プレビュー画面
-          %img{id: "new-img_prev"}
+            %img{id: "new-img_prev"}

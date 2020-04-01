@@ -32,15 +32,21 @@
       .panel.is-show
         - @today_posts.each do |post|
           = render partial: "post", locals: { post: post }
-        = paginate(@today_posts)
+        .themes-pagenation
+          ページ番号
+          = paginate(@today_posts)
       .panel
         - @yesterday_posts.each do |post|
           = render partial: "post", locals: { post: post }
-        = paginate(@yesterday_posts)
+        .themes-pagenation
+          ページ番号
+          = paginate(@yesterday_posts)
       .panel
         - @old_posts.each do |post|
           = render partial: "post", locals: { post: post }
-        = paginate(@old_posts)
+        .themes-pagenation
+          ページ番号
+          = paginate(@old_posts)
 
   = render "/shared/new_post"
 

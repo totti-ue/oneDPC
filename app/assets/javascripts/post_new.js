@@ -16,4 +16,11 @@ $(function($){
 });
 
 
+$(function(){
+  $('#post_message').change(function(){
+    let input = $(this).val();
+    input = input.replace(/\r\n/g, '&lt;br /&gt;<br />');
+  });
+});
+
 

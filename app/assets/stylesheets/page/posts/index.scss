@@ -187,9 +187,8 @@
 .tab.is-active{
   background: $hf-color;
   color:#FFF;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
   border:solid 1px #CCC;
-
 }
 .panel.is-show{
   display:block;
