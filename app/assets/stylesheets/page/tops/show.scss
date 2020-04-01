@@ -17,8 +17,8 @@ body, html, main {
   justify-content: center;
   align-items: center;
   -webkit-font-smoothing: antialiased;
-
 }
+
 .bg-1::before, .bg-2:before, .bg-3:before, .bg-4:before {
   content: "";
   top: 0;
@@ -58,19 +58,22 @@ body, html, main {
   justify-content: center;
   align-items: center;
   -webkit-font-smoothing: antialiased;
-
 }
 
 .bg-container {
-  width: 800px;
+  width: 80%;
+  max-width: 1000px;
   font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
   font-weight: bold;
   font-size: 20px;
-  position: absolute;
   .pg-theme {
     font-size: 40px;
+    font-weight: bold;
     border-bottom: 5px solid gray;
     margin-bottom: 10px;
+  }
+  .pg-sentence {
+    font-size: 22px;
   }
 }
 
@@ -81,33 +84,33 @@ body, html, main {
 
 // ーーーーー 写真 １ 枚目 ーーーーー
 
-.bg-fixed.bg-1 {
+.bg-1 {
   background-image: image-url("wallpaper11.jpg");
 }
 
-.bg-scrolling.bg-color-1 {
+.bg-color-1 {
   background-color: lightblue;
 }
 
 
 // ーーーーー 写真 ２ 枚目 ーーーーー
 
-.bg-fixed.bg-2 {
+.bg-2 {
   background-image: image-url("wallpaper12.jpg");
 }
 
-.bg-scrolling.bg-color-2 {
+.bg-color-2 {
   background-color: wheat;
 }
 
 
 // ーーーーー 写真 ３ 枚目 ーーーーー
 
-.bg-fixed.bg-3 {
+.bg-3 {
   background-image: image-url("wallpaper13.jpg");
 }
 
-.bg-scrolling.bg-color-3 {
+.bg-color-3 {
   background-color: darksalmon;
 }
 
@@ -115,14 +118,14 @@ body, html, main {
   display: flex;
   flex-flow: row wrap;
   .theme-one {
-    width: 260px;
+    width: 240px;
   }
 }
 
 
 // ーーーーー 写真 ４ 枚目 ーーーーー
 
-.bg-fixed.bg-4 {
+.bg-4 {
   background-image: image-url("tokyo.jpg");
   flex-direction: column;
   .btn-links {
@@ -146,12 +149,6 @@ body, html, main {
     .top-btn:hover {
       box-shadow: 0px 0px 3px 3px #fff;
       background-color: yellow;
-      color: blue;
     }
   }  
 }
-
-.bg-scrolling.bg-color-4 {
-  background-color: midnightblue;
-}
-

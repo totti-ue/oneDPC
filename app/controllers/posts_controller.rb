@@ -103,7 +103,7 @@ class PostsController < ApplicationController
   if Date.yesterday.wday == 0
        return 1
     else
-       return Date.yesterday.wday
+       return Date.yesterday.day
     end
   end
 

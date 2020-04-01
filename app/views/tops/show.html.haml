@@ -2,28 +2,40 @@
   .bg-fixed.bg-1
     .msg
       %p.msg.msg-contents
-        One
-        %br
-        Day Photo Contest 
+        ONE DPC
         %br 
-        コンテストの説明
+        アプリ概要
         %br
-        %p{:style => "position: relative; margin-top: 500px;"}
+        %p{style: "position: relative; margin-top: 500px;"}
           ⬇︎下へスクロール
   .bg-scrolling.bg-color-1
     .bg-container
-      %p.pg-theme
-        %i One Day Photo Cotest とは
-      %br
-      『写真初心者』『アマチュア写真愛好家』向けのフォトコンテストです。
-      %br
-      一日（one day）ごとに出されるお題（テーマ）に沿って、
-      %br
-      一人一枚（one photo）写真を投稿します。
-      %br
-      一日における、『いいね』の総獲得数が多い写真が、
-      %br
-      その日のコンテスト（one contest）の優勝者となります。
+      %h3.pg-theme
+        %i ONE DPC とは
+      .pg-sentence
+        %span{style: "font-size: 28px; color: yellow;"} one day
+        , 
+        %span{style: "font-size: 28px; color: yellow;"} one photo
+        , 
+        %span{style: "font-size: 28px; color: yellow;"} one contest
+        %span の略で、
+        %span{style: "color: yellow;"}『毎日開催、一日完結型フォトコンテスト』
+        の意味。
+        %span カメラ初心者、アマチュア写真愛好家向けのフォトコンテストアプリです。
+        %span コンテスト優勝を目指して、お気に入りの写真を投稿してみよう！
+        %br
+        %br
+        %br
+        %span ＜アプリ利用の簡単な流れ＞
+        %br
+        %span ①ユーザーを新規登録。
+        %br
+        %span ②その日のテーマに合わせて写真を投稿。
+        %br
+        %span ③あとは待つだけ。
+        %br
+        %span 日付の変わる24時までに一番多くいいねが押されたら、優勝作品として認定。翌日の「今日の一枚」として表示される。
+
 
   .bg-fixed.bg-2
     .msg
@@ -33,31 +45,35 @@
         写真を投稿しよう
   .bg-scrolling.bg-color-2
     .bg-container
-      %p.pg-theme
+      %h3.pg-theme
         %i 過去に撮った自信作はありせんか？
-      %p
-        カメラ初心者が集まるコンテストだからこそ、
-        %br
+      .pg-sentence
+        初心者が集まるコンテストだからこそ、
         現存のフォトコンテストのように敷居は高くありません。
         %br
         テーマに沿っていれば、古い写真でも大丈夫！
         %br
-        学生時代に撮った写真や、今のコレクションなど、
+        一日完結なので、翌日には結果が出ます！
         %br
-        参加したい時に自由に参加可能です。  
+        暇つぶしに学生時代に撮った写真や、今のコレクションなど、
+        データとして眠ったままのかっこいい写真を投稿してみては？
+        %br
+        毎日開催しているので、参加したい時に自由に参加可能です。
+
+
   .bg-fixed.bg-3
     .msg
       %p.msg.msg-contents
         %i
-          テーマは日付で固定
+          テーマは全部で３１種類
           %br
-          １日と日曜は『自由（フリーテーマ）』
-        
+          毎週日曜は『自由（フリーテーマ）』
   .bg-scrolling.bg-color-3
     .bg-container
-      %p.pg-theme
+      %h3.pg-theme
         %i テーマに合わせて好きな写真を投稿しよう
-        %p テーマ一覧
+      .pg-sentence
+        %span ＜テーマ一覧＞
         .theme-table
           - i = 1
           - @theme.each do |theme|
@@ -65,7 +81,11 @@
               = i
               = theme.name
               - i += 1
-        %p{:style => "padding-top:10px;"} ※毎週日曜日は日付に関係なく、『自由（フリーテーマ）』となります。
+        %br
+        %p{style: "padding-top:10px;"}
+          ※テーマの番号はカレンダーの日付に当たります。
+          %br
+          ※ただし毎週日曜日は、日付に関係なく『自由（フリーテーマ）』となります。
 
 
   .bg-fixed.bg-4
@@ -73,7 +93,6 @@
       %p.msg.msg-contents 
         今日からコンテストに参加しよう
     .btn-links
-      = link_to "TOP PAGE", "/posts", class: "top-btn"
-      = link_to "SING IN", "/users/sign_in", class: "top-btn"
-  -# .bg-scrolling.bg-color-4
-  -#   .bg-container
+      = link_to "TOP PAGE", posts_path, class: "top-btn"
+      = link_to "NEW REGISTER", new_user_registration_path, class: "top-btn"
+

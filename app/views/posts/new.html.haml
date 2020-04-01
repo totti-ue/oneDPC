@@ -1,13 +1,6 @@
 .main
   .main-top
-    .main-top__box
-      %p.main-top__box--todays-theme
-        本日のお題：
-        %span{style: "font-weight:bold;"}
-          『
-          = @today_theme.name
-          』
-      = render partial: "/shared/clock"
+    = render partial: "/shared/header_bottom"
 
     -# ここからがnew画面
   .new-post
