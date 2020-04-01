@@ -1,12 +1,10 @@
 .theme-index-page {
   margin-top: 60px;
-  height: auto;
-  width: 100%;
   &__lists-box {
-    width: 800px;
+    width: 80%;
+    max-width: 800px;
     margin: 0 auto;
     padding-top: 30px;
-
     &__lists {
       display: flex;
       justify-content: flex-start;

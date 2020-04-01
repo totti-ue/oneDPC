@@ -1,11 +1,6 @@
 .main
   .main-top
-    .main-top__box
-      %p.main-top__box--todays-theme
-        本日のお題：
-        %span{:style => "font-weight:bold;"}
-          『　#{@today_theme.name}　』
-      = render partial: "/shared/clock"
+    = render partial: "/shared/header_bottom"
   %p#notice{:style => "margin-top:120px; color:black;"}= notice
   .main-content
     .main-content__box

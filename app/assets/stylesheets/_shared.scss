@@ -128,3 +128,37 @@ a {
     color: darkcyan;
   }
 }
+
+
+// ページネーション
+.page.current {
+  text-decoration:underline slategray;
+}
+
+.page {
+  padding: 5px;
+  margin-right: 7px;
+}
+
+.pagination {
+  display: inline;
+}
+
+.translation_missing {
+  display: none;
+}
+
+
+// テーマの緑色のリンク
+.theme-link {
+  color: white;
+  .theme-tag {
+    font-size: 14px;
+    background-color: green;
+    border-radius: 10px;
+    padding: 4px 10px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+}

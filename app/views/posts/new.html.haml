@@ -1,55 +1,59 @@
 .main
   .main-top
-    .main-top__box
-      %p.main-top__box--todays-theme
-        本日のお題：
-        %span{style: "font-weight:bold;"}
-          『
-          = @today_theme.name
-          』
-      = render partial: "/shared/clock"
+    = render partial: "/shared/header_bottom"
 
     -# ここからがnew画面
   .new-post
-    - if current_user.posts.count >= 1 && current_user.posts.last.created_at > Time.zone.today.beginning_of_day
-      %p.one-post-message
-        一日に投稿できるのは一枚のみです。(以下すでに投稿済みの画像)
-        %br
-        = image_tag asset_path(@ex_post.image), class: "changeif-prev"
-        %br
-        投稿を編集しますか？
-        = link_to "はい", "/posts/#{@ex_post.id}/edit"
+    .new-post__wrapper
+      - if current_user.posts.count >= 1 && current_user.posts.last.created_at > Time.zone.today.beginning_of_day
+        %p.one-post-message
+          一日に投稿できるのは一枚のみです。(以下すでに投稿済みの画像)
+          %br
+          = image_tag asset_path(@ex_post.image), class: "changeif-prev"
+          %br
+          投稿を編集しますか？
+          = link_to "はい", "/posts/#{@ex_post.id}/edit"
 
-        %br
-        投稿を削除しますか？
-        = link_to "はい", "/posts/#{@ex_post.id}", method: :delete
-    - else
-      .new-post__create
-        = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
-          %h3.new-post__create__action-description
-            新規投稿する
-          - if @post.errors.any?
-            %h3{style: "color: palevioletred;"} 入力内容に#{@post.errors.count}件のエラーがあります。
-            - @post.errors.full_messages.each do |error|
-              = error
-          .new-post__create__form
-            テーマを選択してください
-          = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
-          .new-post__create__form
-            タイトルを入力してください
-          = form.text_field :title, autofocus: true, placeholder: "タイトル（必須）", class:"form-box", required: :true
-          .new-post__create__form
-            メッセージを入力してください
-          = form.text_field :message, placeholder: "メッセージ(任意) 最大２５０文字", maxlength: "250", class:"form-box message-form-box"
-          .new-post__create__form
-            画像ファイルを選択してください（アイコンをクリック）
-          = form.file_field :image, type: "file", style: "display:none", class:"form-box", id: "new-img"
-          %label{for: "new-img"}
-            = fa_icon "image", style: "font-size: 130px;"
+          %br
+          投稿を削除しますか？
+          = link_to "はい", "/posts/#{@ex_post.id}", method: :delete
+      - else
+        .new-post__wrapper__create
+          = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
+            %h3.new-post__wrapper__create__action-description
+              新規投稿する
+            - if @post.errors.any?
+              %h3{style: "color: palevioletred;"} 入力内容に#{@post.errors.count}件のエラーがあります。
+              - @post.errors.full_messages.each do |error|
+                = error
+            .new-post__wrapper__create__form
+              テーマ
+              %span.input-info.required-info
+                必須
+            = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
+            .new-post__wrapper__create__form
+              タイトル
+              %span.input-info.required-info
+                必須
+            = form.text_field :title, autofocus: true, placeholder: "タイトル（必須）", class:"form-box", required: :true
+            .new-post__wrapper__create__form
+              メッセージ
+              %span.input-info.optional-info
+                任意
+            = form.text_area :message, placeholder: "メッセージ(任意) 最大２５０文字", maxlength: "250", class:"form-box message-form-box"
+            .new-post__wrapper__create__form
+              画像ファイル（アイコンをクリック）
+              %span.input-info.required-info
+                必須
+            = form.file_field :image, type: "file", style: "display:none", class:"form-box", id: "new-img"
+            .file-upload
+              %label{for: "new-img"}
+                = fa_icon "image", style: "font-size: 62px;", class: "file-upload__icon"
+            %span{style: "display:none;"}
+              = form.datetime_select :start_time
+            .post-submit
+              = form.submit "投稿する", class: "post-submit-btn"
+        .prev-img-wrapper
+          %span.prev-msg
+            プレビュー画面
             %img{id: "new-img_prev"}
-              %span.prev-msg
-                プレビュー画面
-          %span{style: "display:none;"}
-            = form.datetime_select :start_time
-          .post-submit
-            = form.submit "SEND", class: "post-submit-btn"

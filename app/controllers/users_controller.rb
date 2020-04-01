@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @liked = @user.liked_posts.order("created_at DESC").page(params[:page]).per(20)
     @faved = @user.fav_posts.order("created_at DESC").page(params[:page]).per(20)
     @following = @user.followings
+    @likes_count = Like.where(post_id: params[:id]).count
+    @favorites_count = Favorite.where(post_id: params[:id]).count
   end
 
 

@@ -1,13 +1,16 @@
 .post-show-top {
-  background-color: white;
+  background-color: $hf-color;
   width: 100%;
-  height: calc(100vh - 330px);
+  height: calc(100vh - 92px);
+  overflow: auto;
   margin-top: 92px;
   padding-top: 20px;
+  color: #fff;
   .post-show-wrapper {
-    width: 870px;
+    min-width: 870px;
     height: 100%;
     margin: 22px auto 0;
+    max-width: 1200px;
     &__img-description {
       font-size: 24px;
       font-weight: bold;
@@ -18,7 +21,6 @@
       &__img {
         max-height: 360px;
         max-width: 582px;
-        float: left;
         &--prev {
           max-height: 360px;
           max-width: 582px;
@@ -28,18 +30,17 @@
         }
       }
       &__details {
-        min-width: calc(870px - 592px);
-        max-width: 500px;
-        height: 360px;
-        float: left;
+        max-width: calc(100% - 582px);
+        min-width: 350px;
+        height: auto;
         margin-left: 10px;
-        background-color: rgba(0, 0, 0, 0.2);
-        position: relative;
+        padding: 10px 10px 30px;
+        background-color: lightslategray;
         &__heading {
           font-size: 18px;
           font-weight: bold;
           margin-bottom: 20px;
-          border-bottom: 2px solid $hf-color;
+          border-bottom: 2px solid $main-color;
         }
         &__lists {
           &--a-list {
@@ -67,20 +68,18 @@
 
 
 .comments-wrapper {
-  width: 870px;
-  min-height: 300px;
-  margin: 0 auto 80px;
+  max-width: 1200px;
+  min-height: 200px;
+  margin: 40px auto 0;
   display: flex;
-  position: relative;
   .comment-box {
-    height: auto;
-    width: 300px;
-    // float: left;
+    min-width: 300px;
     &__form {
       height: auto;
       padding: 20px;
       border: 1px solid;
       border-radius: 5px;
+      background-color: #fff;
       #comment_comment {
         width: 100%;
         height: 60px;
@@ -103,20 +102,16 @@
       }
     }
   }
-  .comments__heading {
+  .comments-index {
     width: calc(100% - 312px);
-    position: absolute;
-    right: 0;
-  }
-  .comments {
-    width: calc(100% - 312px);
-    max-height: 340px;
-    overflow: scroll;
-    // float: left;
-    margin-top: 26px;
-    margin-left: 10px;
-    // background-color: rgba(0, 0, 0, 0.2);
-
+    padding-left: 12px;
+    max-height: 200px;
+    .comments__heading {
+    }
+    .comments {
+      height: 180px;
+      overflow: scroll;
+    }
   }
 }
 
@@ -124,10 +119,8 @@
 
 
 #posts-section-one {
-  // padding: 100px 0 0px;
   height: calc(100vh - 190px);
   width: 100%;
-  // position: fixed;
 }
 
 .liked-users{
@@ -140,12 +133,9 @@
     height: 20px;
     width: 200px;
     margin-bottom: 5px;
-    // background-color: springgreen;
-
     &--a-list {
       display: inline;
     }
-
   }
   &:hover {
     overflow: visible;

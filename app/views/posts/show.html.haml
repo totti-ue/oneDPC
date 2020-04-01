@@ -1,16 +1,10 @@
 .main
   .main-top
-    .main-top__box
-      %p.main-top__box--todays-theme
-        %span{style: "font-weight:bold;"}
-          本日のテーマ『
-          = @today_theme.name
-          』
-      = render partial: "/shared/clock"
+    = render partial: "/shared/header_bottom"
 
   .post-show-top
     .post-show-wrapper
-      %h2.post-wrapper__img-description           
+      %h2.post-show-wrapper__img-description
         #{@post.user.nickname}さんの投稿
       .post-contents
         .post-contents__img
@@ -29,7 +23,7 @@
               = @post.title
             %li.post-contents__details__lists--a-list
               メッセージ：
-              = @post.message
+              = simple_format(@post.message)
             %li.post-contents__details__lists--a-list
               投稿日：
               = @post.created_at.to_s(:datetime_jp)
@@ -44,34 +38,27 @@
 
 
           = render "/likes/likes_favorites"
-      -# - if user_signed_in? && current_user.id == @post.user_id #マウスオーバーするまで隠す
-      -#   .liked-users
-      -#     %ul.liked-users__list
-      -#       いいねしたユーザー
-      -#     - @post.liked_users.each do |user|
-      -#       %li.liked-users__list--a-list
-      -#         = link_to "#{user.nickname}", user_path(user.id)
-  = render "/shared/page_back"
 
-  .comments-wrapper
-    .comment-box
-      - if user_signed_in?
-        = form_with(model: [@post, @comment], class: "comment-box__form", local: true) do |form|
-          = form.text_area :comment, placeholder: "コメントする", rows: "2"
-          .submit-box
-            = form.submit "SEND", class: "submit-box__send-btn"
-      - else
-        %strong
-          %p{style: "text-align:center;"} ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-    %h3.comments__heading ＜コメント一覧＞
-    .comments
-      - @comments.each do |comment|
-        %p
-          %strong
-            = link_to comment.user.nickname, "/users/#{comment.user_id}"
-            ：
-          = comment.comment
-          - if user_signed_in? && current_user.id == comment.user.id
-            %span= link_to "削除", "/posts/#{comment.post_id}/comments/#{comment.id}", method: :delete
+      .comments-wrapper
+        .comment-box
+          - if user_signed_in?
+            = form_with(model: [@post, @comment], class: "comment-box__form", remote: true) do |form|
+              = form.text_area :comment, placeholder: "コメントする"
+              .submit-box
+                = form.submit "SEND", class: "submit-box__send-btn"
+          - else
+            %strong
+              %p{style: "text-align:center;"} ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+        .comments-index
+          %h3.comments-index__heading ＜コメント一覧＞
+          .comments
+            - @comments.each_with_index do |comment, i|
+              %p
+                %strong
+                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                  ：
+                = comment.comment
+                - if user_signed_in? && current_user.id == comment.user.id
+                  = link_to "削除", "/posts/#{comment.post_id}/comments/#{comment.id}",data: {index: i}, method: :delete, class: "comment-delete-btn"
       
 

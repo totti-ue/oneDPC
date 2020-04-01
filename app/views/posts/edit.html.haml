@@ -1,41 +1,43 @@
 .main
   .main-top
-    .main-top__box
-      %p.main-top__box--todays-theme
-        本日のお題：
-        %span{style: "font-weight:bold;"}
-          『
-          = @today_theme.name
-          』
-      = render partial: "/shared/clock"
+    = render partial: "/shared/header_bottom"
   .new-post
-    .new-post__create
-      = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
-        %h3.new-post__create__action-description
-          投稿を編集する
-        - if @post.errors.any?
-          %h3{style: "color: palevioletred;"} 入力内容に#{@post.errors.count}件のエラーがあります。
-          - @post.errors.full_messages.each do |error|
-            = error
-        .new-post__create__form
-          テーマを選択してください
-        = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
-        .new-post__create__form
-          タイトルを入力してください
-        = form.text_field :title, autofocus: true, placeholder: "タイトル（必須）", class:"form-box", required: :true
-        .new-post__create__form
-          メッセージを入力してください
-        = form.text_field :message, placeholder: "メッセージ(任意) 最大２５０文字", maxlength: "250", class:"form-box message-form-box"
-        .new-post__create__form
-          画像ファイルを選択してください（アイコンをクリック）
-        = form.file_field :image, type: "file", style: "display:none", class:"form-box", id: "new-img"
-        %label{for: "new-img"}
-          = fa_icon "image", style: "font-size: 130px;"
-
-          - if @post.image.url.present?
-            = image_tag asset_path("#{@post.image.url}"), id: "new-img_prev"
-            %span.prev-msg
-              プレビュー画面
-        .post-submit
-          = form.submit "更新する", class: "post-submit-btn"
+    .new-post__wrapper
+      .new-post__wrapper__create
+        = form_with(model: @post, local: true, class: "new-post__post-form") do |form|
+          %h3.new-post__wrapper__create__action-description
+            投稿を編集する
+          - if @post.errors.any?
+            %h3{style: "color: palevioletred;"} 入力内容に#{@post.errors.count}件のエラーがあります。
+            - @post.errors.full_messages.each do |error|
+              = error
+          .new-post__wrapper__create__form
+            テーマ
+            %span.input-info.required-info
+              必須
+          = form.collection_select(:theme_ids, Theme.all, :id, :name, id: "select-box")
+          .new-post__wrapper__create__form
+            タイトル
+            %span.input-info.required-info
+              必須
+          = form.text_field :title, autofocus: true, placeholder: "タイトル（必須）", class:"form-box", required: :true
+          .new-post__wrapper__create__form
+            メッセージ
+            %span.input-info.optional-info
+              任意
+          = form.text_area :message, placeholder: "メッセージ(任意) 最大２５０文字", maxlength: "250", class:"form-box message-form-box"
+          .new-post__wrapper__create__form
+            画像ファイル（アイコンをクリック）
+            %span.input-info.required-info
+              必須
+          = form.file_field :image, type: "file", style: "display:none", class:"form-box", id: "new-img"
+          .file-upload
+            %label{for: "new-img"}
+              = fa_icon "image", style: "font-size: 62px;", class: "file-upload__icon"
+          .post-submit
+            = form.submit "更新する", class: "post-submit-btn"
+      .prev-img-wrapper
+        %span.prev-msg
+          プレビュー画面
+          = image_tag asset_path("#{@post.image.url}"), id: "new-img_prev"
 

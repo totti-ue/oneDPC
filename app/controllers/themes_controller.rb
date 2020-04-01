@@ -7,7 +7,7 @@ class ThemesController < ApplicationController
   end
 
   def show
-    @themes = @theme.posts.all.page(params[:page]).per(20)
+    @themes = @theme.posts.all.page(params[:page]).per(5)
   end
 
   private

@@ -1,6 +1,5 @@
  $(function(){
 
-  
   function buildHTML(comment){
     var html = `
                 <p>
@@ -11,7 +10,6 @@
                 `
     return html;
   }
-
 
   $('.comment-box__form').on('submit', function(e){
     e.preventDefault();
@@ -35,4 +33,10 @@
       alert('メッセージの送信に失敗しました。')
     })
   })
-})
+
+  $('.comment-delete-btn').click(function(e){
+    e.preventDefault();
+    console.log('削除する？')
+  });
+});
+

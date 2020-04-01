@@ -31,3 +31,4 @@
           = link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
       - elsif user_signed_in? && current_user.id != @post.user_id
         = render partial: "/likes/likes_favorites"
+    = render "/likes/likes_favorites"

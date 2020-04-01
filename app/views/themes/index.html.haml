@@ -3,7 +3,7 @@
     %ul.theme-index-page__lists-box__lists
       - @themes.each_with_index do |theme, i|
         - i += 1
-        = link_to "/themes/#{theme.id}", class: "theme-link" do
+        = link_to theme_path(theme.id), class: "theme-link" do
           %li.a-theme-list
             #{i}.#{theme.name}
 
@@ -14,4 +14,4 @@
       %p.theme-description__message
         テーマは全て順番通りに選ばれています。
         日にちとテーマ番号はリンクしており、日曜日を除いて該当日の日にち(数字)のテーマ番号が選ばれます。
-        日曜日は自動的に『自由(フリーテーマ)』となります。
+        ただし、日曜日は自動的に『自由(フリーテーマ)』となります。
