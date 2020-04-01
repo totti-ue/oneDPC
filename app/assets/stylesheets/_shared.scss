@@ -147,3 +147,18 @@ a {
 .translation_missing {
   display: none;
 }
+
+
+// テーマの緑色のリンク
+.theme-link {
+  color: white;
+  .theme-tag {
+    font-size: 14px;
+    background-color: green;
+    border-radius: 10px;
+    padding: 4px 10px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+}
