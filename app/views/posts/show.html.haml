@@ -7,7 +7,7 @@
       %h2.post-show-wrapper__img-description
         #{@post.user.nickname}さんの投稿
       .post-contents
-        .post-contents__img
+        = link_to asset_path(@post.image), deta: {lightbox: "todays-post"}, data: {title: "#{@post.title}"}, rel: "lightbox", class: "post-contents__img" do
           = image_tag asset_path("#{@post.image}"), class: "post-contents__img--prev"
         .post-contents__details
           %h3.post-contents__details__heading

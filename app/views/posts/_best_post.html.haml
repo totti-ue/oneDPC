@@ -12,9 +12,8 @@
       過去のベストショット
       %span{style: "font-size:12px;color:lightgray;padding-left:10px;cursor:pointer;"} ※昨日の投稿がなかったため、過去のベストショットを掲載中
   .yesterdays-number-one
-    .yesterdays-number-one__img
-      = link_to post_path(post.id) do
-        = image_tag asset_path("#{post.image}"), class: "yesterdays-number-one__img--prev"
+    = link_to asset_path(post.image), deta: {lightbox: "todays-post"}, data: {title: "今日の一枚[タイトル：#{post.title} 投稿者：#{post.user.nickname}]"}, rel: "lightbox", class: "yesterdays-number-one__img" do
+      = image_tag asset_path(post.image), class: "yesterdays-number-one__img--prev"
     .yesterdays-number-one__details
       %h3.yesterdays-number-one__details__heading
         投稿詳細
@@ -87,4 +86,4 @@
   .section-two__user-posts
     - post.user.posts.each do |best|
       = link_to post_path(best.id), class: "img-link" do
-        = image_tag asset_path("#{best.image}"), class: "img-box"
+        = image_tag asset_path(best.image), class: "img-box"

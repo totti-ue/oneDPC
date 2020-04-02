@@ -1,8 +1,8 @@
-%h2.user-show-top__img-description           
+%h2.user-show-top__img-description
   本日投稿中の一枚
 .todays-post
-  .todays-post__img
-    = image_tag asset_path("#{@post.image}"), class: "todays-post__img--prev"
+  = link_to asset_path(@post.image), deta: {lightbox: "todays-post"}, data: {title: "#{@post.title}"}, rel: "lightbox",class: "todays-post__img" do
+    = image_tag asset_path(@post.image), class: "todays-post__img--prev"
   .todays-post__details
     %h3.todays-post__details__heading
       投稿詳細
@@ -31,4 +31,3 @@
           = link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
       - elsif user_signed_in? && current_user.id != @post.user_id
         = render partial: "/likes/likes_favorites"
-    = render "/likes/likes_favorites"

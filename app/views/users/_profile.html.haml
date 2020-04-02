@@ -3,8 +3,9 @@
     .avator-img-box
       - if @user[:avator].nil?
         = image_tag asset_path("no_img.png"), style:"object-fit:cover;", class: "avator-img"
-      - else 
-        = image_tag asset_path(@user.avator.thumb), style:"object-fit:cover;", class: "avator-img"
+      - else
+        = link_to asset_path(@user.avator.thumb), deta: {lightbox: "avator"}, data: {title: "#{@user.nickname}さんのプロフィール画像"}, rel: "lightbox" do
+          = image_tag asset_path(@user.avator.thumb), style:"object-fit:cover;", class: "avator-img"
     .name-box
       %b{style: "font-size:18px;"} #{@user.nickname}
       %span さん
@@ -23,7 +24,8 @@
           = form_for(current_user.relationships.build) do |f|
             = hidden_field_tag :follow_id, @user.id
             = f.submit "フォローする", class: "follow-icon"
-
+      %span フォロー数：
+      = @user.followings.count
     .profile-details
       %ul.profile-details__list
         %li 性別：#{@user.gender}
