@@ -26,16 +26,16 @@
               .pulldown 
                 = current_user.nickname
               %ul.menu__second-level
-                %li= link_to "マイページ", "/users/#{current_user.id}", class: "pulldown-list"
+                %li= link_to "マイページ", user_path(current_user.id), class: "pulldown-list"
                 %li= link_to "アカウント編集", edit_user_registration_path, class: "pulldown-list"
                 %li= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "pulldown-list"
             %li.menu__single.single2
               .pulldown 
                 投稿関連
               %ul.menu__second-level
-                %li= link_to "投稿する", "/posts/new", class: "pulldown-list"
-                %li= link_to "テーマ一覧", "/themes", class: "pulldown-list"
-                %li= link_to "ユーザー一覧", "/users", class: "pulldown-list"
+                %li= link_to "投稿する", new_post_path, class: "pulldown-list"
+                %li= link_to "テーマ一覧", themes_path, class: "pulldown-list"
+                %li= link_to "ユーザー一覧", users_path, class: "pulldown-list"
             %li.menu__single.single2
               .pulldown 
                 アプリ説明

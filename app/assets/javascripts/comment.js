@@ -24,6 +24,7 @@
       contentType: false
     })
     .done(function(data){
+      console.log('hello')
       var html = buildHTML(data);
       $('.comments').append(html);
       $('#comment_comment').val('');

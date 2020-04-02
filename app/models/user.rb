@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :fav_posts, through: :favorites, source: :post
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
-  has_many :reverse_of_relationships, class_name: 'Relationhip', foreign_key: 'follow_id'
+  has_many :reverse_of_relationships, class_name: 'Relatioship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
   validates :nickname, presence: true
