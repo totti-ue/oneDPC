@@ -114,7 +114,7 @@
   }
   // セクション2-------------------------
   .section-two {
-    height: 190px;
+    height: 210px;
     position: relative;
     &__heading {
       background-color: white;
@@ -130,20 +130,20 @@
     &__user-posts {
       background-color: $hf-color;
       width: calc(100% - 40px);
-      padding: 30px 20px 10px;
-      overflow-x: auto;
+      padding: 30px 20px;
+      overflow: auto;
+      display: flex;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
       .img-link {
         width: 150px;
         height: 150px;
-        float: left;
+        display: block;
         margin-right: 20px;
         .img-box {
-          height: 100%;
-          width: 100%;
+          height: 150px;
+          width: 150px;
           object-fit: cover;
-          display: block;
         }
         &:hover {
           opacity: 0.6;

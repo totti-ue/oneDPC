@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @following = @user.followings
     @likes_count = Like.where(post_id: params[:id]).count
     @favorites_count = Favorite.where(post_id: params[:id]).count
+    gon.user_gender = @user.gender
   end
 
 
