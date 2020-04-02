@@ -228,67 +228,6 @@
 }
 
 
-// -----------------------------------------
-
-
-.footer {
-  background-color: $hf-color;
-  margin-top: 40px;
-  width: 100%;
-  color: white;
-  &__contents {
-    padding: 20px;
-    height: calc(100% - 40px);
-    width: calc(100% - 40px);
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    &__developer-msg {
-      width: 70%;
-      &--heading {
-        font-size: 18px;
-        font-weight: bold;
-      }
-      &--contest-description {
-        font-size: 15px;
-        color: lightslategray;
-      }
-      &--links {
-        padding-right: 20px;
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-      }
-      .inquiry-form-btn {
-        padding: 0 20px;
-        border-radius: 5px;
-      }
-    }
-    .inquiry-form-wrapper {
-      width: 30%;
-      .inquiry-form {
-        display: none;
-        width: 100%;
-        &__title {
-          font-size: 16px;
-        }
-        &__input {
-          width: calc(100% - 10px);
-          padding: 0 5px;
-          border-radius: 5px;
-          margin-bottom: 10px;
-        }
-        &__submit {
-          width: 60px;
-          height: 60px;
-        }
-      }
-    }
-  }
-}
-
-
-
 // 携帯サイズの時
 .display-inline {
   display: inline;
@@ -305,15 +244,11 @@
     width: 100vw;
     height: 400px;
     .behind-img{
-      // position: absolute;
-      // z-index: 0;
       width: 100%;
       height: 400px;
       object-fit: cover;
     }
     .behind-boke {
-      // position: absolute;
-      // top: 85px;
       background-color: #333;
       opacity: 0.5;
       height: 400px;
@@ -374,7 +309,8 @@
         display: flex;
         border-bottom: 1px solid gray;
         width: 100%;
-        height: 80px;
+        height: 42px;
+        font-size: 12px;
         .mobile-tab {
           flex-grow: 1;
           padding: 5px;
@@ -402,26 +338,7 @@
       }
     }
   }
-  .mobile-footer {
-    background-color: #333;
-    margin-top: 40px;
-    padding: 40px 0;
-    width: 100%;
-    color: white;
-    &__contents {
-      overflow: auto;
-      background-color: #333;
-      &--heading {
-        font-size: 18px;
-        font-weight: bolc;
-      }
-      &__contest-description {
-        font-size: 14px;
-        color: lightslategray;
-        float: left;
-        padding-right: 20px;
-      }
-    }
+  #theme-tag {
+    font-size: 10px;
   }
-
 }

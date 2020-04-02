@@ -42,7 +42,7 @@
       .comments-wrapper
         .comment-box
           - if user_signed_in?
-            = form_with(model: [@post, @comment], class: "comment-box__form", remote: true) do |form|
+            = form_with(model: [@post, @comment], class: "comment-box__form", local: true) do |form|
               = form.text_area :comment, placeholder: "コメントする"
               .submit-box
                 = form.submit "SEND", class: "submit-box__send-btn"

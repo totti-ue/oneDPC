@@ -5,11 +5,11 @@
     %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
 
   .mobile-posts-index
-    = image_tag asset_path("#{@best.image}"), class: "behind-img"
+    = image_tag asset_path(@best.image), class: "behind-img"
     .behind-boke
     .best-shot-img
-      = link_to post_path(@best.id), class: "best-shot-img-link" do
-        = image_tag asset_path("#{@best.image}"), class: "best-shot-img__prev"
+      = link_to asset_path(@best.image), deta: {lightbox: "todays-post"}, data: {title: "今日の一枚[タイトル：#{@best.title} 投稿者：#{@best.user.nickname}]"}, rel: "lightbox", class: "best-shot-img-link" do
+        = image_tag asset_path(@best.image), class: "best-shot-img__prev"
       .best-shot-img__like-fav-counts
         %i.fa.fa-heart.best-shot-img__like-fav-counts__likes
           = @best.likes.count
@@ -72,12 +72,12 @@
       %li.mobile-tab.is-mobile-active
         今日の投稿
         .theme-link
-          %span.theme-tag
+          %span.theme-tag#theme-tag
             = @today_theme.name 
       %li.mobile-tab
         昨日の投稿
         .theme-link
-          %span.theme-tag
+          %span.theme-tag#theme-tag
             = @yesterday_theme.name 
       %li.mobile-tab
         過去の投稿
@@ -95,24 +95,41 @@
         - @old_posts.each do |post|
           = render partial: "post", locals: { post: post }
         = paginate(@old_posts)
-%footer.mobile-footer
+.mobile-footer
   .mobile-footer__contents
-    %h3.mobile-footer__contents--heading ONE DPC (One Day Photo Contest)
-    %p.mobile-footer__contents__contest-description
-      ONE DPC とは、One Day Photo Contest の略で、カメラ初心者やアマチュア写真愛好家向けの写真投稿サイトです。
-      %br
-      （One Day 毎日開催、一日限定。  One Photo 投稿できるのは一人一枚。   One Contest 一日完結のコンテスト。）
-      %br
-      %br
-      ルールは以下の通り。
-      %br
-      ①ユーザーがその日のテーマに合わせて写真を投稿。
-      %br
-      ②他ユーザーからのいいねが評価の対象。
-      %br
-      ③当日24時までに一番多くのいいねを獲得した写真がその日の優勝作品となり、次の日の『今日の一枚』として表示される。
-      %br
-    %ul.mobile-footer__contents__links
-      %li
-        近日公開予定
-        = link_to "開発者のポートフォリオサイト", "#"
+    .mobile-footer__contents__developer-msg
+      %h3.mobile-footer__contents__developer-msg--heading ONE DPC (One Day Photo Contest) アプリ概要
+      %p.mobile-footer__contents__developer-msg--contest-description
+        カメラ初心者、アマチュア写真愛好家向けのフォトコンテストアプリ。
+        ONE DPCとは one Day, one Photo, one Contest の略であり、一日限定フォトコンテストの意味。
+        %br
+        %br
+        ルールは以下の通り。
+        %br
+        ①ユーザーがその日のテーマに合わせて写真を投稿。
+        %br
+        ②投稿へのいいねの数がその日一番多い画像がコンテストの優勝作品となり、翌日の「今日の一枚」として表示される。
+        %br
+      %ul.mobile-footer__contents__developer-msg--links
+        %li
+          公開中
+          = link_to "開発者のポートフォリオサイト", "https://zen-stonebraker-c82f4a.netlify.com/"
+    .mobile-inquiry-form-description
+      お問い合わせフォーム
+    .mobile-inquiry-form-wrapper
+      %form{action: "https://api.staticforms.xyz/submit", method: :post, class: "mobile-inquiry-form"}
+        %h4.mobile-inquiry-form__title お名前
+        %input{name: "name", placeholder: "", type: "text", class: "mobile-inquiry-form__input", required: true}
+        %h4.mobile-inquiry-form__title メールアドレス
+        %input{name: "email", placeholder: "", type: "text", class: "mobile-inquiry-form__input", required: true}
+        %h4.mobile-inquiry-form__title メッセージ
+        %textarea{name: "message", placeholder: "", class: "mobile-inquiry-form__input", required: true}
+        %input{name: "honeypot", style: "display:none", type: "text", class: "mobile-inquiry-form__input"}
+        %input{name: "accessKey", type: "hidden", value: "a11fa1c6-a381-4734-9057-443a8d60c397", class: "mobile-inquiry-form__input"}
+        %input{name: "subject", type: "hidden", value: "Contact us from - example.com", class: "mobile-inquiry-form__input"}
+        %input{name: "replyTo", type: "hidden", value: "@", class: "mobile-inquiry-form__input"}
+        %input{name: "redirectTo", type: "hidden", value: "http://3.115.17.18:4000/posts/thanks", class: "mobile-inquiry-form__input"}
+        %input{type: "submit", value: "送信", class: "mobile-inquiry-form__submit"}
+
+
+
