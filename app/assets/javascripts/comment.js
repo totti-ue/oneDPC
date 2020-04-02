@@ -33,10 +33,5 @@
       alert('メッセージの送信に失敗しました。')
     })
   })
-
-  $('.comment-delete-btn').click(function(e){
-    e.preventDefault();
-    console.log('削除する？')
-  });
-});
+})
 

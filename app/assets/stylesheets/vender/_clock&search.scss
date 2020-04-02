@@ -1,19 +1,21 @@
 .search-form {
+  padding-top: 5px;
+  display: flex;
   .search-input {
     height: 20px;
-    width: 130px;
-    margin-top: 5px;
-    color: #ccc;
+    width: 180px;
     font-size: 12px;
-    line-height: 1;
     box-sizing: border-box;
     padding: 4px 24px 4px 10px;
-    border: none;
-    background: #414349;
+    border: 1px solid #333
   }
   .search-btn {
     height: 20px;
-    width: 60px;
+    width: 35px;
+    margin-left: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.04);
   }
 }
 
@@ -25,8 +27,11 @@
   text-align: end;
   padding-top: 2px;
   #view_clock {
-    // line-height: 20px;
-    // font-size: 14px;
   }
 }
 
+
+
+.search-description {
+  margin-bottom: 20px;
+}

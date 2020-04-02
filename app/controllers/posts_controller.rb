@@ -9,9 +9,9 @@ class PostsController < ApplicationController
     @best_one = Post.best_post_for_all.first
     @yesterday_posts = Post.where(created_at: Time.zone.yesterday.beginning_of_day..Time.zone.yesterday.end_of_day).order("created_at DESC").page(params[:page]).per(20)
     @posts = Post.all.order("created_at DESC").page(params[:page]).per(20)
-    @today_posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
-    @yesterday_posts = Post.includes(:user).where(created_at: Time.zone.yesterday.beginning_of_day...Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
-    @old_posts = Post.includes(:user).where("created_at < ?", Time.zone.yesterday.beginning_of_day).order("created_at DESC").page(params[:page]).per(10)
+    @today_posts = Post.includes(:user).where("created_at > ?", Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(20)
+    @yesterday_posts = Post.includes(:user).where(created_at: Time.zone.yesterday.beginning_of_day...Time.zone.today.beginning_of_day).order("created_at DESC").page(params[:page]).per(20)
+    @old_posts = Post.includes(:user).where("created_at < ?", Time.zone.yesterday.beginning_of_day).order("created_at DESC").page(params[:page]).per(20)
     @yesterday_theme = Theme.find(yesterday_num)
     unless @best.nil?
       if Like.count != 0
@@ -68,6 +68,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
     @likes_count = Like.where(post_id: params[:id]).count
   end
 

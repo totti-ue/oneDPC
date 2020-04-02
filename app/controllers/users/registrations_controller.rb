@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     super
-    @user.gender = @user.gender 
+    gon.user_gender = @user.gender 
   end
 
   # PUT /resource
