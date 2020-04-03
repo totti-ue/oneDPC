@@ -35,10 +35,29 @@
 }
 
 @media screen and (max-width: 480px){
+  .main-content {
+    overflow: auto;
+    padding-bottom: 62px;
+  }
   .search-form{
     display: none;
   }
   .limit {
     font-size: 8px;
+  }
+  .mobile-search {
+    margin-top: 120px;
+    padding-top: 5px;
+    display: flex;
+    &__input {
+      border: 1px solid #333;
+    }
+    &__btn {
+      width: 35px;
+      margin-left: 5px;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
   }
 }

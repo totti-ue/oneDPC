@@ -1,4 +1,4 @@
- $(function(){
+$(function(){
 
   function buildHTML(comment){
     var html = `
@@ -35,4 +35,13 @@
     })
   })
 })
+
+
+
+
+$(function(){
+  $('.mobile-comment-icon').click(function(){
+    $('.mobile-comment-box').fadeToggle(500);
+  });
+});
 
