@@ -30,8 +30,15 @@
   }
 }
 
-
-
 .search-description {
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 480px){
+  .search-form{
+    display: none;
+  }
+  .limit {
+    font-size: 8px;
+  }
 }

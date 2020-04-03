@@ -35,9 +35,6 @@
             height: 30px;
           }
         }
-        .nickname {
-          width: 60%;
-        }
         .action-submit {
           display: flex;
           justify-content: center;
@@ -66,5 +63,19 @@
   margin-bottom: 20px;
   .alfa-box {
     margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .devise-view {
+    height: calc(100vh - 9px);
+    width: 100%;
+    padding-top: 90px;
+    &__wrapper {
+      width: 90%;
+    }
+  }
+  .input-box__form {
+    border-radius: 5px;
   }
 }
