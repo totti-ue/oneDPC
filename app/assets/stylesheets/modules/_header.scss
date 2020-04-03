@@ -67,6 +67,7 @@
   }
 }
 
+
 @media screen and (max-width: 480px){
   .mobile-header {
     width: 100vw;
@@ -129,6 +130,18 @@
       right: 50px;
       line-height: 16px;
       text-align: end;
+    }
+  }
+  .main {
+    .main-top {
+      &__box {
+        #mobile-todays-theme {
+          font-size: 10px;
+          margin-right: 5px;
+          margin-top: 3px;
+          line-height: 25px;
+        }
+      }
     }
   }
 }

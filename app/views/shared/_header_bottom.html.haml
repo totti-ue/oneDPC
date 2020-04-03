@@ -1,5 +1,5 @@
 .main-top__box
-  %p.main-top__box--todays-theme
+  %p.main-top__box--todays-theme#mobile-todays-theme
     %span{style: "font-weight:bold;"}
       本日のテーマ：
       = link_to theme_path(@today_theme.id), class: "theme-link" do
