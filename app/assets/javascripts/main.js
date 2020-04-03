@@ -80,3 +80,10 @@ $(function(){
     $('.mobile-inquiry-form-wrapper').fadeToggle(500);
   });
 });
+
+
+$(function(){
+  $('.what-is-best-shot').click(function(){
+    $('.what-is-best-shot__info').fadeToggle(500);
+  });
+});

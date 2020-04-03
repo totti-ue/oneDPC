@@ -33,9 +33,12 @@
       %li 投稿総数：#{@best.user.posts.count}
 - else
   .best-shot-description
-    = fa_icon "trophy"
+    %i.fa.fa-trophy{style: "color:gold;"}
     今日の一枚
-    %span{style: "font-size:10px;color:lightgray;padding-left:10px;cursor:pointer;"} ※今日の一枚とは？
+    %span.what-is-best-shot
+      今日の一枚とは
+      %i.fa.fa-question-circle
+    %span.what-is-best-shot__info 昨日のコンテストの優勝作品です。
 
   .mobile-posts-index
 
