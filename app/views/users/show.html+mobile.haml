@@ -1,0 +1,159 @@
+.main
+  .main-top
+    = render partial: "/shared/header_bottom"
+    -# A ログイン中のユーザー ーーーーー
+  - if user_signed_in?
+    - if current_user.id == @user.id && @post.present? # A_1 マイページ
+      .user-show-top
+        = render "profile"
+        = render "todays_post"
+
+      .section-four
+        %ul.tab-group
+          %li.tab.is-active
+            私の投稿集
+          %li.tab
+            お気に入り
+          %li.tab
+            いいねした投稿
+          %li.tab
+            フォローしているユーザー
+        .panel-group
+          .panel.is-show
+            - @posts.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@posts)
+          .panel
+            - @faved.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@faved)
+          .panel
+            - @liked.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@liked)
+          .panel
+            .follow-users
+              - @following.each do |follow|
+                = link_to user_path(follow), class: "follow-users__show" do
+                  - unless follow.avator.file.nil?
+                    = image_tag asset_path(follow.avator.thumb), class: "follow-users__show__avator"
+                  - else
+                    = image_tag asset_path("no_img.png"), class: "follow-users__show__avator"
+                  %span.follow-users__show__nickname
+                    = follow.nickname
+      = render "/shared/page_back"
+
+    - elsif current_user.id == @user.id && @post.blank?
+      .user-show-top
+        = render "profile"
+        .request-new-post
+          本日まだ投稿していません
+          %br
+          投稿しますか？
+          = link_to "はい", new_post_path
+          ーー
+          = link_to "投稿一覧へ戻る", "/posts", class:"back-to-toppage"
+
+      .section-four
+        %ul.tab-group
+          %li.tab.is-active
+            私の投稿集
+          %li.tab
+            お気に入り
+          %li.tab
+            いいねした投稿
+          %li.tab
+            フォローしているユーザー
+        .panel-group
+          .panel.is-show
+            - @posts.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@posts)
+          .panel
+            - @faved.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@faved)
+          .panel
+            - @liked.each do |post|
+              = render partial: "/posts/post", locals: { post: post }
+            = paginate(@liked)
+          .panel
+            .follow-users
+              - @following.each do |follow|
+                = link_to user_path(follow), class: "follow-users__show" do
+                  - unless follow.avator.file.nil?
+                    = image_tag asset_path(follow.avator.thumb), class: "follow-users__show__avator"
+                  - else
+                    = image_tag asset_path("no_img.png"), class: "follow-users__show__avator"
+                  %span.follow-users__show__nickname
+                    = follow.nickname
+      = render "/shared/page_back"
+
+      
+      -# A_2 他ユーザーのページ --------------------------
+    -elsif @post.blank? # A_2'_a
+      .user-show-top
+        = render "profile"
+        .request-new-post
+          本日まだ投稿していません
+
+
+      %h1.other-user-page__heading
+        >
+        %b #{@user.nickname}
+        さんの投稿一覧
+      %ul
+        - if (@posts.count == 0)
+          .no-posts-show
+            まだ投稿がありません
+        - else
+          - @posts.each do |post|
+            = render partial: "/posts/post", locals: { post: post }
+          = paginate(@posts)
+
+      = render "/shared/page_back"
+
+    -else # A_2'_b
+      .user-show-top
+        = render "profile"
+        = render "todays_post"
+
+      %h1.other-user-page__heading
+        >
+        %b #{@user.nickname}
+        さんの投稿一覧
+      %ul
+        - if (@posts.count == 0)
+          .no-posts-show
+            まだ投稿がありません
+        - else
+          - @posts.each do |post|
+            = render partial: "/posts/post", locals: { post: post }
+          = paginate(@posts)
+
+      = render "/shared/page_back"
+
+
+
+
+    -# B ログインしてないユーザー -----------------------------
+  - else
+    .user-show-top
+      = render "profile"
+      = render "todays_post"
+
+    %h1.other-user-page__heading
+      >
+      %b #{@user.nickname}
+      さんの投稿一覧
+    %ul
+      - if (@posts.count == 0)
+        .no-posts-show
+          まだ投稿がありません
+      - else
+        - @posts.each do |post|
+          = render partial: "/posts/post", locals: { post: post }
+        = paginate(@posts)
+
+    = render "/shared/page_back"
+

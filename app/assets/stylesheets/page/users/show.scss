@@ -161,17 +161,122 @@
 }
 
 @media screen and (max-width: 480px){
-  .header-bottom-hidden {
-    position: fixed;
-    top: 60px;
-    height: 40px;
-    width: 100vw;
-    background-color: gray;
-    .header-bottom {
-      margin-top: 40px;
-      height: 40px;
-      background-color: gold;
-      position: relative;
+  // プロフィール部分
+  .mobile-user-profile {
+    background-color: white;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #333;
+    .mobile-avator-img-box {
+      display: flex;
+      display: flex;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #333;
+      .mobile-avator-img {
+        object-fit: cover;
+        width: 120px;
+        height: 120px;
+      }
+      .name-box {
+        width: calc(100% - 140px);
+        margin-left: 20px;
+        .follow-icon {
+          padding: 0 10px;
+          background-color: white;
+          border-radius: 10px;
+          text-align: center;
+          line-height: 20px;
+          font-size: 14px;
+          color: $hf-color;
+          margin-top: 5px;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+          cursor: pointer;
+          &:hover {
+            color: white;
+            padding: 0 20px;
+            background-color: lightseagreen;
+          }
+        }
+        .followed-user {
+          color: white;
+          background-color: lightseagreen;
+          &:hover {
+            color: $hf-color;
+            background-color: white;
+          }
+        }
+      }
     }
+    .profile-details {
+      padding: 10px;
+      &__list {
+        li {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+
+
+
+  // マイページの設定--------------------------------
+  .user-show-top {
+    color: white;
+    background-color: $hf-color;
+    margin-top: 92px;
+    padding-top: 5px;
+    padding-bottom: 50px;
+    overflow: auto;
+    height: auto;
+    &__img-description {
+      width: calc(100% - 16px);
+      margin: 8px 0px 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .todays-post {
+      width: 90%;
+      max-height: 200px;
+      margin: 0 auto 10px;
+      display: flex;
+      justify-content: center;
+      &__img {
+        max-height: 200px;
+        max-width: 100%;
+        &--prev {
+          max-height: 200px;
+          max-width: 100%;
+          object-fit: contain;
+          object-position: left;
+          box-shadow: 0px 0px 6px 2px #eee;
+        }
+      }
+      &__details {
+        min-width: calc(860px - 592px);
+        max-width: 500px;
+        height: 360px;
+        margin-left: 10px;
+        &__heading {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 20px;
+          border-bottom: 2px solid white;
+        }
+      }
+    }
+  }
+  .other-user-page {
+    height: calc(100vh - 122px);
+    margin-top: 92px;
+    padding-top: 30px;
+    &__heading {
+      width: calc(100% - 40px);
+      margin: 20px auto;
+    }
+  }
+  .page-back-or-page-index {
+    padding-bottom: 40px;
   }
 }
