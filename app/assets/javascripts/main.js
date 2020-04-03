@@ -74,3 +74,9 @@ $(function(){
 });
 
 
+
+$(function(){
+  $('.mobile-inquiry-form-description').click(function(){
+    $('.mobile-inquiry-form-wrapper').fadeToggle(500);
+  });
+});

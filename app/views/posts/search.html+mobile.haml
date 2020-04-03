@@ -1,0 +1,23 @@
+.main
+  .main-top
+    = render partial: "/shared/header_bottom"
+  .main-content
+    = form_with(url: search_posts_path, local: true, method: :get, class: "mobile-search") do |f|
+      = f.text_field :keyword, placeholder: "投稿を検索する", type: 'text', required: true, class: "mobile-search__input"
+      %span<>
+      = button_tag type: :submit,class:"mobile-search__btn" do
+        %i.fa.fa-search
+
+    .main-content__box
+      .search-description
+        検索キーワード：
+        %span{style: "font-weight:bold;"} #{@keyword}
+        の検索結果
+      %ul.box-list
+        - unless @posts.empty?
+          - @posts.each do |post|
+            = render partial: "post", locals: { post: post }
+        - else
+          タイトル：
+          %span{style: "font-weight:bold;"} #{@keyword}
+          に該当する投稿はありません。

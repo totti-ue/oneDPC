@@ -1,0 +1,56 @@
+.main
+  .main-top
+    = render partial: "/shared/header_bottom"
+
+  .mobile-post-show
+    .mobile-post-show__wrapper
+      %h2.mobile-post-show__wrapper__img-description
+        #{@post.user.nickname}さんの投稿
+      .mobile-post-contents
+        = link_to asset_path(@post.image), deta: {lightbox: "todays-post"}, data: {title: "#{@post.title}"}, rel: "lightbox", class: "post-contents__img" do
+          = image_tag asset_path("#{@post.image}"), class: "mobile-post-contents__img--prev"
+
+      %button.open-details{ type: "button" }
+        %span.open-text
+          投稿詳細を見る
+          %br
+          %i.fa.fa-chevron-down
+
+      .best-shot-details-show
+        %ul.best-shot-details-show__lists
+          %li テーマ：#{@post.themes.first.name}
+          %li タイトル：#{@post.title}
+          %li メッセージ：#{@post.message}
+          %li 投稿日：#{@post.created_at.to_s(:datetime_jp)}
+          %li.display-inline 投稿者：
+          = link_to "#{@post.user.nickname}", user_path(@post.user.id)
+          %li 投稿総数：#{@post.user.posts.count}
+          - if user_signed_in? && current_user.id == @post.user_id
+            %li= link_to '編集する', "/posts/#{@post.id}/edit", method: :get, class: "my-post-list"
+            %li= link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
+
+
+        = render "/likes/likes_favorites"
+
+      .mobile-comments-index
+        %h3.mobile-comments-index__heading ＜コメント一覧＞
+        .mobile-comments
+          - @comments.each_with_index do |comment, i|
+            %p
+              %strong
+                = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                ：
+              = comment.comment
+              - if user_signed_in? && current_user.id == comment.user.id
+                = link_to "削除", "/posts/#{comment.post_id}/comments/#{comment.id}",data: {index: i}, method: :delete, class: "mobile-comment-delete-btn"
+      %button.mobile-comment-icon
+        %i.fa.fa-comment
+      .mobile-comment-box
+        - if user_signed_in?
+          = form_with(model: [@post, @comment], class: "mobile-comment-box__form", local: true) do |form|
+            = form.text_area :comment, placeholder: "コメントする"
+            .submit-box
+              = form.submit "SEND", class: "submit-box__send-btn"
+        - else
+          %strong
+            %p{style: "text-align:center;"} ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
