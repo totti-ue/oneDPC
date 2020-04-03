@@ -48,3 +48,56 @@
     }
   }
 }
+
+@media screen and (max-width: 480px){
+  .theme-index-page {
+    margin-top: 60px;
+    &__lists-box {
+      width: 100%;
+      padding: 30px 0px 72px;
+      &__lists {
+        display: flex;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+        .theme-link {
+          text-decoration: none;
+          margin: 0 10px 10px;
+          .a-theme-list {
+            height: 40px;
+            background-color: #fff;
+            color: cornflowerblue;
+            font-size: 12px;
+            line-height: 40px;
+            padding: 0px 11px;
+            border: 2px solid;
+          }
+        }
+        .theme-link:hover {
+          box-shadow: 1px 1px 1px 1px gray;
+          border: 2px;
+          font-weight: bold;
+          .a-theme-list:hover {
+            background-color: cornflowerblue;
+            color: white;
+     
+          }
+        }
+      }
+      .theme-description {
+        margin-top: 20px;
+        padding: 5px 10px;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 10px;
+        border: 2px outset #333;
+        &__message {
+          font-size: 14px;
+          font-weight: 100;
+        }
+      }
+    }
+  }
+  .page-back-or-page-index {
+    width: 100vw;
+  }
+}

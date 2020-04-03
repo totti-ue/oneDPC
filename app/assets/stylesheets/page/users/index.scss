@@ -6,7 +6,6 @@
     height: 100%;
     width: 1200px;
     margin: 0 auto;
-    // display: flex;
     .all-users {
       overflow: auto;
       &__show {
@@ -35,5 +34,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 480px){
+  .users-index__wrapper {
+    width: 100vw;
   }
 }
