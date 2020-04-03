@@ -3,31 +3,23 @@
 .todays-post
   = link_to asset_path(@post.image), deta: {lightbox: "todays-post"}, data: {title: "#{@post.title}"}, rel: "lightbox",class: "todays-post__img" do
     = image_tag asset_path(@post.image), class: "todays-post__img--prev"
-  .todays-post__details
-    %h3.todays-post__details__heading
-      投稿詳細
-    %ul.todays-post__details__lists
-      %li.todays-post__details__lists--a-list
-        テーマ：
-        = link_to "/themes/#{@post.themes.first.id}", class: "theme-link" do
-          %span.theme-tag.tag1
-            = @post.themes.first.name   
-      %li.todays-post__details__lists--a-list
-        タイトル：
-        = @post.title
-      %li.todays-post__details__lists--a-list
-        メッセージ：
-        = @post.message
-      %li.todays-post__details__lists--a-list
-        投稿日：
-        = @post.created_at.to_s(:datetime_jp)
-      %li.todays-post__details__lists--a-list
-        投稿者：
-        = link_to "#{@post.user.nickname}", "/users/#{@post.user.id}", class: "name-link"
-      - if user_signed_in? && current_user.id == @post.user_id
-        %li.todays-post__details__lists--a-list
-          = link_to '編集する', "/posts/#{@post.id}/edit", method: :get, class: "my-post-list"
-        %li.todays-post__details__lists--a-list
-          = link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
-      - elsif user_signed_in? && current_user.id != @post.user_id
-        = render partial: "/likes/likes_favorites"
+%button.open-details{ type: "button" }
+  %span.open-text
+    投稿詳細を見る
+    %br
+    %i.fa.fa-chevron-down
+
+.best-shot-details-show
+  %ul.best-shot-details-show__lists
+    %li テーマ：#{@post.themes.first.name}
+    %li タイトル：#{@post.title}
+    %li メッセージ：#{@post.message}
+    %li 投稿日：#{@post.created_at.to_s(:datetime_jp)}
+    %li.display-inline 投稿者：
+    = link_to "#{@post.user.nickname}", user_path(@post.user.id)
+    %li 投稿総数：#{@post.user.posts.count}
+    - if user_signed_in? && current_user.id == @post.user_id
+      %li= link_to '編集する', "/posts/#{@post.id}/edit", method: :get, class: "my-post-list"
+      %li= link_to '削除する', "/posts/#{@post.id}", method: :delete, class: "my-post-list"
+
+    = render "/likes/likes_favorites"
