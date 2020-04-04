@@ -16,7 +16,7 @@
 
   def self.search(search)
     return Post.all unless search
-    Post.where('title LIKE(?)', "%#{search}%")
+    Post.where('title collate utf8_unicode_ci LIKE(?)', "%#{search}%")
   end
 
   def self.best_post_for_all

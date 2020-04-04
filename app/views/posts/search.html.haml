@@ -6,7 +6,7 @@
     .main-content__box
       .search-description
         検索キーワード：
-        %span{style: "font-weight:bold;"} #{@keyword}
+        %span.search-keyword{style: "font-weight:bold;"} #{@keyword}
         の検索結果
       %ul.box-list
         - unless @posts.empty?
