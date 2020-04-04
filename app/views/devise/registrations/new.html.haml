@@ -25,12 +25,13 @@
                   (#{@minimum_password_length} 文字以上)
               %br/
               = f.password_field :password, autocomplete: "new-password", class: "input-box__form"
-            .input-box
-              = f.label :password_confirmation
-              %br/
               = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認のため、もう一度入力してください", class: "input-box__form"
-          = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post
-          = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class: "sns_api facebook" do
+            %i.fa.fa-facebook-square
+            Facebookで登録
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "sns_api google" do
+            %i.fa.fa-google
+            Googleで登録
           .action-submit
             = f.submit "登録する", class: "submit-btn"
           = render "devise/shared/links"

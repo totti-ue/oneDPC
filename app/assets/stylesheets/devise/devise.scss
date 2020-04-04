@@ -35,6 +35,31 @@
             height: 30px;
           }
         }
+        .sns_api {
+          width: 100%;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          display: block;
+          border-radius: 10px;
+        }
+        .facebook {
+          color: white;
+          background-color: #2e4486;
+          margin-bottom: 10px;
+          .fa-facebook-square {
+            font-size: 22px;
+          }
+        }
+        .google {
+          color: #333;
+          background-color: white;
+          border: 1px solid #333;
+          width: calc(100% - 2px);
+          .fa-google {
+            font-size: 22px;
+          }
+        }
         .action-submit {
           display: flex;
           justify-content: center;
