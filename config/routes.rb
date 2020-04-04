@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   
   root to: "tops#index"
   resources :tops, only: [:index, :show]
-  devise_for :users, controllers: {registrations: "users/registrations"}
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
   resources :posts do
     resources :likes, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
