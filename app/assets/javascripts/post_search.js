@@ -77,8 +77,8 @@ $(function(){
   }
 
   function appendErrMsgToHTML(msg) {
-    let input = $('.mobile-search__input').val();
-    var html = `タイトル：<span style="font-weight:bold;">${input} </span>に${ msg }`
+    let mobile_input = $('.mobile-search__input').val();
+    var html = `タイトル：<span style="font-weight:bold;">${mobile_input} </span>に${ msg }`
     search_list.append(html);
   }
 
