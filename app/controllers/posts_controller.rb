@@ -68,6 +68,10 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
     @keyword = params[:keyword]
     @likes_count = Like.where(post_id: params[:id]).count
   end
