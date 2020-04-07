@@ -5,7 +5,7 @@ $(function($){
     let today = new Date();
     let wday = today.getDay();
     let day = today.getDate();
-    if(url == "http://3.115.17.18:4000/posts/new" || url == "http://localhost:3000/posts/new"){
+    if(url == "https://www.onedpc.xyz/posts/new" || url == "http://localhost:3000/posts/new"){
       if(wday == 0){
         $('#post_theme_ids').val(wday)
       }else{
