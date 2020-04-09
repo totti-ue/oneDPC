@@ -63,12 +63,12 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 - 画像検索機能
 - ajaxを使用した非同期処理
 - 画像投稿時に本日のテーマ自動入力
+- 携帯端末用のビュー作成
+- インクリメンタルサーチ
 
 ## Changes of the future
 ##### 今後の実装予定
-- 携帯端末用のビュー作成
 - いいね、お気に入り非同期化
-- インクリメンタルサーチ
 
 ## Usage
 ##### リポジトリをクローンされる方へ
