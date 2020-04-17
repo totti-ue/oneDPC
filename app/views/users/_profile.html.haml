@@ -14,7 +14,7 @@
       %br
       %span 投稿総数：
       = @user.posts.count
-
+      %br
       - unless current_user == @user
         - if current_user.following?(@user)
           = form_for(current_user.relationships.find_by(follow_id: @user.id), html: {method: :delete }) do |f|
@@ -26,6 +26,8 @@
             = f.submit "フォローする", class: "follow-icon"
       %span フォロー数：
       = @user.followings.count
+      %span フォロワー数：
+      = @user.followers.count
     .profile-details
       %ul.profile-details__list
         %li 性別：#{@user.gender}
