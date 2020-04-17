@@ -17,7 +17,7 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 ##### デプロイ先
 ||デプロイ先|
 |---|----------|
-|URL|http://3.115.17.18:4000/|
+|URL|https://www.onedpc.xyz/|
 
 ##### テストアカウント
 ||テストアカウント|
@@ -65,6 +65,7 @@ Ruby/Ruby on Rails/MySQL/Github/AWS/Visual Studio Code
 - 画像投稿時に本日のテーマ自動入力
 - 携帯端末用のビュー作成
 - インクリメンタルサーチ
+- SSL化（HTTP→HTTPS）
 
 ## Changes of the future
 ##### 今後の実装予定
